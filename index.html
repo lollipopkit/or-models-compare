@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -293,11 +294,11 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
             <h1>OpenRouter Models Dashboard</h1>
-            <p>实时展示 OpenRouter 平台的 AI 模型信息，数据每日自动更新</p>
         </div>
 
         <div class="controls">
@@ -310,9 +311,9 @@
                     <select id="priceFilter">
                         <option value="">全部</option>
                         <option value="free">免费</option>
-                        <option value="low">低价 (< $0.001)</option>
-                        <option value="medium">中价 ($0.001 - $0.01)</option>
-                        <option value="high">高价 (> $0.01)</option>
+                        <option value="low">低价 (< $1)</option>
+                        <option value="medium">中价 ($1 - $10)</option>
+                        <option value="high">高价 (> $10)</option>
                     </select>
                 </div>
                 <div class="filter-group">
@@ -350,7 +351,7 @@
                         <label for="col-name">模型名称</label>
                     </div>
                     <div class="column-option">
-                        <input type="checkbox" id="col-description" checked>
+                        <input type="checkbox" id="col-description">
                         <label for="col-description">描述</label>
                     </div>
                     <div class="column-option">
@@ -374,7 +375,7 @@
                         <label for="col-tokenizer">Tokenizer</label>
                     </div>
                     <div class="column-option">
-                        <input type="checkbox" id="col-created">
+                        <input type="checkbox" id="col-created" checked>
                         <label for="col-created">创建时间</label>
                     </div>
                 </div>
@@ -390,7 +391,8 @@
                         <tr>
                             <th class="sortable" data-column="name" data-visible="col-name">模型名称</th>
                             <th data-column="description" data-visible="col-description">描述</th>
-                            <th class="sortable" data-column="pricing" data-visible="col-pricing">价格 (Prompt/Completion)</th>
+                            <th class="sortable" data-column="pricing" data-visible="col-pricing">价格 (每百万tokens)
+                            </th>
                             <th class="sortable" data-column="context_length" data-visible="col-context">上下文长度</th>
                             <th data-column="provider" data-visible="col-provider">供应商信息</th>
                             <th data-column="modalities" data-visible="col-modalities">输入/输出模态</th>
@@ -452,7 +454,7 @@
 
             updateLastUpdateTime(timestamp) {
                 const date = new Date(timestamp || Date.now());
-                document.getElementById('lastUpdate').textContent = 
+                document.getElementById('lastUpdate').textContent =
                     date.toLocaleDateString('zh-CN') + ' ' + date.toLocaleTimeString('zh-CN');
             }
 
@@ -494,7 +496,7 @@
 
                 this.filteredModels = this.models.filter(model => {
                     // 搜索过滤
-                    const matchesSearch = !searchTerm || 
+                    const matchesSearch = !searchTerm ||
                         model.name.toLowerCase().includes(searchTerm) ||
                         (model.description && model.description.toLowerCase().includes(searchTerm));
 
@@ -502,18 +504,19 @@
                     let matchesPrice = true;
                     if (priceFilter) {
                         const promptPrice = parseFloat(model.pricing?.prompt || 0);
+                        const pricePerMillion = promptPrice * 1000000; // 转换为每百万tokens的价格
                         switch (priceFilter) {
                             case 'free':
                                 matchesPrice = promptPrice === 0;
                                 break;
                             case 'low':
-                                matchesPrice = promptPrice > 0 && promptPrice < 0.001;
+                                matchesPrice = promptPrice > 0 && pricePerMillion < 1;
                                 break;
                             case 'medium':
-                                matchesPrice = promptPrice >= 0.001 && promptPrice <= 0.01;
+                                matchesPrice = pricePerMillion >= 1 && pricePerMillion <= 10;
                                 break;
                             case 'high':
-                                matchesPrice = promptPrice > 0.01;
+                                matchesPrice = pricePerMillion > 10;
                                 break;
                         }
                     }
@@ -555,7 +558,7 @@
 
                 this.filteredModels.sort((a, b) => {
                     let aVal, bVal;
-                    
+
                     switch (column) {
                         case 'name':
                             aVal = a.name || '';
@@ -605,7 +608,7 @@
 
                 this.filteredModels.forEach(model => {
                     const row = document.createElement('tr');
-                    
+
                     // 模型名称
                     const nameCell = document.createElement('td');
                     nameCell.className = 'model-name';
@@ -626,14 +629,16 @@
                     priceCell.className = 'price';
                     const promptPrice = model.pricing?.prompt || '0';
                     const completionPrice = model.pricing?.completion || '0';
-                    priceCell.textContent = `$${promptPrice} / $${completionPrice}`;
+                    const formattedPromptPrice = this.formatPrice(promptPrice);
+                    const formattedCompletionPrice = this.formatPrice(completionPrice);
+                    priceCell.textContent = `${formattedPromptPrice} / ${formattedCompletionPrice}`;
                     priceCell.dataset.visible = 'col-pricing';
                     row.appendChild(priceCell);
 
                     // 上下文长度
                     const contextCell = document.createElement('td');
                     contextCell.className = 'context-length';
-                    contextCell.textContent = model.context_length ? model.context_length.toLocaleString() : '-';
+                    contextCell.textContent = this.formatContextLength(model.context_length);
                     contextCell.dataset.visible = 'col-context';
                     row.appendChild(contextCell);
 
@@ -731,6 +736,30 @@
                 errorEl.textContent = message;
                 errorEl.style.display = 'block';
             }
+
+            formatContextLength(contextLength) {
+                if (!contextLength || contextLength === 0) {
+                    return '-';
+                }
+
+                if (contextLength >= 1000000) {
+                    return (contextLength / 1000000).toFixed(1) + 'M';
+                } else if (contextLength >= 1000) {
+                    return (contextLength / 1000).toFixed(1) + 'K';
+                } else {
+                    return contextLength.toString();
+                }
+            }
+
+            formatPrice(price) {
+                const numPrice = parseFloat(price || 0);
+                if (numPrice === 0) {
+                    return '免费';
+                }
+                // 转换为每百万tokens的价格
+                const pricePerMillion = numPrice * 1000000;
+                return `$${pricePerMillion.toFixed(2)}`;
+            }
         }
 
         // 初始化应用
@@ -739,4 +768,5 @@
         });
     </script>
 </body>
+
 </html>
