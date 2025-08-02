@@ -1,8 +1,8 @@
 [English](README.md) | 中文
 
-# OpenRouter Models Dashboard
+# OpenRouter Models Compare
 
-一个 OpenRouter 模型展示静态网页，每天自动更新。
+<https://ormc.lpkt.cn> - 一个 OpenRouter 模型展示静态网页，每天自动更新，支持对比价格、上下文等。
 
 ## 🤝 贡献指南
 

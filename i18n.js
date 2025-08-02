@@ -447,10 +447,7 @@ class I18nManager {
         try {
             const langSelector = document.getElementById('languageSelector');
             if (langSelector) {
-                const currentLang = LANGUAGES.find(lang => lang.code === this.currentLanguage);
-                if (currentLang) {
-                    langSelector.textContent = currentLang.name;
-                }
+                langSelector.value = this.currentLanguage;
             }
         } catch (error) {
             console.warn('Error updating language selector:', error);
@@ -459,41 +456,20 @@ class I18nManager {
 
     createLanguageSelector() {
         const selector = document.createElement('div');
-        selector.className = 'language-selector';
+        selector.className = 'filter-group';
         selector.innerHTML = `
-            <button id="languageSelector" class="language-btn">${LANGUAGES.find(l => l.code === this.currentLanguage)?.name}</button>
-            <div class="language-dropdown" id="languageDropdown">
+            <select id="languageSelector">
                 ${LANGUAGES.map(lang =>
-            `<div class="language-option ${lang.code === this.currentLanguage ? 'active' : ''}" data-lang="${lang.code}">
-                        ${lang.name}
-                    </div>`
+            `<option value="${lang.code}" ${lang.code === this.currentLanguage ? 'selected' : ''}>${lang.name}</option>`
         ).join('')}
-            </div>
+            </select>
         `;
 
         // 添加事件监听器
-        selector.addEventListener('click', (e) => {
-            const dropdown = selector.querySelector('.language-dropdown');
-            if (e.target.classList.contains('language-btn')) {
-                dropdown.classList.toggle('show');
-            } else if (e.target.classList.contains('language-option')) {
-                const langCode = e.target.dataset.lang;
-                this.setLanguage(langCode);
-                dropdown.classList.remove('show');
-
-                // 更新选中状态
-                selector.querySelectorAll('.language-option').forEach(opt => {
-                    opt.classList.remove('active');
-                });
-                e.target.classList.add('active');
-            }
-        });
-
-        // 点击外部关闭下拉菜单
-        document.addEventListener('click', (e) => {
-            if (!selector.contains(e.target)) {
-                selector.querySelector('.language-dropdown').classList.remove('show');
-            }
+        const selectElement = selector.querySelector('#languageSelector');
+        selectElement.addEventListener('change', (e) => {
+            const langCode = e.target.value;
+            this.setLanguage(langCode);
         });
 
         return selector;

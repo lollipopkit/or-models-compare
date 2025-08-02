@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenRouter Models Dashboard</title>
+    <title>OpenRouter Models Compare</title>
     <script src="./i18n.js"></script>
     <style>
         * {
@@ -15,7 +15,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f8fafc;
+            background: linear-gradient(135deg, #fdf2f8 0%, #fae8ff 50%, #dbeafe 100%);
             color: #334155;
             line-height: 1.6;
             transition: background-color 0.3s ease, color 0.3s ease;
@@ -28,18 +28,56 @@
         }
 
         .header {
-            background: white;
-            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px 30px;
             border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(219, 234, 254, 0.4);
             margin-bottom: 30px;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            transition: background-color 0.3s ease;
+            position: relative;
+        }
+
+        .github-button {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #334155;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .github-button:hover {
+            background: rgba(255, 255, 255, 0.95);
+            border-color: #ec4899;
+            color: #ec4899;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2);
+        }
+
+        .github-icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
         }
 
         .header h1 {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #1e293b;
+            background: linear-gradient(135deg, #ec4899, #8b5cf6, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 10px;
             transition: color 0.3s ease;
         }
@@ -51,12 +89,13 @@
         }
 
         .controls {
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
             padding: 25px;
             border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(236, 72, 153, 0.2);
             margin-bottom: 25px;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            transition: background-color 0.3s ease;
         }
 
         .controls-row {
@@ -83,7 +122,7 @@
 
         .search-box input:focus {
             outline: none;
-            border-color: #3b82f6;
+            border-color: #ec4899;
         }
 
         .filter-group {
@@ -145,11 +184,12 @@
         }
 
         .table-container {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
             overflow: hidden;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            transition: background-color 0.3s ease;
         }
 
         .table-wrapper {
@@ -159,26 +199,27 @@
         table {
             width: 100%;
             border-collapse: collapse;
+            border-spacing: 0;
         }
 
         th {
-            background: #f8fafc;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(139, 92, 246, 0.1));
             padding: 16px 12px;
             text-align: left;
             font-weight: 600;
             font-size: 13px;
-            color: #475569;
-            border-bottom: 1px solid #e2e8f0;
+            color: #6d28d9;
+            border: none;
             cursor: pointer;
             user-select: none;
-            transition: background-color 0.2s, color 0.3s ease, border-bottom-color 0.3s ease;
+            transition: background-color 0.2s, color 0.3s ease;
             position: sticky;
             top: 0;
             z-index: 10;
         }
 
         th:hover {
-            background: #f1f5f9;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(139, 92, 246, 0.2));
         }
 
         th.sortable::after {
@@ -189,30 +230,54 @@
 
         th.sort-asc::after {
             content: ' ↑';
-            color: #3b82f6;
+            color: #ec4899;
         }
 
         th.sort-desc::after {
             content: ' ↓';
-            color: #3b82f6;
+            color: #ec4899;
         }
 
         td {
             padding: 12px;
-            border-bottom: 1px solid #f1f5f9;
+            border: none;
             font-size: 14px;
-            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+            transition: color 0.3s ease;
+            vertical-align: middle;
+            min-height: 60px;
+        }
+
+        tr {
+            height: auto;
+            min-height: 60px;
         }
 
         tr:hover {
-            background: #f8fafc;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.05), rgba(139, 92, 246, 0.05));
             transition: background-color 0.2s ease;
+            cursor: pointer;
         }
 
         .model-name {
             font-weight: 600;
             color: #1e293b;
             transition: color 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .model-name::after {
+            content: '→';
+            color: #94a3b8;
+            font-size: 14px;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        tr:hover .model-name::after {
+            color: #ec4899;
+            transform: translateX(2px);
         }
 
         .model-description {
@@ -286,77 +351,6 @@
             margin-top: 2px;
         }
 
-        /* 语言选择器样式 */
-        .language-selector {
-            position: relative;
-            display: inline-block;
-        }
-
-        .language-btn {
-            padding: 8px 12px;
-            border: 2px solid #e2e8f0;
-            border-radius: 6px;
-            background: white;
-            font-size: 14px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-            min-width: 120px;
-            text-align: left;
-            position: relative;
-        }
-
-        .language-btn:hover {
-            border-color: #3b82f6;
-        }
-
-        .language-btn::after {
-            content: ' ▼';
-            position: absolute;
-            right: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 12px;
-            color: #64748b;
-        }
-
-        .language-dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            display: none;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        .language-dropdown.show {
-            display: block;
-        }
-
-        .language-option {
-            padding: 8px 12px;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-            font-size: 14px;
-        }
-
-        .language-option:hover {
-            background-color: #f8fafc;
-        }
-
-        .language-option.active {
-            background-color: #3b82f6;
-            color: white;
-        }
-
-        .language-option.active:hover {
-            background-color: #2563eb;
-        }
 
         @media (max-width: 768px) {
             .container {
@@ -380,17 +374,21 @@
         /* 夜间模式 */
         @media (prefers-color-scheme: dark) {
             body {
-                background: #0f172a;
+                background: linear-gradient(135deg, #1a0d1f 0%, #1e0a3c 50%, #0f1629 100%);
                 color: #e2e8f0;
             }
 
             .header {
-                background: #1e293b;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+                background: rgba(30, 41, 59, 0.9);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(236, 72, 153, 0.3);
             }
 
             .header h1 {
-                color: #f1f5f9;
+                background: linear-gradient(135deg, #f472b6, #c084fc, #60a5fa);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
             }
 
             .header p {
@@ -398,8 +396,9 @@
             }
 
             .controls {
-                background: #1e293b;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+                background: rgba(30, 41, 59, 0.9);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(139, 92, 246, 0.3);
             }
 
             .search-box input {
@@ -413,7 +412,7 @@
             }
 
             .search-box input:focus {
-                border-color: #60a5fa;
+                border-color: #f472b6;
             }
 
             .filter-group label {
@@ -440,36 +439,53 @@
             }
 
             .table-container {
-                background: #1e293b;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+                background: rgba(30, 41, 59, 0.95);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(59, 130, 246, 0.3);
             }
 
             th {
-                background: #334155;
-                color: #cbd5e1;
-                border-bottom-color: #475569;
+                background: linear-gradient(135deg, rgba(244, 114, 182, 0.2), rgba(196, 132, 252, 0.2));
+                color: #c084fc;
+                border: none;
             }
 
             th:hover {
-                background: #3f4d63;
+                background: linear-gradient(135deg, rgba(244, 114, 182, 0.3), rgba(196, 132, 252, 0.3));
             }
 
             th.sort-asc::after,
             th.sort-desc::after {
-                color: #60a5fa;
+                color: #f472b6;
             }
 
             td {
-                border-bottom-color: #334155;
+                border: none;
                 color: #e2e8f0;
+                vertical-align: middle;
+                min-height: 60px;
+            }
+
+            tr {
+                height: auto;
+                min-height: 60px;
             }
 
             tr:hover {
-                background: #334155;
+                background: linear-gradient(135deg, rgba(244, 114, 182, 0.1), rgba(196, 132, 252, 0.1));
+                cursor: pointer;
             }
 
             .model-name {
                 color: #f1f5f9;
+            }
+
+            .model-name::after {
+                color: #64748b;
+            }
+
+            tr:hover .model-name::after {
+                color: #f472b6;
             }
 
             .price {
@@ -511,42 +527,131 @@
                 color: #94a3b8;
             }
 
-            /* 夜间模式语言选择器 */
-            .language-btn {
-                background: #334155;
+
+            .github-button {
+                background: rgba(30, 41, 59, 0.8);
                 border-color: #475569;
                 color: #e2e8f0;
             }
 
-            .language-btn:hover {
-                border-color: #60a5fa;
+            .github-button:hover {
+                background: rgba(30, 41, 59, 0.95);
+                border-color: #f472b6;
+                color: #f472b6;
+            }
+        }
+
+        /* JSON Modal Styles */
+        .json-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .json-modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .json-modal-header {
+            padding: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f8fafc;
+        }
+
+        .json-modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 0;
+        }
+
+        .json-modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #64748b;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .json-modal-close:hover {
+            background-color: #e2e8f0;
+            color: #1e293b;
+        }
+
+        .json-modal-body {
+            padding: 20px;
+            max-height: calc(80vh - 120px);
+            overflow-y: auto;
+        }
+
+        .json-content {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px;
+            font-family: 'Monaco', 'Consolas', 'Menlo', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            word-break: break-word;
+            color: #1e293b;
+            overflow-x: auto;
+        }
+
+        /* Dark mode for JSON modal */
+        @media (prefers-color-scheme: dark) {
+            .json-modal-content {
+                background-color: #1e293b;
+                color: #e2e8f0;
             }
 
-            .language-btn::after {
+            .json-modal-header {
+                background-color: #334155;
+                border-bottom-color: #475569;
+            }
+
+            .json-modal-title {
+                color: #f1f5f9;
+            }
+
+            .json-modal-close {
                 color: #94a3b8;
             }
 
-            .language-dropdown {
-                background: #334155;
-                border-color: #475569;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            }
-
-            .language-option {
+            .json-modal-close:hover {
+                background-color: #475569;
                 color: #e2e8f0;
             }
 
-            .language-option:hover {
-                background-color: #3f4d63;
-            }
-
-            .language-option.active {
-                background-color: #60a5fa;
-                color: white;
-            }
-
-            .language-option.active:hover {
-                background-color: #3b82f6;
+            .json-content {
+                background: #334155;
+                border-color: #475569;
+                color: #e2e8f0;
             }
         }
     </style>
@@ -555,7 +660,28 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1 data-i18n="title">OpenRouter Models Dashboard</h1>
+            <a href="https://github.com/lollipopkit/or-models-compare" target="_blank" class="github-button">
+                <svg class="github-icon" viewBox="0 0 24 24">
+                    <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                </svg>
+                GitHub
+            </a>
+            <h1 data-i18n="title">OpenRouter Models Compare</h1>
+
+            <div class="stats" id="stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalModels">-</div>
+                    <div class="stat-label" data-i18n="total_models">总模型数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="filteredModels">-</div>
+                    <div class="stat-label" data-i18n="current_display">当前显示</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="lastUpdate">-</div>
+                    <div class="stat-label" data-i18n="last_update">最后更新</div>
+                </div>
+            </div>
         </div>
 
         <div class="controls">
@@ -582,21 +708,6 @@
                         <option value="long" data-i18n="long">长 (50K - 200K)</option>
                         <option value="extra_long" data-i18n="extra_long">超长 (> 200K)</option>
                     </select>
-                </div>
-            </div>
-
-            <div class="stats" id="stats">
-                <div class="stat-item">
-                    <div class="stat-number" id="totalModels">-</div>
-                    <div class="stat-label" data-i18n="total_models">总模型数</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="filteredModels">-</div>
-                    <div class="stat-label" data-i18n="current_display">当前显示</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="lastUpdate">-</div>
-                    <div class="stat-label" data-i18n="last_update">最后更新</div>
                 </div>
             </div>
 
@@ -669,6 +780,19 @@
         </div>
     </div>
 
+    <!-- JSON Modal -->
+    <div id="jsonModal" class="json-modal">
+        <div class="json-modal-content">
+            <div class="json-modal-header">
+                <h3 id="jsonModalTitle" class="json-modal-title">Model JSON Data</h3>
+                <button class="json-modal-close" onclick="document.modelsManager.hideModelJson()">&times;</button>
+            </div>
+            <div class="json-modal-body">
+                <div id="jsonContent" class="json-content"></div>
+            </div>
+        </div>
+    </div>
+
     <script>
         class ModelsManager {
             constructor() {
@@ -681,7 +805,6 @@
             }
 
             init() {
-                // 初始化国际化
                 try {
                     this.i18n = new I18nManager();
                     this.i18n.init();
@@ -745,7 +868,6 @@
                         this.models = data.data || [];
                         this.updateLastUpdateTime(data.lastUpdate);
                     } else {
-                        // 如果本地文件不存在，直接从API获取（仅用于演示）
                         await this.fetchFromAPI();
                     }
                     this.filteredModels = [...this.models];
@@ -986,7 +1108,7 @@
                         const outputText = (this.i18n && typeof this.i18n.t === 'function')
                             ? this.i18n.t('output')
                             : '输出';
-                        modalityCell.innerHTML = `<div>${inputText}: ${input || '-'}</div><div>${outputText}: ${output || '-'}</div>`;
+                        modalityCell.innerHTML = `<div style="line-height: 1.4; margin-bottom: 2px;">${inputText}: ${input || '-'}</div><div style="line-height: 1.4;">${outputText}: ${output || '-'}</div>`;
                     } else {
                         modalityCell.textContent = '-';
                     }
@@ -1009,6 +1131,11 @@
                     }
                     createdCell.dataset.visible = 'col-created';
                     row.appendChild(createdCell);
+
+                    // 添加点击事件来显示原始JSON
+                    row.addEventListener('click', () => {
+                        this.showModelJson(model);
+                    });
 
                     tbody.appendChild(row);
                 });
@@ -1090,16 +1217,45 @@
                 const pricePerMillion = numPrice * 1000000;
                 return `$${pricePerMillion.toFixed(2)}`;
             }
+
+            showModelJson(model) {
+                const modal = document.getElementById('jsonModal');
+                const modelName = document.getElementById('jsonModalTitle');
+                const jsonContent = document.getElementById('jsonContent');
+                
+                modelName.textContent = model.name || model.id;
+                jsonContent.textContent = JSON.stringify(model, null, 2);
+                modal.style.display = 'block';
+                
+                // 阻止事件冒泡
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        this.hideModelJson();
+                    }
+                });
+            }
+
+            hideModelJson() {
+                const modal = document.getElementById('jsonModal');
+                modal.style.display = 'none';
+            }
         }
 
         // 初始化应用
         document.addEventListener('DOMContentLoaded', () => {
             console.log('DOM loaded, initializing ModelsManager...');
             try {
-                new ModelsManager();
+                document.modelsManager = new ModelsManager();
                 console.log('ModelsManager initialized successfully');
             } catch (error) {
                 console.error('Failed to initialize ModelsManager:', error);
+            }
+        });
+
+        // ESC键关闭模态框
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && document.modelsManager) {
+                document.modelsManager.hideModelJson();
             }
         });
 
