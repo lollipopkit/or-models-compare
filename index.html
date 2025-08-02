@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenRouter Models Dashboard</title>
+    <title>OpenRouter Models Compare</title>
     <script src="./i18n.js"></script>
     <style>
         * {
@@ -15,7 +15,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f8fafc;
+            background: linear-gradient(135deg, #fdf2f8 0%, #fae8ff 50%, #dbeafe 100%);
             color: #334155;
             line-height: 1.6;
             transition: background-color 0.3s ease, color 0.3s ease;
@@ -28,18 +28,56 @@
         }
 
         .header {
-            background: white;
-            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px 30px;
             border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(219, 234, 254, 0.4);
             margin-bottom: 30px;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            transition: background-color 0.3s ease;
+            position: relative;
+        }
+
+        .github-button {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #334155;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .github-button:hover {
+            background: rgba(255, 255, 255, 0.95);
+            border-color: #ec4899;
+            color: #ec4899;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2);
+        }
+
+        .github-icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
         }
 
         .header h1 {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #1e293b;
+            background: linear-gradient(135deg, #ec4899, #8b5cf6, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 10px;
             transition: color 0.3s ease;
         }
@@ -51,12 +89,13 @@
         }
 
         .controls {
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
             padding: 25px;
             border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(236, 72, 153, 0.2);
             margin-bottom: 25px;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            transition: background-color 0.3s ease;
         }
 
         .controls-row {
@@ -83,7 +122,7 @@
 
         .search-box input:focus {
             outline: none;
-            border-color: #3b82f6;
+            border-color: #ec4899;
         }
 
         .filter-group {
@@ -145,11 +184,12 @@
         }
 
         .table-container {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.2);
             overflow: hidden;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            transition: background-color 0.3s ease;
         }
 
         .table-wrapper {
@@ -163,12 +203,12 @@
         }
 
         th {
-            background: #f8fafc;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(139, 92, 246, 0.1));
             padding: 16px 12px;
             text-align: left;
             font-weight: 600;
             font-size: 13px;
-            color: #475569;
+            color: #6d28d9;
             border: none;
             cursor: pointer;
             user-select: none;
@@ -179,7 +219,7 @@
         }
 
         th:hover {
-            background: #f1f5f9;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(139, 92, 246, 0.2));
         }
 
         th.sortable::after {
@@ -190,12 +230,12 @@
 
         th.sort-asc::after {
             content: ' ↑';
-            color: #3b82f6;
+            color: #ec4899;
         }
 
         th.sort-desc::after {
             content: ' ↓';
-            color: #3b82f6;
+            color: #ec4899;
         }
 
         td {
@@ -213,7 +253,7 @@
         }
 
         tr:hover {
-            background: #f8fafc;
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.05), rgba(139, 92, 246, 0.05));
             transition: background-color 0.2s ease;
             cursor: pointer;
         }
@@ -236,7 +276,7 @@
         }
 
         tr:hover .model-name::after {
-            color: #3b82f6;
+            color: #ec4899;
             transform: translateX(2px);
         }
 
@@ -331,7 +371,7 @@
         }
 
         .language-btn:hover {
-            border-color: #3b82f6;
+            border-color: #ec4899;
         }
 
         .language-btn::after {
@@ -352,7 +392,6 @@
             background: white;
             border: 1px solid #e2e8f0;
             border-radius: 6px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             display: none;
             max-height: 300px;
@@ -375,12 +414,12 @@
         }
 
         .language-option.active {
-            background-color: #3b82f6;
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
             color: white;
         }
 
         .language-option.active:hover {
-            background-color: #2563eb;
+            background: linear-gradient(135deg, #db2777, #7c3aed);
         }
 
         @media (max-width: 768px) {
@@ -405,17 +444,21 @@
         /* 夜间模式 */
         @media (prefers-color-scheme: dark) {
             body {
-                background: #0f172a;
+                background: linear-gradient(135deg, #1a0d1f 0%, #1e0a3c 50%, #0f1629 100%);
                 color: #e2e8f0;
             }
 
             .header {
-                background: #1e293b;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+                background: rgba(30, 41, 59, 0.9);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(236, 72, 153, 0.3);
             }
 
             .header h1 {
-                color: #f1f5f9;
+                background: linear-gradient(135deg, #f472b6, #c084fc, #60a5fa);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
             }
 
             .header p {
@@ -423,8 +466,9 @@
             }
 
             .controls {
-                background: #1e293b;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+                background: rgba(30, 41, 59, 0.9);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(139, 92, 246, 0.3);
             }
 
             .search-box input {
@@ -438,7 +482,7 @@
             }
 
             .search-box input:focus {
-                border-color: #60a5fa;
+                border-color: #f472b6;
             }
 
             .filter-group label {
@@ -465,23 +509,24 @@
             }
 
             .table-container {
-                background: #1e293b;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+                background: rgba(30, 41, 59, 0.95);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(59, 130, 246, 0.3);
             }
 
             th {
-                background: #334155;
-                color: #cbd5e1;
+                background: linear-gradient(135deg, rgba(244, 114, 182, 0.2), rgba(196, 132, 252, 0.2));
+                color: #c084fc;
                 border: none;
             }
 
             th:hover {
-                background: #3f4d63;
+                background: linear-gradient(135deg, rgba(244, 114, 182, 0.3), rgba(196, 132, 252, 0.3));
             }
 
             th.sort-asc::after,
             th.sort-desc::after {
-                color: #60a5fa;
+                color: #f472b6;
             }
 
             td {
@@ -497,7 +542,7 @@
             }
 
             tr:hover {
-                background: #334155;
+                background: linear-gradient(135deg, rgba(244, 114, 182, 0.1), rgba(196, 132, 252, 0.1));
                 cursor: pointer;
             }
 
@@ -510,7 +555,7 @@
             }
 
             tr:hover .model-name::after {
-                color: #60a5fa;
+                color: #f472b6;
             }
 
             .price {
@@ -560,7 +605,7 @@
             }
 
             .language-btn:hover {
-                border-color: #60a5fa;
+                border-color: #f472b6;
             }
 
             .language-btn::after {
@@ -570,7 +615,6 @@
             .language-dropdown {
                 background: #334155;
                 border-color: #475569;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             }
 
             .language-option {
@@ -582,12 +626,24 @@
             }
 
             .language-option.active {
-                background-color: #60a5fa;
+                background: linear-gradient(135deg, #f472b6, #c084fc);
                 color: white;
             }
 
             .language-option.active:hover {
-                background-color: #3b82f6;
+                background: linear-gradient(135deg, #ec4899, #a855f7);
+            }
+
+            .github-button {
+                background: rgba(30, 41, 59, 0.8);
+                border-color: #475569;
+                color: #e2e8f0;
+            }
+
+            .github-button:hover {
+                background: rgba(30, 41, 59, 0.95);
+                border-color: #f472b6;
+                color: #f472b6;
             }
         }
 
@@ -710,7 +766,13 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1 data-i18n="title">OpenRouter Models Dashboard</h1>
+            <a href="https://github.com/lollipopkit/or-models-compare" target="_blank" class="github-button">
+                <svg class="github-icon" viewBox="0 0 24 24">
+                    <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                </svg>
+                GitHub
+            </a>
+            <h1 data-i18n="title">OpenRouter Models Compare</h1>
 
             <div class="stats" id="stats">
                 <div class="stat-item">
@@ -849,7 +911,6 @@
             }
 
             init() {
-                // 初始化国际化
                 try {
                     this.i18n = new I18nManager();
                     this.i18n.init();
@@ -913,7 +974,6 @@
                         this.models = data.data || [];
                         this.updateLastUpdateTime(data.lastUpdate);
                     } else {
-                        // 如果本地文件不存在，直接从API获取（仅用于演示）
                         await this.fetchFromAPI();
                     }
                     this.filteredModels = [...this.models];
