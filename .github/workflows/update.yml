@@ -3,168 +3,173 @@ name: Update OpenRouter Models Data
 on:
   schedule:
     # 每天北京时间上午 8:00 (UTC 00:00) 执行
-    - cron: '0 0 * * *'
+    - cron: "0 0 * * *"
   workflow_dispatch: # 允许手动触发
   push:
     branches:
       - main # 推送到主分支时也执行一次
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
   update-models:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
 
-    - name: Fetch OpenRouter models data
-      run: |
-        echo "Fetching models data from OpenRouter API..."
-        
-        # 创建数据获取脚本
-        cat > fetch-models.js << 'EOF'
-        const https = require('https');
-        const fs = require('fs');
+      - name: Fetch OpenRouter models data
+        run: |
+          echo "Fetching models data from OpenRouter API..."
 
-        function fetchModels() {
-          return new Promise((resolve, reject) => {
-            const options = {
-              hostname: 'openrouter.ai',
-              path: '/api/v1/models',
-              method: 'GET',
-              headers: {
-                'User-Agent': 'OpenRouter-Models-Dashboard/1.0'
-              }
-            };
+          # 创建数据获取脚本
+          cat > fetch-models.js << 'EOF'
+          const https = require('https');
+          const fs = require('fs');
 
-            const req = https.request(options, (res) => {
-              let data = '';
-              
-              res.on('data', (chunk) => {
-                data += chunk;
-              });
-              
-              res.on('end', () => {
-                try {
-                  const jsonData = JSON.parse(data);
-                  resolve(jsonData);
-                } catch (error) {
-                  reject(new Error('Invalid JSON response: ' + error.message));
+          function fetchModels() {
+            return new Promise((resolve, reject) => {
+              const options = {
+                hostname: 'openrouter.ai',
+                path: '/api/v1/models',
+                method: 'GET',
+                headers: {
+                  'User-Agent': 'OpenRouter-Models-Dashboard/1.0'
                 }
+              };
+
+              const req = https.request(options, (res) => {
+                let data = '';
+                
+                res.on('data', (chunk) => {
+                  data += chunk;
+                });
+                
+                res.on('end', () => {
+                  try {
+                    const jsonData = JSON.parse(data);
+                    resolve(jsonData);
+                  } catch (error) {
+                    reject(new Error('Invalid JSON response: ' + error.message));
+                  }
+                });
               });
+
+              req.on('error', (error) => {
+                reject(error);
+              });
+
+              req.setTimeout(30000, () => {
+                req.destroy();
+                reject(new Error('Request timeout'));
+              });
+
+              req.end();
             });
-
-            req.on('error', (error) => {
-              reject(error);
-            });
-
-            req.setTimeout(30000, () => {
-              req.destroy();
-              reject(new Error('Request timeout'));
-            });
-
-            req.end();
-          });
-        }
-
-        async function main() {
-          try {
-            console.log('Fetching models data...');
-            const modelsData = await fetchModels();
-            
-            // 添加最后更新时间
-            const outputData = {
-              ...modelsData,
-              lastUpdate: new Date().toISOString(),
-              generatedBy: 'GitHub Actions',
-              totalModels: modelsData.data ? modelsData.data.length : 0
-            };
-            
-            // 保存到文件
-            fs.writeFileSync('models-data.json', JSON.stringify(outputData, null, 2));
-            
-            console.log(`✅ Successfully fetched ${outputData.totalModels} models`);
-            console.log(`📝 Data saved to models-data.json`);
-            
-            // 输出一些统计信息用于日志
-            if (modelsData.data && modelsData.data.length > 0) {
-              const freeModels = modelsData.data.filter(m => 
-                parseFloat(m.pricing?.prompt || 0) === 0
-              ).length;
-              
-              const paidModels = modelsData.data.length - freeModels;
-              
-              console.log(`📊 Statistics:`);
-              console.log(`   - Total models: ${modelsData.data.length}`);
-              console.log(`   - Free models: ${freeModels}`);
-              console.log(`   - Paid models: ${paidModels}`);
-              
-              // 找出最高和最低价格
-              const prices = modelsData.data
-                .map(m => parseFloat(m.pricing?.prompt || 0))
-                .filter(p => p > 0)
-                .sort((a, b) => a - b);
-              
-              if (prices.length > 0) {
-                console.log(`   - Lowest price: $${prices[0]}`);
-                console.log(`   - Highest price: $${prices[prices.length - 1]}`);
-              }
-            }
-            
-          } catch (error) {
-            console.error('❌ Error:', error.message);
-            process.exit(1);
           }
-        }
 
-        main();
-        EOF
-        
-        # 执行数据获取脚本
-        node fetch-models.js
+          async function main() {
+            try {
+              console.log('Fetching models data...');
+              const modelsData = await fetchModels();
+              
+              // 添加最后更新时间
+              const outputData = {
+                ...modelsData,
+                lastUpdate: new Date().toISOString(),
+                generatedBy: 'GitHub Actions',
+                totalModels: modelsData.data ? modelsData.data.length : 0
+              };
+              
+              // 保存到文件
+              fs.writeFileSync('models-data.json', JSON.stringify(outputData, null, 2));
+              
+              console.log(`✅ Successfully fetched ${outputData.totalModels} models`);
+              console.log(`📝 Data saved to models-data.json`);
+              
+              // 输出一些统计信息用于日志
+              if (modelsData.data && modelsData.data.length > 0) {
+                const freeModels = modelsData.data.filter(m => 
+                  parseFloat(m.pricing?.prompt || 0) === 0
+                ).length;
+                
+                const paidModels = modelsData.data.length - freeModels;
+                
+                console.log(`📊 Statistics:`);
+                console.log(`   - Total models: ${modelsData.data.length}`);
+                console.log(`   - Free models: ${freeModels}`);
+                console.log(`   - Paid models: ${paidModels}`);
+                
+                // 找出最高和最低价格
+                const prices = modelsData.data
+                  .map(m => parseFloat(m.pricing?.prompt || 0))
+                  .filter(p => p > 0)
+                  .sort((a, b) => a - b);
+                
+                if (prices.length > 0) {
+                  console.log(`   - Lowest price: $${prices[0]}`);
+                  console.log(`   - Highest price: $${prices[prices.length - 1]}`);
+                }
+              }
+              
+            } catch (error) {
+              console.error('❌ Error:', error.message);
+              process.exit(1);
+            }
+          }
 
-    - name: Commit and push changes
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        
-        # 检查是否有变化
-        if git diff --quiet models-data.json; then
-          echo "📋 No changes in models data"
-        else
-          echo "📝 Models data updated, committing changes..."
-          git add models-data.json
-          git commit -m "🤖 Auto-update models data - $(date +'%Y-%m-%d %H:%M:%S UTC')"
-          git push
-          echo "✅ Changes pushed to repository"
-        fi
+          main();
+          EOF
 
-    - name: Generate summary
-      run: |
-        echo "## 📊 OpenRouter Models Update Summary" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "**Update Time:** $(date)" >> $GITHUB_STEP_SUMMARY
-        echo "" >> $GITHUB_STEP_SUMMARY
-        
-        if [ -f models-data.json ]; then
-          TOTAL_MODELS=$(node -e "const data = require('./models-data.json'); console.log(data.totalModels || 0);")
-          echo "**Total Models:** $TOTAL_MODELS" >> $GITHUB_STEP_SUMMARY
+          # 执行数据获取脚本
+          node fetch-models.js
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          # 检查是否有变化
+          if git diff --quiet models-data.json; then
+            echo "📋 No changes in models data"
+          else
+            echo "📝 Models data updated, committing changes..."
+            git add models-data.json
+            git commit -m "🤖 Auto-update models data - $(date +'%Y-%m-%d %H:%M:%S UTC')"
+            git push
+            echo "✅ Changes pushed to repository"
+          fi
+
+      - name: Generate summary
+        run: |
+          echo "## 📊 OpenRouter Models Update Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "✅ Data successfully updated and saved to \`models-data.json\`" >> $GITHUB_STEP_SUMMARY
-        else
-          echo "❌ Failed to generate models data file" >> $GITHUB_STEP_SUMMARY
-        fi
+          echo "**Update Time:** $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
 
-    - name: Deploy to GitHub Pages
-      if: github.ref == 'refs/heads/main'
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: .
-        destination_dir: .
-        keep_files: false
+          if [ -f models-data.json ]; then
+            TOTAL_MODELS=$(node -e "const data = require('./models-data.json'); console.log(data.totalModels || 0);")
+            echo "**Total Models:** $TOTAL_MODELS" >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+            echo "✅ Data successfully updated and saved to \`models-data.json\`" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Failed to generate models data file" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          destination_dir: .
+          keep_files: false
