@@ -351,76 +351,6 @@
             margin-top: 2px;
         }
 
-        /* 语言选择器样式 */
-        .language-selector {
-            position: relative;
-            display: inline-block;
-        }
-
-        .language-btn {
-            padding: 8px 12px;
-            border: 2px solid #e2e8f0;
-            border-radius: 6px;
-            background: white;
-            font-size: 14px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-            min-width: 120px;
-            text-align: left;
-            position: relative;
-        }
-
-        .language-btn:hover {
-            border-color: #ec4899;
-        }
-
-        .language-btn::after {
-            content: ' ▼';
-            position: absolute;
-            right: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 12px;
-            color: #64748b;
-        }
-
-        .language-dropdown {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            z-index: 1000;
-            display: none;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        .language-dropdown.show {
-            display: block;
-        }
-
-        .language-option {
-            padding: 8px 12px;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-            font-size: 14px;
-        }
-
-        .language-option:hover {
-            background-color: #f8fafc;
-        }
-
-        .language-option.active {
-            background: linear-gradient(135deg, #ec4899, #8b5cf6);
-            color: white;
-        }
-
-        .language-option.active:hover {
-            background: linear-gradient(135deg, #db2777, #7c3aed);
-        }
 
         @media (max-width: 768px) {
             .container {
@@ -597,42 +527,6 @@
                 color: #94a3b8;
             }
 
-            /* 夜间模式语言选择器 */
-            .language-btn {
-                background: #334155;
-                border-color: #475569;
-                color: #e2e8f0;
-            }
-
-            .language-btn:hover {
-                border-color: #f472b6;
-            }
-
-            .language-btn::after {
-                color: #94a3b8;
-            }
-
-            .language-dropdown {
-                background: #334155;
-                border-color: #475569;
-            }
-
-            .language-option {
-                color: #e2e8f0;
-            }
-
-            .language-option:hover {
-                background-color: #3f4d63;
-            }
-
-            .language-option.active {
-                background: linear-gradient(135deg, #f472b6, #c084fc);
-                color: white;
-            }
-
-            .language-option.active:hover {
-                background: linear-gradient(135deg, #ec4899, #a855f7);
-            }
 
             .github-button {
                 background: rgba(30, 41, 59, 0.8);
