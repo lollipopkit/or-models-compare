@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en" id="html-root">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenRouter Models Dashboard</title>
+    <script src="./i18n.js"></script>
     <style>
         * {
             margin: 0;
@@ -16,6 +18,7 @@
             background: #f8fafc;
             color: #334155;
             line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .container {
@@ -30,6 +33,7 @@
             border-radius: 12px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .header h1 {
@@ -37,11 +41,13 @@
             font-weight: 700;
             color: #1e293b;
             margin-bottom: 10px;
+            transition: color 0.3s ease;
         }
 
         .header p {
             color: #64748b;
             font-size: 1.1rem;
+            transition: color 0.3s ease;
         }
 
         .controls {
@@ -50,6 +56,7 @@
             border-radius: 12px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             margin-bottom: 25px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .controls-row {
@@ -71,7 +78,7 @@
             border: 2px solid #e2e8f0;
             border-radius: 8px;
             font-size: 14px;
-            transition: border-color 0.2s;
+            transition: border-color 0.2s, background-color 0.3s ease, color 0.3s ease;
         }
 
         .search-box input:focus {
@@ -88,6 +95,7 @@
         .filter-group label {
             font-weight: 500;
             color: #475569;
+            transition: color 0.3s ease;
         }
 
         .filter-group select {
@@ -96,6 +104,7 @@
             border-radius: 6px;
             background: white;
             font-size: 14px;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
         }
 
         .column-toggle {
@@ -140,6 +149,7 @@
             border-radius: 12px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             overflow: hidden;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .table-wrapper {
@@ -161,7 +171,7 @@
             border-bottom: 1px solid #e2e8f0;
             cursor: pointer;
             user-select: none;
-            transition: background-color 0.2s;
+            transition: background-color 0.2s, color 0.3s ease, border-bottom-color 0.3s ease;
             position: sticky;
             top: 0;
             z-index: 10;
@@ -191,15 +201,18 @@
             padding: 12px;
             border-bottom: 1px solid #f1f5f9;
             font-size: 14px;
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
         }
 
         tr:hover {
             background: #f8fafc;
+            transition: background-color 0.2s ease;
         }
 
         .model-name {
             font-weight: 600;
             color: #1e293b;
+            transition: color 0.3s ease;
         }
 
         .model-description {
@@ -273,6 +286,78 @@
             margin-top: 2px;
         }
 
+        /* 语言选择器样式 */
+        .language-selector {
+            position: relative;
+            display: inline-block;
+        }
+
+        .language-btn {
+            padding: 8px 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            background: white;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+            min-width: 120px;
+            text-align: left;
+            position: relative;
+        }
+
+        .language-btn:hover {
+            border-color: #3b82f6;
+        }
+
+        .language-btn::after {
+            content: ' ▼';
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: none;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .language-dropdown.show {
+            display: block;
+        }
+
+        .language-option {
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            font-size: 14px;
+        }
+
+        .language-option:hover {
+            background-color: #f8fafc;
+        }
+
+        .language-option.active {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        .language-option.active:hover {
+            background-color: #2563eb;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -291,38 +376,211 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+
+        /* 夜间模式 */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #0f172a;
+                color: #e2e8f0;
+            }
+
+            .header {
+                background: #1e293b;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            }
+
+            .header h1 {
+                color: #f1f5f9;
+            }
+
+            .header p {
+                color: #94a3b8;
+            }
+
+            .controls {
+                background: #1e293b;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            }
+
+            .search-box input {
+                background: #334155;
+                border-color: #475569;
+                color: #e2e8f0;
+            }
+
+            .search-box input::placeholder {
+                color: #94a3b8;
+            }
+
+            .search-box input:focus {
+                border-color: #60a5fa;
+            }
+
+            .filter-group label {
+                color: #cbd5e1;
+            }
+
+            .filter-group select {
+                background: #334155;
+                border-color: #475569;
+                color: #e2e8f0;
+            }
+
+            .column-toggle {
+                background: #334155;
+                border-color: #475569;
+            }
+
+            .column-toggle h3 {
+                color: #cbd5e1;
+            }
+
+            .column-option label {
+                color: #94a3b8;
+            }
+
+            .table-container {
+                background: #1e293b;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            }
+
+            th {
+                background: #334155;
+                color: #cbd5e1;
+                border-bottom-color: #475569;
+            }
+
+            th:hover {
+                background: #3f4d63;
+            }
+
+            th.sort-asc::after,
+            th.sort-desc::after {
+                color: #60a5fa;
+            }
+
+            td {
+                border-bottom-color: #334155;
+                color: #e2e8f0;
+            }
+
+            tr:hover {
+                background: #334155;
+            }
+
+            .model-name {
+                color: #f1f5f9;
+            }
+
+            .price {
+                color: #34d399;
+            }
+
+            .context-length {
+                color: #a78bfa;
+            }
+
+            .provider-info {
+                color: #cbd5e1;
+            }
+
+            .moderated {
+                background: #451a03;
+                color: #fbbf24;
+            }
+
+            .loading {
+                color: #94a3b8;
+            }
+
+            .error {
+                background: #450a0a;
+                color: #fca5a5;
+            }
+
+            .stat-item {
+                background: #334155;
+                border-color: #475569;
+            }
+
+            .stat-number {
+                color: #f1f5f9;
+            }
+
+            .stat-label {
+                color: #94a3b8;
+            }
+
+            /* 夜间模式语言选择器 */
+            .language-btn {
+                background: #334155;
+                border-color: #475569;
+                color: #e2e8f0;
+            }
+
+            .language-btn:hover {
+                border-color: #60a5fa;
+            }
+
+            .language-btn::after {
+                color: #94a3b8;
+            }
+
+            .language-dropdown {
+                background: #334155;
+                border-color: #475569;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            }
+
+            .language-option {
+                color: #e2e8f0;
+            }
+
+            .language-option:hover {
+                background-color: #3f4d63;
+            }
+
+            .language-option.active {
+                background-color: #60a5fa;
+                color: white;
+            }
+
+            .language-option.active:hover {
+                background-color: #3b82f6;
+            }
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
-            <h1>OpenRouter Models Dashboard</h1>
-            <p>实时展示 OpenRouter 平台的 AI 模型信息，数据每日自动更新</p>
+            <h1 data-i18n="title">OpenRouter Models Dashboard</h1>
         </div>
 
         <div class="controls">
             <div class="controls-row">
                 <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="搜索模型名称、描述...">
+                    <input type="text" id="searchInput" placeholder="搜索模型名称、描述..." data-i18n="search_placeholder">
                 </div>
                 <div class="filter-group">
-                    <label>价格范围:</label>
+                    <label data-i18n="price_range">价格范围:</label>
                     <select id="priceFilter">
-                        <option value="">全部</option>
-                        <option value="free">免费</option>
-                        <option value="low">低价 (< $0.001)</option>
-                        <option value="medium">中价 ($0.001 - $0.01)</option>
-                        <option value="high">高价 (> $0.01)</option>
+                        <option value="" data-i18n="all">全部</option>
+                        <option value="free" data-i18n="free">免费</option>
+                        <option value="low" data-i18n="low">低价 (< $1)</option>
+                        <option value="medium" data-i18n="medium">中价 ($1 - $10)</option>
+                        <option value="high" data-i18n="high">高价 (> $10)</option>
                     </select>
                 </div>
                 <div class="filter-group">
-                    <label>上下文长度:</label>
+                    <label data-i18n="context_length">上下文长度:</label>
                     <select id="contextFilter">
-                        <option value="">全部</option>
-                        <option value="short">短 (< 10K)</option>
-                        <option value="medium">中 (10K - 50K)</option>
-                        <option value="long">长 (50K - 200K)</option>
-                        <option value="extra_long">超长 (> 200K)</option>
+                        <option value="" data-i18n="all">全部</option>
+                        <option value="short" data-i18n="short">短 (< 10K)</option>
+                        <option value="medium" data-i18n="medium_ctx">中 (10K - 50K)</option>
+                        <option value="long" data-i18n="long">长 (50K - 200K)</option>
+                        <option value="extra_long" data-i18n="extra_long">超长 (> 200K)</option>
                     </select>
                 </div>
             </div>
@@ -330,72 +588,78 @@
             <div class="stats" id="stats">
                 <div class="stat-item">
                     <div class="stat-number" id="totalModels">-</div>
-                    <div class="stat-label">总模型数</div>
+                    <div class="stat-label" data-i18n="total_models">总模型数</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" id="filteredModels">-</div>
-                    <div class="stat-label">当前显示</div>
+                    <div class="stat-label" data-i18n="current_display">当前显示</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" id="lastUpdate">-</div>
-                    <div class="stat-label">最后更新</div>
+                    <div class="stat-label" data-i18n="last_update">最后更新</div>
                 </div>
             </div>
 
             <div class="column-toggle">
-                <h3>显示列设置</h3>
+                <h3 data-i18n="column_settings">显示列设置</h3>
                 <div class="column-options">
                     <div class="column-option">
                         <input type="checkbox" id="col-name" checked>
-                        <label for="col-name">模型名称</label>
+                        <label for="col-name" data-i18n="model_name">模型名称</label>
                     </div>
                     <div class="column-option">
-                        <input type="checkbox" id="col-description" checked>
-                        <label for="col-description">描述</label>
+                        <input type="checkbox" id="col-description">
+                        <label for="col-description" data-i18n="description">描述</label>
                     </div>
                     <div class="column-option">
                         <input type="checkbox" id="col-pricing" checked>
-                        <label for="col-pricing">价格</label>
+                        <label for="col-pricing" data-i18n="price">价格</label>
                     </div>
                     <div class="column-option">
                         <input type="checkbox" id="col-context" checked>
-                        <label for="col-context">上下文长度</label>
+                        <label for="col-context" data-i18n="context_length">上下文长度</label>
                     </div>
                     <div class="column-option">
                         <input type="checkbox" id="col-provider" checked>
-                        <label for="col-provider">供应商信息</label>
+                        <label for="col-provider" data-i18n="provider_info">供应商信息</label>
                     </div>
                     <div class="column-option">
                         <input type="checkbox" id="col-modalities" checked>
-                        <label for="col-modalities">输入/输出模态</label>
+                        <label for="col-modalities" data-i18n="input_output_modality">输入/输出模态</label>
                     </div>
                     <div class="column-option">
                         <input type="checkbox" id="col-tokenizer">
-                        <label for="col-tokenizer">Tokenizer</label>
+                        <label for="col-tokenizer" data-i18n="tokenizer">Tokenizer</label>
                     </div>
                     <div class="column-option">
-                        <input type="checkbox" id="col-created">
-                        <label for="col-created">创建时间</label>
+                        <input type="checkbox" id="col-created" checked>
+                        <label for="col-created" data-i18n="created_time">创建时间</label>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="table-container">
-            <div id="loading" class="loading">加载中...</div>
+            <div id="loading" class="loading" data-i18n="loading">加载中...</div>
             <div id="error" class="error" style="display: none;"></div>
             <div class="table-wrapper">
                 <table id="modelsTable" style="display: none;">
                     <thead>
                         <tr>
-                            <th class="sortable" data-column="name" data-visible="col-name">模型名称</th>
-                            <th data-column="description" data-visible="col-description">描述</th>
-                            <th class="sortable" data-column="pricing" data-visible="col-pricing">价格 (Prompt/Completion)</th>
-                            <th class="sortable" data-column="context_length" data-visible="col-context">上下文长度</th>
-                            <th data-column="provider" data-visible="col-provider">供应商信息</th>
-                            <th data-column="modalities" data-visible="col-modalities">输入/输出模态</th>
-                            <th data-column="tokenizer" data-visible="col-tokenizer">Tokenizer</th>
-                            <th class="sortable" data-column="created" data-visible="col-created">创建时间</th>
+                            <th class="sortable" data-column="name" data-visible="col-name" data-i18n="model_name">模型名称
+                            </th>
+                            <th data-column="description" data-visible="col-description" data-i18n="description">描述</th>
+                            <th class="sortable" data-column="pricing" data-visible="col-pricing" data-i18n="price">价格
+                                (每百万tokens)</th>
+                            <th class="sortable" data-column="context_length" data-visible="col-context"
+                                data-i18n="context_length">上下文长度</th>
+                            <th data-column="provider" data-visible="col-provider" data-i18n="provider_info">供应商信息</th>
+                            <th data-column="modalities" data-visible="col-modalities"
+                                data-i18n="input_output_modality">输入/输出模态</th>
+                            <th data-column="tokenizer" data-visible="col-tokenizer" data-i18n="tokenizer">Tokenizer
+                            </th>
+                            <th class="sortable" data-column="created" data-visible="col-created"
+                                data-i18n="created_time">创建时间</th>
                         </tr>
                     </thead>
                     <tbody id="modelsBody">
@@ -412,13 +676,64 @@
                 this.filteredModels = [];
                 this.sortColumn = '';
                 this.sortDirection = 'asc';
+                this.i18n = null;
                 this.init();
             }
 
             init() {
+                // 初始化国际化
+                try {
+                    this.i18n = new I18nManager();
+                    this.i18n.init();
+                } catch (error) {
+                    console.warn('Failed to initialize i18n:', error);
+                    // 创建一个简单的回退对象
+                    this.i18n = {
+                        t: (key) => key,
+                        setLanguage: () => { },
+                        currentLanguage: 'zh-CN'
+                    };
+                }
+
+                // 监听语言变化
+                document.addEventListener('languageChanged', () => {
+                    this.onLanguageChanged();
+                });
+
                 this.loadData();
                 this.setupEventListeners();
                 this.loadColumnSettings();
+            }
+
+            onLanguageChanged() {
+                // 重新渲染表格内容
+                this.renderTable();
+                // 更新选择框的选项文本
+                this.updateSelectOptions();
+            }
+
+            updateSelectOptions() {
+                if (!this.i18n || typeof this.i18n.t !== 'function') {
+                    return;
+                }
+
+                // 更新价格过滤器选项
+                const priceFilter = document.getElementById('priceFilter');
+                const priceOptions = priceFilter.querySelectorAll('option');
+                priceOptions[0].textContent = this.i18n.t('all');
+                priceOptions[1].textContent = this.i18n.t('free');
+                priceOptions[2].textContent = this.i18n.t('low');
+                priceOptions[3].textContent = this.i18n.t('medium');
+                priceOptions[4].textContent = this.i18n.t('high');
+
+                // 更新上下文长度过滤器选项
+                const contextFilter = document.getElementById('contextFilter');
+                const contextOptions = contextFilter.querySelectorAll('option');
+                contextOptions[0].textContent = this.i18n.t('all');
+                contextOptions[1].textContent = this.i18n.t('short');
+                contextOptions[2].textContent = this.i18n.t('medium_ctx');
+                contextOptions[3].textContent = this.i18n.t('long');
+                contextOptions[4].textContent = this.i18n.t('extra_long');
             }
 
             async loadData() {
@@ -439,7 +754,7 @@
                     document.getElementById('loading').style.display = 'none';
                     document.getElementById('modelsTable').style.display = 'table';
                 } catch (error) {
-                    this.showError('加载数据失败: ' + error.message);
+                    this.showError(error.message);
                 }
             }
 
@@ -452,7 +767,7 @@
 
             updateLastUpdateTime(timestamp) {
                 const date = new Date(timestamp || Date.now());
-                document.getElementById('lastUpdate').textContent = 
+                document.getElementById('lastUpdate').textContent =
                     date.toLocaleDateString('zh-CN') + ' ' + date.toLocaleTimeString('zh-CN');
             }
 
@@ -494,7 +809,7 @@
 
                 this.filteredModels = this.models.filter(model => {
                     // 搜索过滤
-                    const matchesSearch = !searchTerm || 
+                    const matchesSearch = !searchTerm ||
                         model.name.toLowerCase().includes(searchTerm) ||
                         (model.description && model.description.toLowerCase().includes(searchTerm));
 
@@ -502,18 +817,19 @@
                     let matchesPrice = true;
                     if (priceFilter) {
                         const promptPrice = parseFloat(model.pricing?.prompt || 0);
+                        const pricePerMillion = promptPrice * 1000000; // 转换为每百万tokens的价格
                         switch (priceFilter) {
                             case 'free':
                                 matchesPrice = promptPrice === 0;
                                 break;
                             case 'low':
-                                matchesPrice = promptPrice > 0 && promptPrice < 0.001;
+                                matchesPrice = promptPrice > 0 && pricePerMillion < 1;
                                 break;
                             case 'medium':
-                                matchesPrice = promptPrice >= 0.001 && promptPrice <= 0.01;
+                                matchesPrice = pricePerMillion >= 1 && pricePerMillion <= 10;
                                 break;
                             case 'high':
-                                matchesPrice = promptPrice > 0.01;
+                                matchesPrice = pricePerMillion > 10;
                                 break;
                         }
                     }
@@ -555,7 +871,7 @@
 
                 this.filteredModels.sort((a, b) => {
                     let aVal, bVal;
-                    
+
                     switch (column) {
                         case 'name':
                             aVal = a.name || '';
@@ -605,7 +921,7 @@
 
                 this.filteredModels.forEach(model => {
                     const row = document.createElement('tr');
-                    
+
                     // 模型名称
                     const nameCell = document.createElement('td');
                     nameCell.className = 'model-name';
@@ -626,14 +942,16 @@
                     priceCell.className = 'price';
                     const promptPrice = model.pricing?.prompt || '0';
                     const completionPrice = model.pricing?.completion || '0';
-                    priceCell.textContent = `$${promptPrice} / $${completionPrice}`;
+                    const formattedPromptPrice = this.formatPrice(promptPrice);
+                    const formattedCompletionPrice = this.formatPrice(completionPrice);
+                    priceCell.textContent = `${formattedPromptPrice} / ${formattedCompletionPrice}`;
                     priceCell.dataset.visible = 'col-pricing';
                     row.appendChild(priceCell);
 
                     // 上下文长度
                     const contextCell = document.createElement('td');
                     contextCell.className = 'context-length';
-                    contextCell.textContent = model.context_length ? model.context_length.toLocaleString() : '-';
+                    contextCell.textContent = this.formatContextLength(model.context_length);
                     contextCell.dataset.visible = 'col-context';
                     row.appendChild(contextCell);
 
@@ -642,9 +960,15 @@
                     providerCell.className = 'provider-info';
                     let providerText = '-';
                     if (model.top_provider) {
-                        providerText = `最大完成: ${model.top_provider.max_completion_tokens || '-'}`;
+                        const maxCompletionText = (this.i18n && typeof this.i18n.t === 'function')
+                            ? this.i18n.t('max_completion')
+                            : '最大完成';
+                        providerText = `${maxCompletionText}: ${model.top_provider.max_completion_tokens || '-'}`;
                         if (model.top_provider.is_moderated) {
-                            providerText += '<span class="moderated">受审查</span>';
+                            const moderatedText = (this.i18n && typeof this.i18n.t === 'function')
+                                ? this.i18n.t('moderated')
+                                : '受审查';
+                            providerText += `<span class="moderated">${moderatedText}</span>`;
                         }
                     }
                     providerCell.innerHTML = providerText;
@@ -656,7 +980,13 @@
                     if (model.architecture) {
                         const input = (model.architecture.input_modalities || []).join(', ');
                         const output = (model.architecture.output_modalities || []).join(', ');
-                        modalityCell.innerHTML = `<div>输入: ${input || '-'}</div><div>输出: ${output || '-'}</div>`;
+                        const inputText = (this.i18n && typeof this.i18n.t === 'function')
+                            ? this.i18n.t('input')
+                            : '输入';
+                        const outputText = (this.i18n && typeof this.i18n.t === 'function')
+                            ? this.i18n.t('output')
+                            : '输出';
+                        modalityCell.innerHTML = `<div>${inputText}: ${input || '-'}</div><div>${outputText}: ${output || '-'}</div>`;
                     } else {
                         modalityCell.textContent = '-';
                     }
@@ -728,15 +1058,60 @@
             showError(message) {
                 document.getElementById('loading').style.display = 'none';
                 const errorEl = document.getElementById('error');
-                errorEl.textContent = message;
+                const errorPrefix = (this.i18n && typeof this.i18n.t === 'function')
+                    ? this.i18n.t('load_failed')
+                    : '加载数据失败';
+                errorEl.textContent = errorPrefix + ': ' + message;
                 errorEl.style.display = 'block';
+            }
+
+            formatContextLength(contextLength) {
+                if (!contextLength || contextLength === 0) {
+                    return '-';
+                }
+
+                if (contextLength >= 1000000) {
+                    return (contextLength / 1000000).toFixed(1) + 'M';
+                } else if (contextLength >= 1000) {
+                    return (contextLength / 1000).toFixed(1) + 'K';
+                } else {
+                    return contextLength.toString();
+                }
+            }
+
+            formatPrice(price) {
+                const numPrice = parseFloat(price || 0);
+                if (numPrice === 0) {
+                    return (this.i18n && typeof this.i18n.t === 'function')
+                        ? this.i18n.t('free')
+                        : '免费';
+                }
+                // 转换为每百万tokens的价格
+                const pricePerMillion = numPrice * 1000000;
+                return `$${pricePerMillion.toFixed(2)}`;
             }
         }
 
         // 初始化应用
         document.addEventListener('DOMContentLoaded', () => {
-            new ModelsManager();
+            console.log('DOM loaded, initializing ModelsManager...');
+            try {
+                new ModelsManager();
+                console.log('ModelsManager initialized successfully');
+            } catch (error) {
+                console.error('Failed to initialize ModelsManager:', error);
+            }
+        });
+
+        // 添加全局错误处理
+        window.addEventListener('error', (event) => {
+            console.error('Global error:', event.error);
+        });
+
+        window.addEventListener('unhandledrejection', (event) => {
+            console.error('Unhandled promise rejection:', event.reason);
         });
     </script>
 </body>
+
 </html>

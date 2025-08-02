@@ -1,15 +1,17 @@
+English | [中文](README_zh.md)
+
 # OpenRouter Models Dashboard
 
-一个 OpenRouter 模型展示静态网页，每天自动更新。
+A static web page showcasing OpenRouter models, automatically updated daily.
 
-## 🤝 贡献指南
+## 🤝 Contributing
 
-欢迎提交 Issue 和 Pull Request！
+Issues and Pull Requests are welcome!
 
-## 📄 许可证
+## 📄 License
 
-MIT 许可证 [LICENSE](LICENSE)
+[GPL v3](LICENSE)
 
-## 🔗 相关链接
+## 🔗 Related Links
 
-- [OpenRouter API 文档](https://openrouter.ai/docs)
+- [OpenRouter API Documentation](https://openrouter.ai/docs)
