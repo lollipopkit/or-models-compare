@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenRouter Models Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+
+        .controls {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+        }
+
+        .controls-row {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.2s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .filter-group label {
+            font-weight: 500;
+            color: #475569;
+        }
+
+        .filter-group select {
+            padding: 8px 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            background: white;
+            font-size: 14px;
+        }
+
+        .column-toggle {
+            background: #f1f5f9;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .column-toggle h3 {
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .column-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .column-option {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .column-option input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+        }
+
+        .column-option label {
+            font-size: 13px;
+            color: #64748b;
+            cursor: pointer;
+        }
+
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #f8fafc;
+            padding: 16px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 13px;
+            color: #475569;
+            border-bottom: 1px solid #e2e8f0;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.2s;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        th:hover {
+            background: #f1f5f9;
+        }
+
+        th.sortable::after {
+            content: ' ↕';
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        th.sort-asc::after {
+            content: ' ↑';
+            color: #3b82f6;
+        }
+
+        th.sort-desc::after {
+            content: ' ↓';
+            color: #3b82f6;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 14px;
+        }
+
+        tr:hover {
+            background: #f8fafc;
+        }
+
+        .model-name {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .model-description {
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .price {
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 13px;
+            color: #059669;
+        }
+
+        .context-length {
+            font-weight: 500;
+            color: #7c3aed;
+        }
+
+        .provider-info {
+            font-size: 13px;
+        }
+
+        .moderated {
+            display: inline-block;
+            padding: 2px 6px;
+            background: #fef3c7;
+            color: #92400e;
+            border-radius: 4px;
+            font-size: 11px;
+            margin-left: 5px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #64748b;
+        }
+
+        .error {
+            background: #fef2f2;
+            color: #dc2626;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            background: #f8fafc;
+            padding: 12px 16px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stat-number {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .controls-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .column-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>OpenRouter Models Dashboard</h1>
+            <p>实时展示 OpenRouter 平台的 AI 模型信息，数据每日自动更新</p>
+        </div>
+
+        <div class="controls">
+            <div class="controls-row">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="搜索模型名称、描述...">
+                </div>
+                <div class="filter-group">
+                    <label>价格范围:</label>
+                    <select id="priceFilter">
+                        <option value="">全部</option>
+                        <option value="free">免费</option>
+                        <option value="low">低价 (< $0.001)</option>
+                        <option value="medium">中价 ($0.001 - $0.01)</option>
+                        <option value="high">高价 (> $0.01)</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>上下文长度:</label>
+                    <select id="contextFilter">
+                        <option value="">全部</option>
+                        <option value="short">短 (< 10K)</option>
+                        <option value="medium">中 (10K - 50K)</option>
+                        <option value="long">长 (50K - 200K)</option>
+                        <option value="extra_long">超长 (> 200K)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="stats" id="stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalModels">-</div>
+                    <div class="stat-label">总模型数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="filteredModels">-</div>
+                    <div class="stat-label">当前显示</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="lastUpdate">-</div>
+                    <div class="stat-label">最后更新</div>
+                </div>
+            </div>
+
+            <div class="column-toggle">
+                <h3>显示列设置</h3>
+                <div class="column-options">
+                    <div class="column-option">
+                        <input type="checkbox" id="col-name" checked>
+                        <label for="col-name">模型名称</label>
+                    </div>
+                    <div class="column-option">
+                        <input type="checkbox" id="col-description" checked>
+                        <label for="col-description">描述</label>
+                    </div>
+                    <div class="column-option">
+                        <input type="checkbox" id="col-pricing" checked>
+                        <label for="col-pricing">价格</label>
+                    </div>
+                    <div class="column-option">
+                        <input type="checkbox" id="col-context" checked>
+                        <label for="col-context">上下文长度</label>
+                    </div>
+                    <div class="column-option">
+                        <input type="checkbox" id="col-provider" checked>
+                        <label for="col-provider">供应商信息</label>
+                    </div>
+                    <div class="column-option">
+                        <input type="checkbox" id="col-modalities" checked>
+                        <label for="col-modalities">输入/输出模态</label>
+                    </div>
+                    <div class="column-option">
+                        <input type="checkbox" id="col-tokenizer">
+                        <label for="col-tokenizer">Tokenizer</label>
+                    </div>
+                    <div class="column-option">
+                        <input type="checkbox" id="col-created">
+                        <label for="col-created">创建时间</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <div id="loading" class="loading">加载中...</div>
+            <div id="error" class="error" style="display: none;"></div>
+            <div class="table-wrapper">
+                <table id="modelsTable" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th class="sortable" data-column="name" data-visible="col-name">模型名称</th>
+                            <th data-column="description" data-visible="col-description">描述</th>
+                            <th class="sortable" data-column="pricing" data-visible="col-pricing">价格 (Prompt/Completion)</th>
+                            <th class="sortable" data-column="context_length" data-visible="col-context">上下文长度</th>
+                            <th data-column="provider" data-visible="col-provider">供应商信息</th>
+                            <th data-column="modalities" data-visible="col-modalities">输入/输出模态</th>
+                            <th data-column="tokenizer" data-visible="col-tokenizer">Tokenizer</th>
+                            <th class="sortable" data-column="created" data-visible="col-created">创建时间</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modelsBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class ModelsManager {
+            constructor() {
+                this.models = [];
+                this.filteredModels = [];
+                this.sortColumn = '';
+                this.sortDirection = 'asc';
+                this.init();
+            }
+
+            init() {
+                this.loadData();
+                this.setupEventListeners();
+                this.loadColumnSettings();
+            }
+
+            async loadData() {
+                try {
+                    // 尝试加载本地数据文件（GitHub Actions生成）
+                    const response = await fetch('./models-data.json');
+                    if (response.ok) {
+                        const data = await response.json();
+                        this.models = data.data || [];
+                        this.updateLastUpdateTime(data.lastUpdate);
+                    } else {
+                        // 如果本地文件不存在，直接从API获取（仅用于演示）
+                        await this.fetchFromAPI();
+                    }
+                    this.filteredModels = [...this.models];
+                    this.renderTable();
+                    this.updateStats();
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('modelsTable').style.display = 'table';
+                } catch (error) {
+                    this.showError('加载数据失败: ' + error.message);
+                }
+            }
+
+            async fetchFromAPI() {
+                const response = await fetch('https://openrouter.ai/api/v1/models');
+                const data = await response.json();
+                this.models = data.data || [];
+                this.updateLastUpdateTime(new Date().toISOString());
+            }
+
+            updateLastUpdateTime(timestamp) {
+                const date = new Date(timestamp || Date.now());
+                document.getElementById('lastUpdate').textContent = 
+                    date.toLocaleDateString('zh-CN') + ' ' + date.toLocaleTimeString('zh-CN');
+            }
+
+            setupEventListeners() {
+                // 搜索
+                document.getElementById('searchInput').addEventListener('input', (e) => {
+                    this.applyFilters();
+                });
+
+                // 过滤器
+                document.getElementById('priceFilter').addEventListener('change', () => {
+                    this.applyFilters();
+                });
+
+                document.getElementById('contextFilter').addEventListener('change', () => {
+                    this.applyFilters();
+                });
+
+                // 排序
+                document.querySelectorAll('th.sortable').forEach(th => {
+                    th.addEventListener('click', () => {
+                        this.sort(th.dataset.column);
+                    });
+                });
+
+                // 列显示设置
+                document.querySelectorAll('.column-option input').forEach(checkbox => {
+                    checkbox.addEventListener('change', () => {
+                        this.toggleColumn(checkbox.id, checkbox.checked);
+                        this.saveColumnSettings();
+                    });
+                });
+            }
+
+            applyFilters() {
+                const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+                const priceFilter = document.getElementById('priceFilter').value;
+                const contextFilter = document.getElementById('contextFilter').value;
+
+                this.filteredModels = this.models.filter(model => {
+                    // 搜索过滤
+                    const matchesSearch = !searchTerm || 
+                        model.name.toLowerCase().includes(searchTerm) ||
+                        (model.description && model.description.toLowerCase().includes(searchTerm));
+
+                    // 价格过滤
+                    let matchesPrice = true;
+                    if (priceFilter) {
+                        const promptPrice = parseFloat(model.pricing?.prompt || 0);
+                        switch (priceFilter) {
+                            case 'free':
+                                matchesPrice = promptPrice === 0;
+                                break;
+                            case 'low':
+                                matchesPrice = promptPrice > 0 && promptPrice < 0.001;
+                                break;
+                            case 'medium':
+                                matchesPrice = promptPrice >= 0.001 && promptPrice <= 0.01;
+                                break;
+                            case 'high':
+                                matchesPrice = promptPrice > 0.01;
+                                break;
+                        }
+                    }
+
+                    // 上下文长度过滤
+                    let matchesContext = true;
+                    if (contextFilter) {
+                        const contextLength = model.context_length || 0;
+                        switch (contextFilter) {
+                            case 'short':
+                                matchesContext = contextLength < 10000;
+                                break;
+                            case 'medium':
+                                matchesContext = contextLength >= 10000 && contextLength < 50000;
+                                break;
+                            case 'long':
+                                matchesContext = contextLength >= 50000 && contextLength <= 200000;
+                                break;
+                            case 'extra_long':
+                                matchesContext = contextLength > 200000;
+                                break;
+                        }
+                    }
+
+                    return matchesSearch && matchesPrice && matchesContext;
+                });
+
+                this.renderTable();
+                this.updateStats();
+            }
+
+            sort(column) {
+                if (this.sortColumn === column) {
+                    this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+                } else {
+                    this.sortColumn = column;
+                    this.sortDirection = 'asc';
+                }
+
+                this.filteredModels.sort((a, b) => {
+                    let aVal, bVal;
+                    
+                    switch (column) {
+                        case 'name':
+                            aVal = a.name || '';
+                            bVal = b.name || '';
+                            break;
+                        case 'pricing':
+                            aVal = parseFloat(a.pricing?.prompt || 0);
+                            bVal = parseFloat(b.pricing?.prompt || 0);
+                            break;
+                        case 'context_length':
+                            aVal = a.context_length || 0;
+                            bVal = b.context_length || 0;
+                            break;
+                        case 'created':
+                            aVal = a.created || 0;
+                            bVal = b.created || 0;
+                            break;
+                        default:
+                            return 0;
+                    }
+
+                    if (typeof aVal === 'string') {
+                        const result = aVal.localeCompare(bVal);
+                        return this.sortDirection === 'asc' ? result : -result;
+                    } else {
+                        const result = aVal - bVal;
+                        return this.sortDirection === 'asc' ? result : -result;
+                    }
+                });
+
+                this.updateSortHeaders();
+                this.renderTable();
+            }
+
+            updateSortHeaders() {
+                document.querySelectorAll('th.sortable').forEach(th => {
+                    th.classList.remove('sort-asc', 'sort-desc');
+                    if (th.dataset.column === this.sortColumn) {
+                        th.classList.add(`sort-${this.sortDirection}`);
+                    }
+                });
+            }
+
+            renderTable() {
+                const tbody = document.getElementById('modelsBody');
+                tbody.innerHTML = '';
+
+                this.filteredModels.forEach(model => {
+                    const row = document.createElement('tr');
+                    
+                    // 模型名称
+                    const nameCell = document.createElement('td');
+                    nameCell.className = 'model-name';
+                    nameCell.textContent = model.name || model.id;
+                    nameCell.dataset.visible = 'col-name';
+                    row.appendChild(nameCell);
+
+                    // 描述
+                    const descCell = document.createElement('td');
+                    descCell.className = 'model-description';
+                    descCell.textContent = model.description || '-';
+                    descCell.title = model.description || '';
+                    descCell.dataset.visible = 'col-description';
+                    row.appendChild(descCell);
+
+                    // 价格
+                    const priceCell = document.createElement('td');
+                    priceCell.className = 'price';
+                    const promptPrice = model.pricing?.prompt || '0';
+                    const completionPrice = model.pricing?.completion || '0';
+                    priceCell.textContent = `$${promptPrice} / $${completionPrice}`;
+                    priceCell.dataset.visible = 'col-pricing';
+                    row.appendChild(priceCell);
+
+                    // 上下文长度
+                    const contextCell = document.createElement('td');
+                    contextCell.className = 'context-length';
+                    contextCell.textContent = model.context_length ? model.context_length.toLocaleString() : '-';
+                    contextCell.dataset.visible = 'col-context';
+                    row.appendChild(contextCell);
+
+                    // 供应商信息
+                    const providerCell = document.createElement('td');
+                    providerCell.className = 'provider-info';
+                    let providerText = '-';
+                    if (model.top_provider) {
+                        providerText = `最大完成: ${model.top_provider.max_completion_tokens || '-'}`;
+                        if (model.top_provider.is_moderated) {
+                            providerText += '<span class="moderated">受审查</span>';
+                        }
+                    }
+                    providerCell.innerHTML = providerText;
+                    providerCell.dataset.visible = 'col-provider';
+                    row.appendChild(providerCell);
+
+                    // 输入/输出模态
+                    const modalityCell = document.createElement('td');
+                    if (model.architecture) {
+                        const input = (model.architecture.input_modalities || []).join(', ');
+                        const output = (model.architecture.output_modalities || []).join(', ');
+                        modalityCell.innerHTML = `<div>输入: ${input || '-'}</div><div>输出: ${output || '-'}</div>`;
+                    } else {
+                        modalityCell.textContent = '-';
+                    }
+                    modalityCell.dataset.visible = 'col-modalities';
+                    row.appendChild(modalityCell);
+
+                    // Tokenizer
+                    const tokenizerCell = document.createElement('td');
+                    tokenizerCell.textContent = model.architecture?.tokenizer || '-';
+                    tokenizerCell.dataset.visible = 'col-tokenizer';
+                    row.appendChild(tokenizerCell);
+
+                    // 创建时间
+                    const createdCell = document.createElement('td');
+                    if (model.created) {
+                        const date = new Date(model.created * 1000);
+                        createdCell.textContent = date.toLocaleDateString('zh-CN');
+                    } else {
+                        createdCell.textContent = '-';
+                    }
+                    createdCell.dataset.visible = 'col-created';
+                    row.appendChild(createdCell);
+
+                    tbody.appendChild(row);
+                });
+
+                this.updateColumnVisibility();
+            }
+
+            toggleColumn(columnId, visible) {
+                const columnName = columnId.replace('col-', '');
+                document.querySelectorAll(`[data-visible="${columnId}"]`).forEach(el => {
+                    el.style.display = visible ? '' : 'none';
+                });
+            }
+
+            updateColumnVisibility() {
+                document.querySelectorAll('.column-option input').forEach(checkbox => {
+                    this.toggleColumn(checkbox.id, checkbox.checked);
+                });
+            }
+
+            saveColumnSettings() {
+                const settings = {};
+                document.querySelectorAll('.column-option input').forEach(checkbox => {
+                    settings[checkbox.id] = checkbox.checked;
+                });
+                localStorage.setItem('openrouter-column-settings', JSON.stringify(settings));
+            }
+
+            loadColumnSettings() {
+                try {
+                    const settings = JSON.parse(localStorage.getItem('openrouter-column-settings') || '{}');
+                    document.querySelectorAll('.column-option input').forEach(checkbox => {
+                        if (settings.hasOwnProperty(checkbox.id)) {
+                            checkbox.checked = settings[checkbox.id];
+                        }
+                    });
+                } catch (error) {
+                    console.warn('Failed to load column settings:', error);
+                }
+            }
+
+            updateStats() {
+                document.getElementById('totalModels').textContent = this.models.length;
+                document.getElementById('filteredModels').textContent = this.filteredModels.length;
+            }
+
+            showError(message) {
+                document.getElementById('loading').style.display = 'none';
+                const errorEl = document.getElementById('error');
+                errorEl.textContent = message;
+                errorEl.style.display = 'block';
+            }
+        }
+
+        // 初始化应用
+        document.addEventListener('DOMContentLoaded', () => {
+            new ModelsManager();
+        });
+    </script>
+</body>
+</html>
