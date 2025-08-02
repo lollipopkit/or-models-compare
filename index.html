@@ -159,6 +159,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
+            border-spacing: 0;
         }
 
         th {
@@ -168,10 +169,10 @@
             font-weight: 600;
             font-size: 13px;
             color: #475569;
-            border-bottom: 1px solid #e2e8f0;
+            border: none;
             cursor: pointer;
             user-select: none;
-            transition: background-color 0.2s, color 0.3s ease, border-bottom-color 0.3s ease;
+            transition: background-color 0.2s, color 0.3s ease;
             position: sticky;
             top: 0;
             z-index: 10;
@@ -199,20 +200,44 @@
 
         td {
             padding: 12px;
-            border-bottom: 1px solid #f1f5f9;
+            border: none;
             font-size: 14px;
-            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+            transition: color 0.3s ease;
+            vertical-align: middle;
+            min-height: 60px;
+        }
+
+        tr {
+            height: auto;
+            min-height: 60px;
         }
 
         tr:hover {
             background: #f8fafc;
             transition: background-color 0.2s ease;
+            cursor: pointer;
         }
 
         .model-name {
             font-weight: 600;
             color: #1e293b;
             transition: color 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .model-name::after {
+            content: '→';
+            color: #94a3b8;
+            font-size: 14px;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        tr:hover .model-name::after {
+            color: #3b82f6;
+            transform: translateX(2px);
         }
 
         .model-description {
@@ -447,7 +472,7 @@
             th {
                 background: #334155;
                 color: #cbd5e1;
-                border-bottom-color: #475569;
+                border: none;
             }
 
             th:hover {
@@ -460,16 +485,32 @@
             }
 
             td {
-                border-bottom-color: #334155;
+                border: none;
                 color: #e2e8f0;
+                vertical-align: middle;
+                min-height: 60px;
+            }
+
+            tr {
+                height: auto;
+                min-height: 60px;
             }
 
             tr:hover {
                 background: #334155;
+                cursor: pointer;
             }
 
             .model-name {
                 color: #f1f5f9;
+            }
+
+            .model-name::after {
+                color: #64748b;
+            }
+
+            tr:hover .model-name::after {
+                color: #60a5fa;
             }
 
             .price {
@@ -549,6 +590,120 @@
                 background-color: #3b82f6;
             }
         }
+
+        /* JSON Modal Styles */
+        .json-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .json-modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .json-modal-header {
+            padding: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f8fafc;
+        }
+
+        .json-modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e293b;
+            margin: 0;
+        }
+
+        .json-modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #64748b;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .json-modal-close:hover {
+            background-color: #e2e8f0;
+            color: #1e293b;
+        }
+
+        .json-modal-body {
+            padding: 20px;
+            max-height: calc(80vh - 120px);
+            overflow-y: auto;
+        }
+
+        .json-content {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px;
+            font-family: 'Monaco', 'Consolas', 'Menlo', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            white-space: pre-wrap;
+            word-break: break-word;
+            color: #1e293b;
+            overflow-x: auto;
+        }
+
+        /* Dark mode for JSON modal */
+        @media (prefers-color-scheme: dark) {
+            .json-modal-content {
+                background-color: #1e293b;
+                color: #e2e8f0;
+            }
+
+            .json-modal-header {
+                background-color: #334155;
+                border-bottom-color: #475569;
+            }
+
+            .json-modal-title {
+                color: #f1f5f9;
+            }
+
+            .json-modal-close {
+                color: #94a3b8;
+            }
+
+            .json-modal-close:hover {
+                background-color: #475569;
+                color: #e2e8f0;
+            }
+
+            .json-content {
+                background: #334155;
+                border-color: #475569;
+                color: #e2e8f0;
+            }
+        }
     </style>
 </head>
 
@@ -556,6 +711,21 @@
     <div class="container">
         <div class="header">
             <h1 data-i18n="title">OpenRouter Models Dashboard</h1>
+
+            <div class="stats" id="stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalModels">-</div>
+                    <div class="stat-label" data-i18n="total_models">总模型数</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="filteredModels">-</div>
+                    <div class="stat-label" data-i18n="current_display">当前显示</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="lastUpdate">-</div>
+                    <div class="stat-label" data-i18n="last_update">最后更新</div>
+                </div>
+            </div>
         </div>
 
         <div class="controls">
@@ -582,21 +752,6 @@
                         <option value="long" data-i18n="long">长 (50K - 200K)</option>
                         <option value="extra_long" data-i18n="extra_long">超长 (> 200K)</option>
                     </select>
-                </div>
-            </div>
-
-            <div class="stats" id="stats">
-                <div class="stat-item">
-                    <div class="stat-number" id="totalModels">-</div>
-                    <div class="stat-label" data-i18n="total_models">总模型数</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="filteredModels">-</div>
-                    <div class="stat-label" data-i18n="current_display">当前显示</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="lastUpdate">-</div>
-                    <div class="stat-label" data-i18n="last_update">最后更新</div>
                 </div>
             </div>
 
@@ -665,6 +820,19 @@
                     <tbody id="modelsBody">
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- JSON Modal -->
+    <div id="jsonModal" class="json-modal">
+        <div class="json-modal-content">
+            <div class="json-modal-header">
+                <h3 id="jsonModalTitle" class="json-modal-title">Model JSON Data</h3>
+                <button class="json-modal-close" onclick="document.modelsManager.hideModelJson()">&times;</button>
+            </div>
+            <div class="json-modal-body">
+                <div id="jsonContent" class="json-content"></div>
             </div>
         </div>
     </div>
@@ -986,7 +1154,7 @@
                         const outputText = (this.i18n && typeof this.i18n.t === 'function')
                             ? this.i18n.t('output')
                             : '输出';
-                        modalityCell.innerHTML = `<div>${inputText}: ${input || '-'}</div><div>${outputText}: ${output || '-'}</div>`;
+                        modalityCell.innerHTML = `<div style="line-height: 1.4; margin-bottom: 2px;">${inputText}: ${input || '-'}</div><div style="line-height: 1.4;">${outputText}: ${output || '-'}</div>`;
                     } else {
                         modalityCell.textContent = '-';
                     }
@@ -1009,6 +1177,11 @@
                     }
                     createdCell.dataset.visible = 'col-created';
                     row.appendChild(createdCell);
+
+                    // 添加点击事件来显示原始JSON
+                    row.addEventListener('click', () => {
+                        this.showModelJson(model);
+                    });
 
                     tbody.appendChild(row);
                 });
@@ -1090,16 +1263,45 @@
                 const pricePerMillion = numPrice * 1000000;
                 return `$${pricePerMillion.toFixed(2)}`;
             }
+
+            showModelJson(model) {
+                const modal = document.getElementById('jsonModal');
+                const modelName = document.getElementById('jsonModalTitle');
+                const jsonContent = document.getElementById('jsonContent');
+                
+                modelName.textContent = model.name || model.id;
+                jsonContent.textContent = JSON.stringify(model, null, 2);
+                modal.style.display = 'block';
+                
+                // 阻止事件冒泡
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        this.hideModelJson();
+                    }
+                });
+            }
+
+            hideModelJson() {
+                const modal = document.getElementById('jsonModal');
+                modal.style.display = 'none';
+            }
         }
 
         // 初始化应用
         document.addEventListener('DOMContentLoaded', () => {
             console.log('DOM loaded, initializing ModelsManager...');
             try {
-                new ModelsManager();
+                document.modelsManager = new ModelsManager();
                 console.log('ModelsManager initialized successfully');
             } catch (error) {
                 console.error('Failed to initialize ModelsManager:', error);
+            }
+        });
+
+        // ESC键关闭模态框
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && document.modelsManager) {
+                document.modelsManager.hideModelJson();
             }
         });
 

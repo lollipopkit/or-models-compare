@@ -4,6 +4,8 @@
 
 一个 OpenRouter 模型展示静态网页，每天自动更新。
 
+自动部署在 <https://ormc.lpkt.cn>
+
 ## 🤝 贡献指南
 
 欢迎提交 Issue 和 Pull Request！

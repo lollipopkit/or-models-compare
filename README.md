@@ -4,6 +4,8 @@ English | [中文](README_zh.md)
 
 A static web page showcasing OpenRouter models, automatically updated daily.
 
+Auto deploy at <https://ormc.lpkt.cn>
+
 ## 🤝 Contributing
 
 Issues and Pull Requests are welcome!
