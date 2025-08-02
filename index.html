@@ -17,6 +17,7 @@
             background: #f8fafc;
             color: #334155;
             line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .container {
@@ -31,6 +32,7 @@
             border-radius: 12px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .header h1 {
@@ -38,11 +40,13 @@
             font-weight: 700;
             color: #1e293b;
             margin-bottom: 10px;
+            transition: color 0.3s ease;
         }
 
         .header p {
             color: #64748b;
             font-size: 1.1rem;
+            transition: color 0.3s ease;
         }
 
         .controls {
@@ -51,6 +55,7 @@
             border-radius: 12px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             margin-bottom: 25px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .controls-row {
@@ -72,7 +77,7 @@
             border: 2px solid #e2e8f0;
             border-radius: 8px;
             font-size: 14px;
-            transition: border-color 0.2s;
+            transition: border-color 0.2s, background-color 0.3s ease, color 0.3s ease;
         }
 
         .search-box input:focus {
@@ -89,6 +94,7 @@
         .filter-group label {
             font-weight: 500;
             color: #475569;
+            transition: color 0.3s ease;
         }
 
         .filter-group select {
@@ -97,6 +103,7 @@
             border-radius: 6px;
             background: white;
             font-size: 14px;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
         }
 
         .column-toggle {
@@ -141,6 +148,7 @@
             border-radius: 12px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
             overflow: hidden;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .table-wrapper {
@@ -162,7 +170,7 @@
             border-bottom: 1px solid #e2e8f0;
             cursor: pointer;
             user-select: none;
-            transition: background-color 0.2s;
+            transition: background-color 0.2s, color 0.3s ease, border-bottom-color 0.3s ease;
             position: sticky;
             top: 0;
             z-index: 10;
@@ -192,15 +200,18 @@
             padding: 12px;
             border-bottom: 1px solid #f1f5f9;
             font-size: 14px;
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
         }
 
         tr:hover {
             background: #f8fafc;
+            transition: background-color 0.2s ease;
         }
 
         .model-name {
             font-weight: 600;
             color: #1e293b;
+            transition: color 0.3s ease;
         }
 
         .model-description {
@@ -290,6 +301,141 @@
 
             .column-options {
                 grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* 夜间模式 */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #0f172a;
+                color: #e2e8f0;
+            }
+
+            .header {
+                background: #1e293b;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            }
+
+            .header h1 {
+                color: #f1f5f9;
+            }
+
+            .header p {
+                color: #94a3b8;
+            }
+
+            .controls {
+                background: #1e293b;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            }
+
+            .search-box input {
+                background: #334155;
+                border-color: #475569;
+                color: #e2e8f0;
+            }
+
+            .search-box input::placeholder {
+                color: #94a3b8;
+            }
+
+            .search-box input:focus {
+                border-color: #60a5fa;
+            }
+
+            .filter-group label {
+                color: #cbd5e1;
+            }
+
+            .filter-group select {
+                background: #334155;
+                border-color: #475569;
+                color: #e2e8f0;
+            }
+
+            .column-toggle {
+                background: #334155;
+                border-color: #475569;
+            }
+
+            .column-toggle h3 {
+                color: #cbd5e1;
+            }
+
+            .column-option label {
+                color: #94a3b8;
+            }
+
+            .table-container {
+                background: #1e293b;
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            }
+
+            th {
+                background: #334155;
+                color: #cbd5e1;
+                border-bottom-color: #475569;
+            }
+
+            th:hover {
+                background: #3f4d63;
+            }
+
+            th.sort-asc::after,
+            th.sort-desc::after {
+                color: #60a5fa;
+            }
+
+            td {
+                border-bottom-color: #334155;
+                color: #e2e8f0;
+            }
+
+            tr:hover {
+                background: #334155;
+            }
+
+            .model-name {
+                color: #f1f5f9;
+            }
+
+            .price {
+                color: #34d399;
+            }
+
+            .context-length {
+                color: #a78bfa;
+            }
+
+            .provider-info {
+                color: #cbd5e1;
+            }
+
+            .moderated {
+                background: #451a03;
+                color: #fbbf24;
+            }
+
+            .loading {
+                color: #94a3b8;
+            }
+
+            .error {
+                background: #450a0a;
+                color: #fca5a5;
+            }
+
+            .stat-item {
+                background: #334155;
+                border-color: #475569;
+            }
+
+            .stat-number {
+                color: #f1f5f9;
+            }
+
+            .stat-label {
+                color: #94a3b8;
             }
         }
     </style>
