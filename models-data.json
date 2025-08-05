@@ -314,8 +314,8 @@
         "instruct_type": "qwen3"
       },
       "pricing": {
-        "prompt": "0.0000001179",
-        "completion": "0.0000001179",
+        "prompt": "0.000000077968332",
+        "completion": "0.00000031202496",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -617,8 +617,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000001179",
-        "completion": "0.0000001179",
+        "prompt": "0.000000077968332",
+        "completion": "0.00000031202496",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -755,7 +755,7 @@
       "name": "MoonshotAI: Kimi K2",
       "created": 1752263252,
       "description": "Kimi K2 Instruct is a large-scale Mixture-of-Experts (MoE) language model developed by Moonshot AI, featuring 1 trillion total parameters with 32 billion active per forward pass. It is optimized for agentic capabilities, including advanced tool use, reasoning, and code synthesis. Kimi K2 excels across a broad range of benchmarks, particularly in coding (LiveCodeBench, SWE-bench), reasoning (ZebraLogic, GPQA), and tool-use (Tau2, AceBench) tasks. It supports long-context inference up to 128K tokens and is designed with a novel training stack that includes the MuonClip optimizer for stable large-scale MoE training.",
-      "context_length": 32768,
+      "context_length": 63000,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -768,8 +768,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000000878",
-        "completion": "0.0000000878",
+        "prompt": "0.00000014",
+        "completion": "0.00000249",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -777,8 +777,8 @@
         "internal_reasoning": "0"
       },
       "top_provider": {
-        "context_length": 32768,
-        "max_completion_tokens": null,
+        "context_length": 63000,
+        "max_completion_tokens": 63000,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -1251,58 +1251,6 @@
       ]
     },
     {
-      "id": "tngtech/deepseek-r1t2-chimera",
-      "canonical_slug": "tngtech/deepseek-r1t2-chimera",
-      "hugging_face_id": "tngtech/DeepSeek-TNG-R1T2-Chimera",
-      "name": "TNG: DeepSeek R1T2 Chimera",
-      "created": 1751986985,
-      "description": "DeepSeek-TNG-R1T2-Chimera is the second-generation Chimera model from TNG Tech. It is a 671 B-parameter mixture-of-experts text-generation model assembled from DeepSeek-AI’s R1-0528, R1, and V3-0324 checkpoints with an Assembly-of-Experts merge. The tri-parent design yields strong reasoning performance while running roughly 20 % faster than the original R1 and more than 2× faster than R1-0528 under vLLM, giving a favorable cost-to-intelligence trade-off. The checkpoint supports contexts up to 60 k tokens in standard use (tested to ~130 k) and maintains consistent <think> token behaviour, making it suitable for long-context analysis, dialogue and other open-ended generation tasks.",
-      "context_length": 163840,
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "DeepSeek",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0.000000302",
-        "completion": "0.000000302",
-        "request": "0",
-        "image": "0",
-        "audio": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
-      },
-      "top_provider": {
-        "context_length": 163840,
-        "max_completion_tokens": null,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "include_reasoning",
-        "logit_bias",
-        "logprobs",
-        "max_tokens",
-        "min_p",
-        "presence_penalty",
-        "reasoning",
-        "repetition_penalty",
-        "seed",
-        "stop",
-        "temperature",
-        "top_k",
-        "top_logprobs",
-        "top_p"
-      ]
-    },
-    {
       "id": "morph/morph-v3-large",
       "canonical_slug": "morph/morph-v3-large",
       "hugging_face_id": "",
@@ -1509,7 +1457,7 @@
       },
       "top_provider": {
         "context_length": 128000,
-        "max_completion_tokens": 16000,
+        "max_completion_tokens": 16384,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -1517,8 +1465,13 @@
         "frequency_penalty",
         "max_tokens",
         "presence_penalty",
+        "response_format",
         "stop",
+        "structured_outputs",
         "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
         "top_p"
       ]
     },
@@ -1597,8 +1550,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000003",
-        "completion": "0.00000003",
+        "prompt": "0.00000001999188",
+        "completion": "0.0000000800064",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -2766,8 +2719,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000003",
-        "completion": "0.00000003",
+        "prompt": "0.00000001999188",
+        "completion": "0.0000000800064",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -2886,7 +2839,6 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
-        "response_format",
         "stop",
         "temperature",
         "top_k",
@@ -2958,8 +2910,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.000000141",
-        "completion": "0.000000141",
+        "prompt": "0.00000009329544",
+        "completion": "0.0000003733632",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -3133,7 +3085,6 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
-        "response_format",
         "stop",
         "temperature",
         "top_k",
@@ -3181,7 +3132,6 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
-        "response_format",
         "stop",
         "temperature",
         "top_k",
@@ -3229,7 +3179,6 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
-        "response_format",
         "stop",
         "temperature",
         "tool_choice",
@@ -3279,7 +3228,6 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
-        "response_format",
         "stop",
         "temperature",
         "top_k",
@@ -3366,7 +3314,7 @@
       },
       "top_provider": {
         "context_length": 128000,
-        "max_completion_tokens": 32000,
+        "max_completion_tokens": 16384,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -3374,8 +3322,13 @@
         "frequency_penalty",
         "max_tokens",
         "presence_penalty",
+        "response_format",
         "stop",
+        "structured_outputs",
         "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
         "top_p"
       ]
     },
@@ -3642,8 +3595,8 @@
         "instruct_type": "qwen3"
       },
       "pricing": {
-        "prompt": "0.00000003",
-        "completion": "0.00000003",
+        "prompt": "0.00000001999188",
+        "completion": "0.0000000800064",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -3908,8 +3861,8 @@
         "instruct_type": "qwen3"
       },
       "pricing": {
-        "prompt": "0.000000027",
-        "completion": "0.000000027",
+        "prompt": "0.000000017992692",
+        "completion": "0.00000007200576",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -4128,8 +4081,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.000000272",
-        "completion": "0.000000272",
+        "prompt": "0.00000017992692",
+        "completion": "0.0000007200576",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -4232,8 +4185,8 @@
         "instruct_type": "deepseek-r1"
       },
       "pricing": {
-        "prompt": "0.000000302",
-        "completion": "0.000000302",
+        "prompt": "0.0000001999188",
+        "completion": "0.000000800064",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -4307,108 +4260,6 @@
         "min_p",
         "presence_penalty",
         "reasoning",
-        "repetition_penalty",
-        "seed",
-        "stop",
-        "temperature",
-        "top_k",
-        "top_logprobs",
-        "top_p"
-      ]
-    },
-    {
-      "id": "thudm/glm-z1-32b",
-      "canonical_slug": "thudm/glm-z1-32b-0414",
-      "hugging_face_id": "THUDM/GLM-Z1-32B-0414",
-      "name": "THUDM: GLM Z1 32B",
-      "created": 1744924148,
-      "description": "GLM-Z1-32B-0414 is an enhanced reasoning variant of GLM-4-32B, built for deep mathematical, logical, and code-oriented problem solving. It applies extended reinforcement learning—both task-specific and general pairwise preference-based—to improve performance on complex multi-step tasks. Compared to the base GLM-4-32B model, Z1 significantly boosts capabilities in structured reasoning and formal domains.\n\nThe model supports enforced “thinking” steps via prompt engineering and offers improved coherence for long-form outputs. It’s optimized for use in agentic workflows, and includes support for long context (via YaRN), JSON tool calling, and fine-grained sampling configuration for stable inference. Ideal for use cases requiring deliberate, multi-step reasoning or formal derivations.",
-      "context_length": 32768,
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Other",
-        "instruct_type": "deepseek-r1"
-      },
-      "pricing": {
-        "prompt": "0.00000003",
-        "completion": "0.00000003",
-        "request": "0",
-        "image": "0",
-        "audio": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
-      },
-      "top_provider": {
-        "context_length": 32768,
-        "max_completion_tokens": null,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "include_reasoning",
-        "logit_bias",
-        "logprobs",
-        "max_tokens",
-        "min_p",
-        "presence_penalty",
-        "reasoning",
-        "repetition_penalty",
-        "seed",
-        "stop",
-        "temperature",
-        "top_k",
-        "top_logprobs",
-        "top_p"
-      ]
-    },
-    {
-      "id": "thudm/glm-4-32b:free",
-      "canonical_slug": "thudm/glm-4-32b-0414",
-      "hugging_face_id": "THUDM/GLM-4-32B-0414",
-      "name": "THUDM: GLM 4 32B (free)",
-      "created": 1744920915,
-      "description": "GLM-4-32B-0414 is a 32B bilingual (Chinese-English) open-weight language model optimized for code generation, function calling, and agent-style tasks. Pretrained on 15T of high-quality and reasoning-heavy data, it was further refined using human preference alignment, rejection sampling, and reinforcement learning. The model excels in complex reasoning, artifact generation, and structured output tasks, achieving performance comparable to GPT-4o and DeepSeek-V3-0324 across several benchmarks.",
-      "context_length": 32768,
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Other",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0",
-        "completion": "0",
-        "request": "0",
-        "image": "0",
-        "audio": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
-      },
-      "top_provider": {
-        "context_length": 32768,
-        "max_completion_tokens": null,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "logit_bias",
-        "logprobs",
-        "max_tokens",
-        "min_p",
-        "presence_penalty",
         "repetition_penalty",
         "seed",
         "stop",
@@ -4673,8 +4524,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000003",
-        "completion": "0.00000003",
+        "prompt": "0.00000001999188",
+        "completion": "0.0000000800064",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -5033,8 +4884,8 @@
         "instruct_type": "deepseek-r1"
       },
       "pricing": {
-        "prompt": "0.000000015",
-        "completion": "0.000000015",
+        "prompt": "0.00000001",
+        "completion": "0.0000000400032",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -5243,8 +5094,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.000000038",
-        "completion": "0.000000038",
+        "prompt": "0.00000002498985",
+        "completion": "0.000000100008",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -5653,8 +5504,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.000000302",
-        "completion": "0.000000302",
+        "prompt": "0.0000001999188",
+        "completion": "0.000000800064",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -5724,7 +5575,6 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
-        "response_format",
         "stop",
         "temperature",
         "top_k",
@@ -5852,8 +5702,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000003",
-        "completion": "0.00000003",
+        "prompt": "0.00000001999188",
+        "completion": "0.0000000800064",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -5891,7 +5741,7 @@
       "name": "DeepSeek: DeepSeek V3 0324 (free)",
       "created": 1742824755,
       "description": "DeepSeek V3, a 685B-parameter, mixture-of-experts model, is the latest iteration of the flagship chat model family from the DeepSeek team.\n\nIt succeeds the [DeepSeek V3](/deepseek/deepseek-chat-v3) model and performs really well on a variety of tasks.",
-      "context_length": 32768,
+      "context_length": 163840,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -5913,8 +5763,8 @@
         "internal_reasoning": "0"
       },
       "top_provider": {
-        "context_length": 32768,
-        "max_completion_tokens": 16384,
+        "context_length": 163840,
+        "max_completion_tokens": 163840,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -6155,8 +6005,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.000000027216",
-        "completion": "0.000000027216",
+        "prompt": "0.000000017992692",
+        "completion": "0.00000007200576",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -6429,7 +6279,7 @@
       "name": "Google: Gemma 3 12B",
       "created": 1741902625,
       "description": "Gemma 3 introduces multimodality, supporting vision-language input and text outputs. It handles context windows up to 128k tokens, understands over 140 languages, and offers improved math, reasoning, and chat capabilities, including structured outputs and function calling. Gemma 3 12B is the second largest in the family of Gemma 3 models after [Gemma 3 27B](google/gemma-3-27b-it)",
-      "context_length": 131072,
+      "context_length": 96000,
       "architecture": {
         "modality": "text+image->text",
         "input_modalities": [
@@ -6443,8 +6293,8 @@
         "instruct_type": "gemma"
       },
       "pricing": {
-        "prompt": "0.00000005",
-        "completion": "0.0000001",
+        "prompt": "0.0000000481286",
+        "completion": "0.000000192608",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -6452,8 +6302,8 @@
         "internal_reasoning": "0"
       },
       "top_provider": {
-        "context_length": 131072,
-        "max_completion_tokens": null,
+        "context_length": 96000,
+        "max_completion_tokens": 8192,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -6715,7 +6565,7 @@
       "name": "Google: Gemma 3 27B",
       "created": 1741756359,
       "description": "Gemma 3 introduces multimodality, supporting vision-language input and text outputs. It handles context windows up to 128k tokens, understands over 140 languages, and offers improved math, reasoning, and chat capabilities, including structured outputs and function calling. Gemma 3 27B is Google's latest open source model, successor to [Gemma 2](google/gemma-2-27b-it)",
-      "context_length": 131072,
+      "context_length": 96000,
       "architecture": {
         "modality": "text+image->text",
         "input_modalities": [
@@ -6729,17 +6579,17 @@
         "instruct_type": "gemma"
       },
       "pricing": {
-        "prompt": "0.00000009",
-        "completion": "0.00000017",
+        "prompt": "0.0000000666396",
+        "completion": "0.000000266688",
         "request": "0",
-        "image": "0.0000256",
+        "image": "0",
         "audio": "0",
         "web_search": "0",
         "internal_reasoning": "0"
       },
       "top_provider": {
-        "context_length": 131072,
-        "max_completion_tokens": 16384,
+        "context_length": 96000,
+        "max_completion_tokens": 8192,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -6754,7 +6604,6 @@
         "response_format",
         "seed",
         "stop",
-        "structured_outputs",
         "temperature",
         "top_k",
         "top_logprobs",
@@ -6828,8 +6677,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000000728",
-        "completion": "0.0000000728",
+        "prompt": "0.0000000481286",
+        "completion": "0.000000192608",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -7431,7 +7280,6 @@
         "presence_penalty",
         "reasoning",
         "repetition_penalty",
-        "response_format",
         "stop",
         "temperature",
         "top_k",
@@ -7558,8 +7406,8 @@
         "instruct_type": "deepseek-r1"
       },
       "pricing": {
-        "prompt": "0.000000013",
-        "completion": "0.000000013",
+        "prompt": "0.00000001",
+        "completion": "0.0000000340768",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -7660,8 +7508,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.000000056",
-        "completion": "0.000000056",
+        "prompt": "0.000000037022",
+        "completion": "0.00000014816",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -8235,7 +8083,6 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
-        "response_format",
         "seed",
         "stop",
         "temperature",
@@ -8423,7 +8270,6 @@
         "presence_penalty",
         "reasoning",
         "repetition_penalty",
-        "response_format",
         "stop",
         "temperature",
         "top_k",
@@ -8500,8 +8346,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000003",
-        "completion": "0.00000003",
+        "prompt": "0.00000001999188",
+        "completion": "0.0000000800064",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -8680,7 +8526,6 @@
         "presence_penalty",
         "reasoning",
         "repetition_penalty",
-        "response_format",
         "seed",
         "stop",
         "temperature",
@@ -8921,7 +8766,6 @@
         "presence_penalty",
         "reasoning",
         "repetition_penalty",
-        "response_format",
         "seed",
         "stop",
         "temperature",
@@ -8950,8 +8794,8 @@
         "instruct_type": "deepseek-r1"
       },
       "pricing": {
-        "prompt": "0.00000005",
-        "completion": "0.00000005",
+        "prompt": "0.0000000333198",
+        "completion": "0.000000133344",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -9244,8 +9088,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.000000272",
-        "completion": "0.000000272",
+        "prompt": "0.00000017992692",
+        "completion": "0.0000007200576",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -9604,7 +9448,6 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
-        "response_format",
         "stop",
         "temperature",
         "tool_choice",
@@ -10213,8 +10056,8 @@
         "instruct_type": "chatml"
       },
       "pricing": {
-        "prompt": "0.00000006",
-        "completion": "0.00000015",
+        "prompt": "0.0000000499797",
+        "completion": "0.000000200016",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -10223,7 +10066,7 @@
       },
       "top_provider": {
         "context_length": 32768,
-        "max_completion_tokens": 16384,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -11253,7 +11096,6 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
-        "response_format",
         "stop",
         "temperature",
         "top_k",
@@ -11486,8 +11328,8 @@
         "instruct_type": "chatml"
       },
       "pricing": {
-        "prompt": "0.000000101",
-        "completion": "0.000000101",
+        "prompt": "0.0000000666396",
+        "completion": "0.000000266688",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -12257,53 +12099,6 @@
       ]
     },
     {
-      "id": "nothingiisreal/mn-celeste-12b",
-      "canonical_slug": "nothingiisreal/mn-celeste-12b",
-      "hugging_face_id": "nothingiisreal/MN-12B-Celeste-V1.9",
-      "name": "Mistral Nemo 12B Celeste",
-      "created": 1722556800,
-      "description": "A specialized story writing and roleplaying model based on Mistral's NeMo 12B Instruct. Fine-tuned on curated datasets including Reddit Writing Prompts and Opus Instruct 25K.\n\nThis model excels at creative writing, offering improved NSFW capabilities, with smarter and more active narration. It demonstrates remarkable versatility in both SFW and NSFW scenarios, with strong Out of Character (OOC) steering capabilities, allowing fine-tuned control over narrative direction and character behavior.\n\nCheck out the model's [HuggingFace page](https://huggingface.co/nothingiisreal/MN-12B-Celeste-V1.9) for details on what parameters and prompts work best!",
-      "context_length": 16384,
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Mistral",
-        "instruct_type": "chatml"
-      },
-      "pricing": {
-        "prompt": "0.0000008",
-        "completion": "0.0000012",
-        "request": "0",
-        "image": "0",
-        "audio": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
-      },
-      "top_provider": {
-        "context_length": 16384,
-        "max_completion_tokens": 4096,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "max_tokens",
-        "min_p",
-        "presence_penalty",
-        "repetition_penalty",
-        "seed",
-        "stop",
-        "temperature",
-        "top_k",
-        "top_p"
-      ]
-    },
-    {
       "id": "meta-llama/llama-3.1-405b-instruct:free",
       "canonical_slug": "meta-llama/llama-3.1-405b-instruct",
       "hugging_face_id": "meta-llama/Meta-Llama-3.1-405B-Instruct",
@@ -12844,8 +12639,8 @@
         "instruct_type": "gemma"
       },
       "pricing": {
-        "prompt": "0.000000004",
-        "completion": "0.000000004",
+        "prompt": "0.00000001",
+        "completion": "0.0000000100008",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -13106,7 +12901,6 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
-        "response_format",
         "stop",
         "temperature",
         "top_k",
@@ -13705,7 +13499,6 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
-        "response_format",
         "stop",
         "temperature",
         "top_k",
@@ -14734,7 +14527,6 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
-        "response_format",
         "stop",
         "temperature",
         "top_k",
@@ -14878,7 +14670,6 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
-        "response_format",
         "stop",
         "temperature",
         "top_k",
@@ -15257,7 +15048,6 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
-        "response_format",
         "seed",
         "stop",
         "temperature",
@@ -15670,7 +15460,7 @@
       ]
     }
   ],
-  "lastUpdate": "2025-08-04T02:30:51.605Z",
+  "lastUpdate": "2025-08-05T02:24:47.566Z",
   "generatedBy": "GitHub Actions",
-  "totalModels": 317
+  "totalModels": 313
 }
