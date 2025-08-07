@@ -4,7 +4,7 @@
       "id": "openai/gpt-oss-120b",
       "canonical_slug": "openai/gpt-oss-120b",
       "hugging_face_id": "openai/gpt-oss-120b",
-      "name": "OpenAI: GPT OSS 120B",
+      "name": "OpenAI: gpt-oss-120b",
       "created": 1754414231,
       "description": "gpt-oss-120b is an open-weight, 117B-parameter Mixture-of-Experts (MoE) language model from OpenAI designed for high-reasoning, agentic, and general-purpose production use cases. It activates 5.1B parameters per forward pass and is optimized to run on a single H100 GPU with native MXFP4 quantization. The model supports configurable reasoning depth, full chain-of-thought access, and native tool use, including function calling, browsing, and structured output generation.",
       "context_length": 131072,
@@ -20,8 +20,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000001",
-        "completion": "0.0000005",
+        "prompt": "0.00000009",
+        "completion": "0.00000045",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -57,10 +57,10 @@
       ]
     },
     {
-      "id": "openai/gpt-oss-20b",
+      "id": "openai/gpt-oss-20b:free",
       "canonical_slug": "openai/gpt-oss-20b",
       "hugging_face_id": "openai/gpt-oss-20b",
-      "name": "OpenAI: GPT OSS 20B",
+      "name": "OpenAI: gpt-oss-20b (free)",
       "created": 1754414229,
       "description": "gpt-oss-20b is an open-weight 21B parameter model released by OpenAI under the Apache 2.0 license. It uses a Mixture-of-Experts (MoE) architecture with 3.6B active parameters per forward pass, optimized for lower-latency inference and deployability on consumer or single-GPU hardware. The model is trained in OpenAI’s Harmony response format and supports reasoning level configuration, fine-tuning, and agentic capabilities including function calling, tool use, and structured outputs.",
       "context_length": 131072,
@@ -76,8 +76,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000005",
-        "completion": "0.0000002",
+        "prompt": "0",
+        "completion": "0",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -86,7 +86,51 @@
       },
       "top_provider": {
         "context_length": 131072,
-        "max_completion_tokens": 32768,
+        "max_completion_tokens": 131072,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "include_reasoning",
+        "max_tokens",
+        "reasoning",
+        "response_format",
+        "structured_outputs",
+        "temperature",
+        "top_p"
+      ]
+    },
+    {
+      "id": "openai/gpt-oss-20b",
+      "canonical_slug": "openai/gpt-oss-20b",
+      "hugging_face_id": "openai/gpt-oss-20b",
+      "name": "OpenAI: gpt-oss-20b",
+      "created": 1754414229,
+      "description": "gpt-oss-20b is an open-weight 21B parameter model released by OpenAI under the Apache 2.0 license. It uses a Mixture-of-Experts (MoE) architecture with 3.6B active parameters per forward pass, optimized for lower-latency inference and deployability on consumer or single-GPU hardware. The model is trained in OpenAI’s Harmony response format and supports reasoning level configuration, fine-tuning, and agentic capabilities including function calling, tool use, and structured outputs.",
+      "context_length": 131072,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "GPT",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.00000004",
+        "completion": "0.00000016",
+        "request": "0",
+        "image": "0",
+        "audio": "0",
+        "web_search": "0",
+        "internal_reasoning": "0"
+      },
+      "top_provider": {
+        "context_length": 131072,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -4377,6 +4421,58 @@
       ]
     },
     {
+      "id": "thudm/glm-z1-32b",
+      "canonical_slug": "thudm/glm-z1-32b-0414",
+      "hugging_face_id": "THUDM/GLM-Z1-32B-0414",
+      "name": "THUDM: GLM Z1 32B",
+      "created": 1744924148,
+      "description": "GLM-Z1-32B-0414 is an enhanced reasoning variant of GLM-4-32B, built for deep mathematical, logical, and code-oriented problem solving. It applies extended reinforcement learning—both task-specific and general pairwise preference-based—to improve performance on complex multi-step tasks. Compared to the base GLM-4-32B model, Z1 significantly boosts capabilities in structured reasoning and formal domains.\n\nThe model supports enforced “thinking” steps via prompt engineering and offers improved coherence for long-form outputs. It’s optimized for use in agentic workflows, and includes support for long context (via YaRN), JSON tool calling, and fine-grained sampling configuration for stable inference. Ideal for use cases requiring deliberate, multi-step reasoning or formal derivations.",
+      "context_length": 32768,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Other",
+        "instruct_type": "deepseek-r1"
+      },
+      "pricing": {
+        "prompt": "0.00000003",
+        "completion": "0.00000003",
+        "request": "0",
+        "image": "0",
+        "audio": "0",
+        "web_search": "0",
+        "internal_reasoning": "0"
+      },
+      "top_provider": {
+        "context_length": 32768,
+        "max_completion_tokens": null,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "logit_bias",
+        "logprobs",
+        "max_tokens",
+        "min_p",
+        "presence_penalty",
+        "reasoning",
+        "repetition_penalty",
+        "seed",
+        "stop",
+        "temperature",
+        "top_k",
+        "top_logprobs",
+        "top_p"
+      ]
+    },
+    {
       "id": "thudm/glm-4-32b",
       "canonical_slug": "thudm/glm-4-32b-0414",
       "hugging_face_id": "THUDM/GLM-4-32B-0414",
@@ -6236,92 +6332,6 @@
         "stop",
         "temperature",
         "top_k",
-        "top_p"
-      ]
-    },
-    {
-      "id": "ai21/jamba-1.6-large",
-      "canonical_slug": "ai21/jamba-1.6-large",
-      "hugging_face_id": "ai21labs/AI21-Jamba-Large-1.6",
-      "name": "AI21: Jamba 1.6 Large",
-      "created": 1741905173,
-      "description": "AI21 Jamba Large 1.6 is a high-performance hybrid foundation model combining State Space Models (Mamba) with Transformer attention mechanisms. Developed by AI21, it excels in extremely long-context handling (256K tokens), demonstrates superior inference efficiency (up to 2.5x faster than comparable models), and supports structured JSON output and tool-use capabilities. It has 94 billion active parameters (398 billion total), optimized quantization support (ExpertsInt8), and multilingual proficiency in languages such as English, Spanish, French, Portuguese, Italian, Dutch, German, Arabic, and Hebrew.\n\nUsage of this model is subject to the [Jamba Open Model License](https://www.ai21.com/licenses/jamba-open-model-license).",
-      "context_length": 256000,
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Other",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0.000002",
-        "completion": "0.000008",
-        "request": "0",
-        "image": "0",
-        "audio": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
-      },
-      "top_provider": {
-        "context_length": 256000,
-        "max_completion_tokens": 4096,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "max_tokens",
-        "stop",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_p"
-      ]
-    },
-    {
-      "id": "ai21/jamba-1.6-mini",
-      "canonical_slug": "ai21/jamba-1.6-mini",
-      "hugging_face_id": "ai21labs/AI21-Jamba-Mini-1.6",
-      "name": "AI21: Jamba Mini 1.6",
-      "created": 1741905171,
-      "description": "AI21 Jamba Mini 1.6 is a hybrid foundation model combining State Space Models (Mamba) with Transformer attention mechanisms. With 12 billion active parameters (52 billion total), this model excels in extremely long-context tasks (up to 256K tokens) and achieves superior inference efficiency, outperforming comparable open models on tasks such as retrieval-augmented generation (RAG) and grounded question answering. Jamba Mini 1.6 supports multilingual tasks across English, Spanish, French, Portuguese, Italian, Dutch, German, Arabic, and Hebrew, along with structured JSON output and tool-use capabilities.\n\nUsage of this model is subject to the [Jamba Open Model License](https://www.ai21.com/licenses/jamba-open-model-license).",
-      "context_length": 256000,
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Other",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0.0000002",
-        "completion": "0.0000004",
-        "request": "0",
-        "image": "0",
-        "audio": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
-      },
-      "top_provider": {
-        "context_length": 256000,
-        "max_completion_tokens": 4096,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "max_tokens",
-        "stop",
-        "temperature",
-        "tool_choice",
-        "tools",
         "top_p"
       ]
     },
@@ -11457,7 +11467,6 @@
         "response_format",
         "seed",
         "stop",
-        "structured_outputs",
         "temperature",
         "tool_choice",
         "tools",
@@ -15564,7 +15573,7 @@
       ]
     }
   ],
-  "lastUpdate": "2025-08-06T02:22:56.921Z",
+  "lastUpdate": "2025-08-07T02:23:20.445Z",
   "generatedBy": "GitHub Actions",
   "totalModels": 315
 }
