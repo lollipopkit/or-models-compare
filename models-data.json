@@ -1,6 +1,94 @@
 {
   "data": [
     {
+      "id": "ai21/jamba-mini-1.7",
+      "canonical_slug": "ai21/jamba-mini-1.7",
+      "hugging_face_id": "ai21labs/AI21-Jamba-Mini-1.7",
+      "name": "AI21: Jamba Mini 1.7",
+      "created": 1754670601,
+      "description": "Jamba Mini 1.7 is a compact and efficient member of the Jamba open model family, incorporating key improvements in grounding and instruction-following while maintaining the benefits of the SSM-Transformer hybrid architecture and 256K context window. Despite its compact size, it delivers accurate, contextually grounded responses and improved steerability.",
+      "context_length": 256000,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Other",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.0000002",
+        "completion": "0.0000004",
+        "request": "0",
+        "image": "0",
+        "audio": "0",
+        "web_search": "0",
+        "internal_reasoning": "0"
+      },
+      "top_provider": {
+        "context_length": 256000,
+        "max_completion_tokens": 4096,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "max_tokens",
+        "response_format",
+        "stop",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_p"
+      ]
+    },
+    {
+      "id": "ai21/jamba-large-1.7",
+      "canonical_slug": "ai21/jamba-large-1.7",
+      "hugging_face_id": "ai21labs/AI21-Jamba-Large-1.7",
+      "name": "AI21: Jamba Large 1.7",
+      "created": 1754669020,
+      "description": "Jamba Large 1.7 is the latest model in the Jamba open family, offering improvements in grounding, instruction-following, and overall efficiency. Built on a hybrid SSM-Transformer architecture with a 256K context window, it delivers more accurate, contextually grounded responses and better steerability than previous versions.",
+      "context_length": 256000,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Other",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.000002",
+        "completion": "0.000008",
+        "request": "0",
+        "image": "0",
+        "audio": "0",
+        "web_search": "0",
+        "internal_reasoning": "0"
+      },
+      "top_provider": {
+        "context_length": 256000,
+        "max_completion_tokens": 4096,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "max_tokens",
+        "response_format",
+        "stop",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_p"
+      ]
+    },
+    {
       "id": "openai/gpt-5-chat",
       "canonical_slug": "openai/gpt-5-chat-2025-08-07",
       "hugging_face_id": "",
@@ -38,7 +126,9 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "include_reasoning",
         "max_tokens",
+        "reasoning",
         "response_format",
         "seed",
         "structured_outputs"
@@ -82,7 +172,9 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "include_reasoning",
         "max_tokens",
+        "reasoning",
         "response_format",
         "seed",
         "structured_outputs",
@@ -128,7 +220,9 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "include_reasoning",
         "max_tokens",
+        "reasoning",
         "response_format",
         "seed",
         "structured_outputs",
@@ -174,7 +268,9 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "include_reasoning",
         "max_tokens",
+        "reasoning",
         "response_format",
         "seed",
         "structured_outputs",
@@ -350,7 +446,8 @@
         "modality": "text+image->text",
         "input_modalities": [
           "image",
-          "text"
+          "text",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -578,6 +675,8 @@
         "seed",
         "stop",
         "temperature",
+        "tool_choice",
+        "tools",
         "top_k",
         "top_logprobs",
         "top_p"
@@ -590,7 +689,7 @@
       "name": "Z.AI: GLM 4.5 Air",
       "created": 1753471258,
       "description": "GLM-4.5-Air is the lightweight variant of our latest flagship model family, also purpose-built for agent-centric applications. Like GLM-4.5, it adopts the Mixture-of-Experts (MoE) architecture but with a more compact parameter size. GLM-4.5-Air also supports hybrid inference modes, offering a \"thinking mode\" for advanced reasoning and tool use, and a \"non-thinking mode\" for real-time interaction. Users can control the reasoning behaviour with the `reasoning` `enabled` boolean. [Learn more in our docs](https://openrouter.ai/docs/use-cases/reasoning-tokens#enable-reasoning-with-default-config)",
-      "context_length": 128000,
+      "context_length": 131072,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -613,7 +712,7 @@
         "input_cache_read": "0.00000003"
       },
       "top_provider": {
-        "context_length": 128000,
+        "context_length": 131072,
         "max_completion_tokens": 96000,
         "is_moderated": false
       },
@@ -2214,7 +2313,9 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "include_reasoning",
         "max_tokens",
+        "reasoning",
         "response_format",
         "seed",
         "structured_outputs",
@@ -2892,7 +2993,8 @@
         "modality": "text+image->text",
         "input_modalities": [
           "image",
-          "text"
+          "text",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -2941,7 +3043,8 @@
         "modality": "text+image->text",
         "input_modalities": [
           "image",
-          "text"
+          "text",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -3213,7 +3316,9 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "include_reasoning",
         "max_tokens",
+        "reasoning",
         "response_format",
         "seed",
         "structured_outputs",
@@ -4686,7 +4791,9 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "include_reasoning",
         "max_tokens",
+        "reasoning",
         "response_format",
         "seed",
         "structured_outputs",
@@ -4732,7 +4839,9 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "include_reasoning",
         "max_tokens",
+        "reasoning",
         "response_format",
         "seed",
         "structured_outputs",
@@ -4777,7 +4886,9 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "include_reasoning",
         "max_tokens",
+        "reasoning",
         "response_format",
         "seed",
         "structured_outputs",
@@ -5116,8 +5227,8 @@
         "instruct_type": "alpaca"
       },
       "pricing": {
-        "prompt": "0.0000006",
-        "completion": "0.000001",
+        "prompt": "0.0000007",
+        "completion": "0.0000011",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -6254,7 +6365,9 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "include_reasoning",
         "max_tokens",
+        "reasoning",
         "response_format",
         "seed",
         "structured_outputs"
@@ -7350,7 +7463,8 @@
         "modality": "text+image->text",
         "input_modalities": [
           "text",
-          "image"
+          "image",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -7399,7 +7513,8 @@
         "modality": "text+image->text",
         "input_modalities": [
           "text",
-          "image"
+          "image",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -7446,7 +7561,8 @@
         "modality": "text+image->text",
         "input_modalities": [
           "text",
-          "image"
+          "image",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -10538,7 +10654,8 @@
         "modality": "text+image->text",
         "input_modalities": [
           "text",
-          "image"
+          "image",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -10634,7 +10751,8 @@
         "modality": "text+image->text",
         "input_modalities": [
           "text",
-          "image"
+          "image",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -10681,7 +10799,8 @@
         "modality": "text+image->text",
         "input_modalities": [
           "text",
-          "image"
+          "image",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -11610,7 +11729,7 @@
       "name": "NeverSleep: Lumimaid v0.2 8B",
       "created": 1726358400,
       "description": "Lumimaid v0.2 8B is a finetune of [Llama 3.1 8B](/models/meta-llama/llama-3.1-8b-instruct) with a \"HUGE step up dataset wise\" compared to Lumimaid v0.1. Sloppy chats output were purged.\n\nUsage of this model is subject to [Meta's Acceptable Use Policy](https://llama.meta.com/llama3/use-policy/).",
-      "context_length": 8192,
+      "context_length": 40000,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -11623,8 +11742,8 @@
         "instruct_type": "llama3"
       },
       "pricing": {
-        "prompt": "0.0000001",
-        "completion": "0.0000009",
+        "prompt": "0.00000017",
+        "completion": "0.00000099",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -11632,8 +11751,8 @@
         "internal_reasoning": "0"
       },
       "top_provider": {
-        "context_length": 8192,
-        "max_completion_tokens": 8192,
+        "context_length": 40000,
+        "max_completion_tokens": 40000,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -12923,7 +13042,8 @@
         "modality": "text+image->text",
         "input_modalities": [
           "text",
-          "image"
+          "image",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -12970,7 +13090,8 @@
         "modality": "text+image->text",
         "input_modalities": [
           "text",
-          "image"
+          "image",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -15224,8 +15345,8 @@
         "instruct_type": "alpaca"
       },
       "pricing": {
-        "prompt": "0.0000006",
-        "completion": "0.000001",
+        "prompt": "0.0000007",
+        "completion": "0.0000011",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -15607,7 +15728,7 @@
       ]
     }
   ],
-  "lastUpdate": "2025-08-08T02:23:10.193Z",
+  "lastUpdate": "2025-08-09T02:05:18.928Z",
   "generatedBy": "GitHub Actions",
-  "totalModels": 316
+  "totalModels": 318
 }
