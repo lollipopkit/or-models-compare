@@ -21,18 +21,17 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000006",
+        "prompt": "0.0000005",
         "completion": "0.0000018",
         "request": "0",
         "image": "0",
         "audio": "0",
         "web_search": "0",
-        "internal_reasoning": "0",
-        "input_cache_read": "0.00000011"
+        "internal_reasoning": "0"
       },
       "top_provider": {
         "context_length": 65536,
-        "max_completion_tokens": 16384,
+        "max_completion_tokens": 65536,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -1880,7 +1879,7 @@
       "name": "TheDrummer: Anubis 70B V1.1",
       "created": 1751208347,
       "description": "TheDrummer's Anubis v1.1 is an unaligned, creative Llama 3.3 70B model focused on providing character-driven roleplay & stories. It excels at gritty, visceral prose, unique character adherence, and coherent narratives, while maintaining the instruction following Llama 3.3 70B is known for.",
-      "context_length": 131072,
+      "context_length": 16384,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -1893,8 +1892,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000005",
-        "completion": "0.0000008",
+        "prompt": "0.0000004",
+        "completion": "0.0000007",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -1902,8 +1901,8 @@
         "internal_reasoning": "0"
       },
       "top_provider": {
-        "context_length": 131072,
-        "max_completion_tokens": 131072,
+        "context_length": 16384,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -1913,8 +1912,10 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_k",
         "top_p"
@@ -4331,6 +4332,7 @@
         "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "tool_choice",
         "tools",
@@ -4693,58 +4695,6 @@
       },
       "top_provider": {
         "context_length": 163840,
-        "max_completion_tokens": null,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "include_reasoning",
-        "logit_bias",
-        "logprobs",
-        "max_tokens",
-        "min_p",
-        "presence_penalty",
-        "reasoning",
-        "repetition_penalty",
-        "seed",
-        "stop",
-        "temperature",
-        "top_k",
-        "top_logprobs",
-        "top_p"
-      ]
-    },
-    {
-      "id": "thudm/glm-z1-32b:free",
-      "canonical_slug": "thudm/glm-z1-32b-0414",
-      "hugging_face_id": "THUDM/GLM-Z1-32B-0414",
-      "name": "THUDM: GLM Z1 32B (free)",
-      "created": 1744924148,
-      "description": "GLM-Z1-32B-0414 is an enhanced reasoning variant of GLM-4-32B, built for deep mathematical, logical, and code-oriented problem solving. It applies extended reinforcement learning—both task-specific and general pairwise preference-based—to improve performance on complex multi-step tasks. Compared to the base GLM-4-32B model, Z1 significantly boosts capabilities in structured reasoning and formal domains.\n\nThe model supports enforced “thinking” steps via prompt engineering and offers improved coherence for long-form outputs. It’s optimized for use in agentic workflows, and includes support for long context (via YaRN), JSON tool calling, and fine-grained sampling configuration for stable inference. Ideal for use cases requiring deliberate, multi-step reasoning or formal derivations.",
-      "context_length": 32768,
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Other",
-        "instruct_type": "deepseek-r1"
-      },
-      "pricing": {
-        "prompt": "0",
-        "completion": "0",
-        "request": "0",
-        "image": "0",
-        "audio": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
-      },
-      "top_provider": {
-        "context_length": 32768,
         "max_completion_tokens": null,
         "is_moderated": false
       },
@@ -6802,7 +6752,7 @@
       "name": "Cohere: Command A",
       "created": 1741894342,
       "description": "Command A is an open-weights 111B parameter model with a 256k context window focused on delivering great performance across agentic, multilingual, and coding use cases.\nCompared to other leading proprietary and open-weights models Command A delivers maximum performance with minimum hardware costs, excelling on business-critical agentic and multilingual tasks.",
-      "context_length": 256000,
+      "context_length": 32768,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -6815,8 +6765,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000025",
-        "completion": "0.00001",
+        "prompt": "0.000002",
+        "completion": "0.000008",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -6824,9 +6774,9 @@
         "internal_reasoning": "0"
       },
       "top_provider": {
-        "context_length": 256000,
-        "max_completion_tokens": 8192,
-        "is_moderated": true
+        "context_length": 32768,
+        "max_completion_tokens": null,
+        "is_moderated": false
       },
       "per_request_limits": null,
       "supported_parameters": [
@@ -7170,8 +7120,10 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_k",
         "top_logprobs",
@@ -7458,6 +7410,7 @@
         "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_k",
         "top_logprobs",
@@ -8518,7 +8471,7 @@
       "name": "Qwen: Qwen2.5 VL 72B Instruct",
       "created": 1738410311,
       "description": "Qwen2.5-VL is proficient in recognizing common objects such as flowers, birds, fish, and insects. It is also highly capable of analyzing texts, charts, icons, graphics, and layouts within images.",
-      "context_length": 32000,
+      "context_length": 32768,
       "architecture": {
         "modality": "text+image->text",
         "input_modalities": [
@@ -8532,8 +8485,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000025",
-        "completion": "0.00000075",
+        "prompt": "0.0000000999594",
+        "completion": "0.000000400032",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -8541,7 +8494,7 @@
         "internal_reasoning": "0"
       },
       "top_provider": {
-        "context_length": 32000,
+        "context_length": 32768,
         "max_completion_tokens": null,
         "is_moderated": false
       },
@@ -9507,7 +9460,7 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000007",
+        "prompt": "0.00000006",
         "completion": "0.00000014",
         "request": "0",
         "image": "0",
@@ -9517,7 +9470,7 @@
       },
       "top_provider": {
         "context_length": 16384,
-        "max_completion_tokens": 16384,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -9532,6 +9485,7 @@
         "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_k",
         "top_logprobs",
@@ -9636,6 +9590,7 @@
         "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_k",
         "top_p"
@@ -10611,7 +10566,7 @@
       "name": "TheDrummer: UnslopNemo 12B",
       "created": 1731103448,
       "description": "UnslopNemo v4.1 is the latest addition from the creator of Rocinante, designed for adventure writing and role-play scenarios.",
-      "context_length": 32000,
+      "context_length": 32768,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -10624,8 +10579,8 @@
         "instruct_type": "mistral"
       },
       "pricing": {
-        "prompt": "0.00000045",
-        "completion": "0.00000045",
+        "prompt": "0.0000004",
+        "completion": "0.0000004",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -10633,8 +10588,8 @@
         "internal_reasoning": "0"
       },
       "top_provider": {
-        "context_length": 32000,
-        "max_completion_tokens": 32000,
+        "context_length": 32768,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -10950,7 +10905,7 @@
       "name": "Qwen2.5 7B Instruct",
       "created": 1729036800,
       "description": "Qwen2.5 7B is the latest series of Qwen large language models. Qwen2.5 brings the following improvements upon Qwen2:\n\n- Significantly more knowledge and has greatly improved capabilities in coding and mathematics, thanks to our specialized expert models in these domains.\n\n- Significant improvements in instruction following, generating long texts (over 8K tokens), understanding structured data (e.g, tables), and generating structured outputs especially JSON. More resilient to the diversity of system prompts, enhancing role-play implementation and condition-setting for chatbots.\n\n- Long-context Support up to 128K tokens and can generate up to 8K tokens.\n\n- Multilingual support for over 29 languages, including Chinese, English, French, Spanish, Portuguese, German, Italian, Russian, Japanese, Korean, Vietnamese, Thai, Arabic, and more.\n\nUsage of this model is subject to [Tongyi Qianwen LICENSE AGREEMENT](https://huggingface.co/Qwen/Qwen1.5-110B-Chat/blob/main/LICENSE).",
-      "context_length": 32768,
+      "context_length": 65536,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -10972,8 +10927,8 @@
         "internal_reasoning": "0"
       },
       "top_provider": {
-        "context_length": 32768,
-        "max_completion_tokens": 16384,
+        "context_length": 65536,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -10987,6 +10942,7 @@
         "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_k",
         "top_p"
@@ -11773,8 +11729,10 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_a",
         "top_k",
@@ -12072,7 +12030,7 @@
       "name": "Sao10K: Llama 3.1 Euryale 70B v2.2",
       "created": 1724803200,
       "description": "Euryale L3.1 70B v2.2 is a model focused on creative roleplay from [Sao10k](https://ko-fi.com/sao10k). It is the successor of [Euryale L3 70B v2.1](/models/sao10k/l3-euryale-70b).",
-      "context_length": 131072,
+      "context_length": 32768,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -12094,8 +12052,8 @@
         "internal_reasoning": "0"
       },
       "top_provider": {
-        "context_length": 131072,
-        "max_completion_tokens": 16384,
+        "context_length": 32768,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -12109,6 +12067,7 @@
         "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_k",
         "top_p"
@@ -12201,6 +12160,7 @@
         "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "tool_choice",
         "tools",
@@ -12906,8 +12866,8 @@
         "instruct_type": "gemma"
       },
       "pricing": {
-        "prompt": "0.0000008",
-        "completion": "0.0000008",
+        "prompt": "0.00000065",
+        "completion": "0.00000065",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -12916,7 +12876,7 @@
       },
       "top_provider": {
         "context_length": 8192,
-        "max_completion_tokens": 2048,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -12927,7 +12887,9 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
+        "response_format",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_k",
         "top_p"
@@ -13372,6 +13334,7 @@
         "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_k",
         "top_logprobs",
@@ -14910,7 +14873,7 @@
       "name": "Noromaid 20B",
       "created": 1700956800,
       "description": "A collab between IkariDev and Undi. This merge is suitable for RP, ERP, and general knowledge.\n\n#merge #uncensored",
-      "context_length": 8192,
+      "context_length": 4096,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -14923,8 +14886,8 @@
         "instruct_type": "alpaca"
       },
       "pricing": {
-        "prompt": "0.00000125",
-        "completion": "0.000002",
+        "prompt": "0.000001",
+        "completion": "0.00000175",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -14932,8 +14895,8 @@
         "internal_reasoning": "0"
       },
       "top_provider": {
-        "context_length": 8192,
-        "max_completion_tokens": 2048,
+        "context_length": 4096,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -14944,8 +14907,10 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_a",
         "top_k",
@@ -14972,8 +14937,8 @@
         "instruct_type": "airoboros"
       },
       "pricing": {
-        "prompt": "0.00001",
-        "completion": "0.0000125",
+        "prompt": "0.000009",
+        "completion": "0.000011",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -14993,8 +14958,10 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_a",
         "top_k",
@@ -15349,8 +15316,8 @@
         "instruct_type": "alpaca"
       },
       "pricing": {
-        "prompt": "0.000001",
-        "completion": "0.0000015",
+        "prompt": "0.0000007",
+        "completion": "0.000001",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -15359,7 +15326,7 @@
       },
       "top_provider": {
         "context_length": 6144,
-        "max_completion_tokens": 1024,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -15370,8 +15337,10 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_a",
         "top_k",
@@ -15398,8 +15367,8 @@
         "instruct_type": "alpaca"
       },
       "pricing": {
-        "prompt": "0.000000072",
-        "completion": "0.000000072",
+        "prompt": "0.00000006",
+        "completion": "0.00000006",
         "request": "0",
         "image": "0",
         "audio": "0",
@@ -15408,7 +15377,7 @@
       },
       "top_provider": {
         "context_length": 4096,
-        "max_completion_tokens": 4096,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -15422,6 +15391,7 @@
         "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_a",
         "top_k",
@@ -15582,7 +15552,7 @@
       ]
     }
   ],
-  "lastUpdate": "2025-08-12T02:04:51.409Z",
+  "lastUpdate": "2025-08-13T02:06:31.288Z",
   "generatedBy": "GitHub Actions",
-  "totalModels": 315
+  "totalModels": 314
 }
