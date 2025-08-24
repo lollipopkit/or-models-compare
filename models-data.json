@@ -10729,7 +10729,7 @@
       },
       "top_provider": {
         "context_length": 16384,
-        "max_completion_tokens": 1024,
+        "max_completion_tokens": 2048,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -15078,7 +15078,7 @@
       },
       "top_provider": {
         "context_length": 8000,
-        "max_completion_tokens": 1000,
+        "max_completion_tokens": 2000,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -15348,7 +15348,7 @@
       ]
     }
   ],
-  "lastUpdate": "2025-08-23T01:53:59.336Z",
+  "lastUpdate": "2025-08-24T02:08:57.829Z",
   "generatedBy": "GitHub Actions",
   "totalModels": 316
 }
