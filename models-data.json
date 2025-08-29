@@ -1,6 +1,60 @@
 {
   "data": [
     {
+      "id": "qwen/qwen3-30b-a3b-thinking-2507",
+      "canonical_slug": "qwen/qwen3-30b-a3b-thinking-2507",
+      "hugging_face_id": "Qwen/Qwen3-30B-A3B-Thinking-2507",
+      "name": "Qwen: Qwen3 30B A3B Thinking 2507",
+      "created": 1756399192,
+      "description": "Qwen3-30B-A3B-Thinking-2507 is a 30B parameter Mixture-of-Experts reasoning model optimized for complex tasks requiring extended multi-step thinking. The model is designed specifically for “thinking mode,” where internal reasoning traces are separated from final answers.\n\nCompared to earlier Qwen3-30B releases, this version improves performance across logical reasoning, mathematics, science, coding, and multilingual benchmarks. It also demonstrates stronger instruction following, tool use, and alignment with human preferences. With higher reasoning efficiency and extended output budgets, it is best suited for advanced research, competitive problem solving, and agentic applications requiring structured long-context reasoning.",
+      "context_length": 262144,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Qwen3",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.0000000713",
+        "completion": "0.0000002852",
+        "request": "0",
+        "image": "0",
+        "web_search": "0",
+        "internal_reasoning": "0"
+      },
+      "top_provider": {
+        "context_length": 262144,
+        "max_completion_tokens": 262144,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "logit_bias",
+        "logprobs",
+        "max_tokens",
+        "min_p",
+        "presence_penalty",
+        "reasoning",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_logprobs",
+        "top_p"
+      ]
+    },
+    {
       "id": "x-ai/grok-code-fast-1",
       "canonical_slug": "x-ai/grok-code-fast-1",
       "hugging_face_id": "",
@@ -241,6 +295,57 @@
         "seed",
         "structured_outputs",
         "temperature",
+        "top_p"
+      ]
+    },
+    {
+      "id": "deepseek/deepseek-chat-v3.1:free",
+      "canonical_slug": "deepseek/deepseek-chat-v3.1",
+      "hugging_face_id": "deepseek-ai/DeepSeek-V3.1",
+      "name": "DeepSeek: DeepSeek V3.1 (free)",
+      "created": 1755779628,
+      "description": "DeepSeek-V3.1 is a large hybrid reasoning model (671B parameters, 37B active) that supports both thinking and non-thinking modes via prompt templates. It extends the DeepSeek-V3 base with a two-phase long-context training process, reaching up to 128K tokens, and uses FP8 microscaling for efficient inference. Users can control the reasoning behaviour with the `reasoning` `enabled` boolean. [Learn more in our docs](https://openrouter.ai/docs/use-cases/reasoning-tokens#enable-reasoning-with-default-config)\n\nThe model improves tool use, code generation, and reasoning efficiency, achieving performance comparable to DeepSeek-R1 on difficult benchmarks while responding more quickly. It supports structured tool calling, code agents, and search agents, making it suitable for research, coding, and agentic workflows. \n\nIt succeeds the [DeepSeek V3-0324](/deepseek/deepseek-chat-v3-0324) model and performs well on a variety of tasks.",
+      "context_length": 64000,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "DeepSeek",
+        "instruct_type": "deepseek-v3.1"
+      },
+      "pricing": {
+        "prompt": "0",
+        "completion": "0",
+        "request": "0",
+        "image": "0",
+        "web_search": "0",
+        "internal_reasoning": "0"
+      },
+      "top_provider": {
+        "context_length": 64000,
+        "max_completion_tokens": null,
+        "is_moderated": true
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "max_tokens",
+        "min_p",
+        "presence_penalty",
+        "reasoning",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
         "top_p"
       ]
     },
@@ -870,6 +975,48 @@
       ]
     },
     {
+      "id": "openai/gpt-oss-120b:free",
+      "canonical_slug": "openai/gpt-oss-120b",
+      "hugging_face_id": "openai/gpt-oss-120b",
+      "name": "OpenAI: gpt-oss-120b (free)",
+      "created": 1754414231,
+      "description": "gpt-oss-120b is an open-weight, 117B-parameter Mixture-of-Experts (MoE) language model from OpenAI designed for high-reasoning, agentic, and general-purpose production use cases. It activates 5.1B parameters per forward pass and is optimized to run on a single H100 GPU with native MXFP4 quantization. The model supports configurable reasoning depth, full chain-of-thought access, and native tool use, including function calling, browsing, and structured output generation.",
+      "context_length": 32768,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "GPT",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0",
+        "completion": "0",
+        "request": "0",
+        "image": "0",
+        "web_search": "0",
+        "internal_reasoning": "0"
+      },
+      "top_provider": {
+        "context_length": 32768,
+        "max_completion_tokens": null,
+        "is_moderated": true
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "include_reasoning",
+        "max_tokens",
+        "reasoning",
+        "seed",
+        "stop",
+        "temperature"
+      ]
+    },
+    {
       "id": "openai/gpt-oss-120b",
       "canonical_slug": "openai/gpt-oss-120b",
       "hugging_face_id": "openai/gpt-oss-120b",
@@ -1048,7 +1195,7 @@
         "completion": "0.000075",
         "request": "0",
         "image": "0.024",
-        "web_search": "0",
+        "web_search": "0.01",
         "internal_reasoning": "0",
         "input_cache_read": "0.0000015",
         "input_cache_write": "0.00001875"
@@ -1117,6 +1264,58 @@
       ]
     },
     {
+      "id": "qwen/qwen3-coder-30b-a3b-instruct",
+      "canonical_slug": "qwen/qwen3-coder-30b-a3b-instruct",
+      "hugging_face_id": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+      "name": "Qwen: Qwen3 Coder 30B A3B Instruct",
+      "created": 1753972379,
+      "description": "Qwen3-Coder-30B-A3B-Instruct is a 30.5B parameter Mixture-of-Experts (MoE) model with 128 experts (8 active per forward pass), designed for advanced code generation, repository-scale understanding, and agentic tool use. Built on the Qwen3 architecture, it supports a native context length of 256K tokens (extendable to 1M with Yarn) and performs strongly in tasks involving function calls, browser use, and structured code completion.\n\nThis model is optimized for instruction-following without “thinking mode”, and integrates well with OpenAI-compatible tool-use formats. ",
+      "context_length": 262144,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Qwen3",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.0000000518308",
+        "completion": "0.000000207424",
+        "request": "0",
+        "image": "0",
+        "web_search": "0",
+        "internal_reasoning": "0"
+      },
+      "top_provider": {
+        "context_length": 262144,
+        "max_completion_tokens": null,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "logit_bias",
+        "logprobs",
+        "max_tokens",
+        "min_p",
+        "presence_penalty",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_logprobs",
+        "top_p"
+      ]
+    },
+    {
       "id": "qwen/qwen3-30b-a3b-instruct-2507",
       "canonical_slug": "qwen/qwen3-30b-a3b-instruct-2507",
       "hugging_face_id": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -1136,8 +1335,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000001",
-        "completion": "0.0000003",
+        "prompt": "0.0000000518308",
+        "completion": "0.000000207424",
         "request": "0",
         "image": "0",
         "web_search": "0",
@@ -1154,7 +1353,9 @@
         "logit_bias",
         "logprobs",
         "max_tokens",
+        "min_p",
         "presence_penalty",
+        "repetition_penalty",
         "response_format",
         "seed",
         "stop",
@@ -1294,21 +1495,21 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000002",
-        "completion": "0.0000011",
+        "prompt": "0.00000014",
+        "completion": "0.00000086",
         "request": "0",
         "image": "0",
         "web_search": "0",
-        "internal_reasoning": "0",
-        "input_cache_read": "0.00000003"
+        "internal_reasoning": "0"
       },
       "top_provider": {
         "context_length": 131072,
-        "max_completion_tokens": 96000,
+        "max_completion_tokens": 131072,
         "is_moderated": false
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "frequency_penalty",
         "include_reasoning",
         "max_tokens",
         "reasoning",
@@ -1318,6 +1519,7 @@
         "temperature",
         "tool_choice",
         "tools",
+        "top_k",
         "top_p"
       ]
     },
@@ -1420,7 +1622,7 @@
       "id": "qwen/qwen3-coder:free",
       "canonical_slug": "qwen/qwen3-coder-480b-a35b-07-25",
       "hugging_face_id": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
-      "name": "Qwen: Qwen3 Coder  (free)",
+      "name": "Qwen: Qwen3 Coder 480B A35B (free)",
       "created": 1753230546,
       "description": "Qwen3-Coder-480B-A35B-Instruct is a Mixture-of-Experts (MoE) code generation model developed by the Qwen team. It is optimized for agentic coding tasks such as function calling, tool use, and long-context reasoning over repositories. The model features 480 billion total parameters, with 35 billion active per forward pass (8 out of 160 experts).\n\nPricing for the Alibaba endpoints varies by context length. Once a request is greater than 128k input tokens, the higher pricing is used.",
       "context_length": 262144,
@@ -1471,7 +1673,7 @@
       "id": "qwen/qwen3-coder",
       "canonical_slug": "qwen/qwen3-coder-480b-a35b-07-25",
       "hugging_face_id": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
-      "name": "Qwen: Qwen3 Coder ",
+      "name": "Qwen: Qwen3 Coder 480B A35B",
       "created": 1753230546,
       "description": "Qwen3-Coder-480B-A35B-Instruct is a Mixture-of-Experts (MoE) code generation model developed by the Qwen team. It is optimized for agentic coding tasks such as function calling, tool use, and long-context reasoning over repositories. The model features 480 billion total parameters, with 35 billion active per forward pass (8 out of 160 experts).\n\nPricing for the Alibaba endpoints varies by context length. Once a request is greater than 128k input tokens, the higher pricing is used.",
       "context_length": 262144,
@@ -2200,6 +2402,7 @@
         "presence_penalty",
         "reasoning",
         "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
         "temperature",
@@ -3523,7 +3726,7 @@
         "completion": "0.000075",
         "request": "0",
         "image": "0.024",
-        "web_search": "0",
+        "web_search": "0.01",
         "internal_reasoning": "0",
         "input_cache_read": "0.0000015",
         "input_cache_write": "0.00001875"
@@ -10878,7 +11081,7 @@
         "completion": "0.000004",
         "request": "0",
         "image": "0",
-        "web_search": "0",
+        "web_search": "0.01",
         "internal_reasoning": "0",
         "input_cache_read": "0.00000008",
         "input_cache_write": "0.000001"
@@ -13227,52 +13430,6 @@
       ]
     },
     {
-      "id": "qwen/qwen-2-72b-instruct",
-      "canonical_slug": "qwen/qwen-2-72b-instruct",
-      "hugging_face_id": "Qwen/Qwen2-72B-Instruct",
-      "name": "Qwen 2 72B Instruct",
-      "created": 1717718400,
-      "description": "Qwen2 72B is a transformer-based model that excels in language understanding, multilingual capabilities, coding, mathematics, and reasoning.\n\nIt features SwiGLU activation, attention QKV bias, and group query attention. It is pretrained on extensive data with supervised finetuning and direct preference optimization.\n\nFor more details, see this [blog post](https://qwenlm.github.io/blog/qwen2/) and [GitHub repo](https://github.com/QwenLM/Qwen2).\n\nUsage of this model is subject to [Tongyi Qianwen LICENSE AGREEMENT](https://huggingface.co/Qwen/Qwen1.5-110B-Chat/blob/main/LICENSE).",
-      "context_length": 32768,
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Qwen",
-        "instruct_type": "chatml"
-      },
-      "pricing": {
-        "prompt": "0.0000009",
-        "completion": "0.0000009",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
-      },
-      "top_provider": {
-        "context_length": 32768,
-        "max_completion_tokens": 4096,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "logit_bias",
-        "max_tokens",
-        "min_p",
-        "presence_penalty",
-        "repetition_penalty",
-        "stop",
-        "temperature",
-        "top_k",
-        "top_p"
-      ]
-    },
-    {
       "id": "mistralai/mistral-7b-instruct:free",
       "canonical_slug": "mistralai/mistral-7b-instruct",
       "hugging_face_id": "mistralai/Mistral-7B-Instruct-v0.3",
@@ -15542,7 +15699,7 @@
       ]
     }
   ],
-  "lastUpdate": "2025-08-28T01:54:33.243Z",
+  "lastUpdate": "2025-08-29T01:54:36.598Z",
   "generatedBy": "GitHub Actions",
-  "totalModels": 320
+  "totalModels": 323
 }
