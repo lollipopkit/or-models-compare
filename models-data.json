@@ -310,50 +310,6 @@
       ]
     },
     {
-      "id": "google/gemini-2.5-flash-image-preview:free",
-      "canonical_slug": "google/gemini-2.5-flash-image-preview",
-      "hugging_face_id": "",
-      "name": "Google: Gemini 2.5 Flash Image Preview (free)",
-      "created": 1756218977,
-      "description": "Gemini 2.5 Flash Image Preview is a state of the art image generation model with contextual understanding. It is capable of image generation, edits, and multi-turn conversations.",
-      "context_length": 32768,
-      "architecture": {
-        "modality": "text+image->text+image",
-        "input_modalities": [
-          "image",
-          "text"
-        ],
-        "output_modalities": [
-          "image",
-          "text"
-        ],
-        "tokenizer": "Gemini",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0",
-        "completion": "0",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
-      },
-      "top_provider": {
-        "context_length": 32768,
-        "max_completion_tokens": 8192,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "max_tokens",
-        "response_format",
-        "seed",
-        "structured_outputs",
-        "temperature",
-        "top_p"
-      ]
-    },
-    {
       "id": "google/gemini-2.5-flash-image-preview",
       "canonical_slug": "google/gemini-2.5-flash-image-preview",
       "hugging_face_id": "",
@@ -1052,7 +1008,7 @@
         "completion": "0.0000004",
         "request": "0",
         "image": "0",
-        "web_search": "0",
+        "web_search": "0.01",
         "internal_reasoning": "0",
         "input_cache_read": "0.000000005"
       },
@@ -2020,7 +1976,7 @@
       "id": "moonshotai/kimi-k2:free",
       "canonical_slug": "moonshotai/kimi-k2",
       "hugging_face_id": "moonshotai/Kimi-K2-Instruct",
-      "name": "MoonshotAI: Kimi K2 (free)",
+      "name": "MoonshotAI: Kimi K2 0711 (free)",
       "created": 1752263252,
       "description": "Kimi K2 Instruct is a large-scale Mixture-of-Experts (MoE) language model developed by Moonshot AI, featuring 1 trillion total parameters with 32 billion active per forward pass. It is optimized for agentic capabilities, including advanced tool use, reasoning, and code synthesis. Kimi K2 excels across a broad range of benchmarks, particularly in coding (LiveCodeBench, SWE-bench), reasoning (ZebraLogic, GPQA), and tool-use (Tau2, AceBench) tasks. It supports long-context inference up to 128K tokens and is designed with a novel training stack that includes the MuonClip optimizer for stable large-scale MoE training.",
       "context_length": 32768,
@@ -2071,7 +2027,7 @@
       "id": "moonshotai/kimi-k2",
       "canonical_slug": "moonshotai/kimi-k2",
       "hugging_face_id": "moonshotai/Kimi-K2-Instruct",
-      "name": "MoonshotAI: Kimi K2",
+      "name": "MoonshotAI: Kimi K2 0711",
       "created": 1752263252,
       "description": "Kimi K2 Instruct is a large-scale Mixture-of-Experts (MoE) language model developed by Moonshot AI, featuring 1 trillion total parameters with 32 billion active per forward pass. It is optimized for agentic capabilities, including advanced tool use, reasoning, and code synthesis. Kimi K2 excels across a broad range of benchmarks, particularly in coding (LiveCodeBench, SWE-bench), reasoning (ZebraLogic, GPQA), and tool-use (Tau2, AceBench) tasks. It supports long-context inference up to 128K tokens and is designed with a novel training stack that includes the MuonClip optimizer for stable large-scale MoE training.",
       "context_length": 63000,
@@ -7249,8 +7205,8 @@
         "instruct_type": "gemma"
       },
       "pricing": {
-        "prompt": "0.00000002",
-        "completion": "0.00000004",
+        "prompt": "0.00000004",
+        "completion": "0.00000008",
         "request": "0",
         "image": "0",
         "web_search": "0",
@@ -15668,7 +15624,7 @@
       ]
     }
   ],
-  "lastUpdate": "2025-09-04T01:49:06.523Z",
+  "lastUpdate": "2025-09-05T01:51:59.060Z",
   "generatedBy": "GitHub Actions",
-  "totalModels": 322
+  "totalModels": 321
 }
