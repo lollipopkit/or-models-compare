@@ -1160,9 +1160,7 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
-        "include_reasoning",
         "max_tokens",
-        "reasoning",
         "response_format",
         "seed",
         "structured_outputs"
@@ -10297,7 +10295,6 @@
       "per_request_limits": null,
       "supported_parameters": [
         "frequency_penalty",
-        "logit_bias",
         "max_tokens",
         "min_p",
         "presence_penalty",
@@ -15857,7 +15854,7 @@
       ]
     }
   ],
-  "lastUpdate": "2025-09-07T01:57:37.392Z",
+  "lastUpdate": "2025-09-08T01:57:36.834Z",
   "generatedBy": "GitHub Actions",
   "totalModels": 326
 }
