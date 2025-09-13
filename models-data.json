@@ -20,8 +20,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000014673906",
-        "completion": "0.000000586956456",
+        "prompt": "0.00000009782604",
+        "completion": "0.000000391304304",
         "request": "0",
         "image": "0",
         "web_search": "0",
@@ -74,8 +74,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000014",
-        "completion": "0.0000014",
+        "prompt": "0.00000009782604",
+        "completion": "0.000000391304304",
         "request": "0",
         "image": "0",
         "web_search": "0",
@@ -3971,7 +3971,7 @@
       "name": "Mistral: Magistral Small 2506",
       "created": 1749569561,
       "description": "Magistral Small is a 24B parameter instruction-tuned model based on Mistral-Small-3.1 (2503), enhanced through supervised fine-tuning on traces from Magistral Medium and further refined via reinforcement learning. It is optimized for reasoning and supports a wide multilingual range, including over 20 languages.",
-      "context_length": 40960,
+      "context_length": 40000,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -3992,7 +3992,7 @@
         "internal_reasoning": "0"
       },
       "top_provider": {
-        "context_length": 40960,
+        "context_length": 40000,
         "max_completion_tokens": 40000,
         "is_moderated": false
       },
@@ -9159,12 +9159,13 @@
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
-          "text"
+          "text",
+          "file"
         ],
         "output_modalities": [
           "text"
         ],
-        "tokenizer": "Other",
+        "tokenizer": "GPT",
         "instruct_type": null
       },
       "pricing": {
@@ -9741,7 +9742,8 @@
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
-          "text"
+          "text",
+          "file"
         ],
         "output_modalities": [
           "text"
@@ -9895,8 +9897,8 @@
         "instruct_type": "deepseek-r1"
       },
       "pricing": {
-        "prompt": "0.000000075",
-        "completion": "0.00000015",
+        "prompt": "0.00000027",
+        "completion": "0.00000027",
         "request": "0",
         "image": "0",
         "web_search": "0",
@@ -12941,8 +12943,8 @@
         "instruct_type": "chatml"
       },
       "pricing": {
-        "prompt": "0.0000001",
-        "completion": "0.00000028",
+        "prompt": "0.00000012",
+        "completion": "0.0000003",
         "request": "0",
         "image": "0",
         "web_search": "0",
@@ -12994,7 +12996,7 @@
         "instruct_type": "chatml"
       },
       "pricing": {
-        "prompt": "0.0000007",
+        "prompt": "0.0000008",
         "completion": "0.0000008",
         "request": "0",
         "image": "0",
@@ -13003,7 +13005,7 @@
       },
       "top_provider": {
         "context_length": 131072,
-        "max_completion_tokens": 16384,
+        "max_completion_tokens": 131072,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -16098,7 +16100,7 @@
       ]
     }
   ],
-  "lastUpdate": "2025-09-12T01:48:32.636Z",
+  "lastUpdate": "2025-09-13T01:43:48.527Z",
   "generatedBy": "GitHub Actions",
   "totalModels": 331
 }
