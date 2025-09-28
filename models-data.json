@@ -12122,8 +12122,8 @@
         "instruct_type": "chatml"
       },
       "pricing": {
-        "prompt": "0.00000006",
-        "completion": "0.00000015",
+        "prompt": "0.00000004",
+        "completion": "0.00000014",
         "request": "0",
         "image": "0",
         "web_search": "0",
@@ -12131,7 +12131,7 @@
       },
       "top_provider": {
         "context_length": 32768,
-        "max_completion_tokens": 16384,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -12383,8 +12383,10 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_a",
         "top_k",
@@ -12717,57 +12719,6 @@
         "max_tokens",
         "stop",
         "temperature",
-        "top_p"
-      ],
-      "default_parameters": {}
-    },
-    {
-      "id": "google/gemini-flash-1.5-8b",
-      "canonical_slug": "google/gemini-flash-1.5-8b",
-      "hugging_face_id": null,
-      "name": "Google: Gemini 1.5 Flash 8B",
-      "created": 1727913600,
-      "description": "Gemini Flash 1.5 8B is optimized for speed and efficiency, offering enhanced performance in small prompt tasks like chat, transcription, and translation. With reduced latency, it is highly effective for real-time and large-scale operations. This model focuses on cost-effective solutions while maintaining high-quality results.\n\n[Click here to learn more about this model](https://developers.googleblog.com/en/gemini-15-flash-8b-is-now-generally-available-for-use/).\n\nUsage of Gemini is subject to Google's [Gemini Terms of Use](https://ai.google.dev/terms).",
-      "context_length": 1000000,
-      "architecture": {
-        "modality": "text+image->text",
-        "input_modalities": [
-          "text",
-          "image"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Gemini",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0.0000000375",
-        "completion": "0.00000015",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0",
-        "input_cache_read": "0.00000001",
-        "input_cache_write": "0.0000000583"
-      },
-      "top_provider": {
-        "context_length": 1000000,
-        "max_completion_tokens": 8192,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "max_tokens",
-        "presence_penalty",
-        "response_format",
-        "seed",
-        "stop",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
         "top_p"
       ],
       "default_parameters": {}
@@ -16170,8 +16121,10 @@
         "min_p",
         "presence_penalty",
         "repetition_penalty",
+        "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "top_a",
         "top_k",
@@ -16435,7 +16388,7 @@
       "default_parameters": {}
     }
   ],
-  "lastUpdate": "2025-09-27T01:47:33.402Z",
+  "lastUpdate": "2025-09-28T02:01:15.714Z",
   "generatedBy": "GitHub Actions",
-  "totalModels": 327
+  "totalModels": 326
 }
