@@ -1,6 +1,55 @@
 {
   "data": [
     {
+      "id": "google/gemini-2.5-flash-image",
+      "canonical_slug": "google/gemini-2.5-flash-image",
+      "hugging_face_id": "",
+      "name": "Google: Gemini 2.5 Flash Image (Nano Banana)",
+      "created": 1759870431,
+      "description": "Gemini 2.5 Flash Image, a.k.a. \"Nano Banana,\" is now generally available. It is a state of the art image generation model with contextual understanding. It is capable of image generation, edits, and multi-turn conversations. Aspect ratios can be controlled with the [image_config API Parameter](https://openrouter.ai/docs/features/multimodal/image-generation#image-aspect-ratio-configuration)",
+      "context_length": 32768,
+      "architecture": {
+        "modality": "text+image->text+image",
+        "input_modalities": [
+          "image",
+          "text"
+        ],
+        "output_modalities": [
+          "image",
+          "text"
+        ],
+        "tokenizer": "Gemini",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.0000003",
+        "completion": "0.0000025",
+        "request": "0",
+        "image": "0.001238",
+        "web_search": "0",
+        "internal_reasoning": "0"
+      },
+      "top_provider": {
+        "context_length": 32768,
+        "max_completion_tokens": 8192,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "max_tokens",
+        "response_format",
+        "seed",
+        "structured_outputs",
+        "temperature",
+        "top_p"
+      ],
+      "default_parameters": {
+        "temperature": null,
+        "top_p": null,
+        "frequency_penalty": null
+      }
+    },
+    {
       "id": "openai/gpt-5-pro",
       "canonical_slug": "openai/gpt-5-pro-2025-10-06",
       "hugging_face_id": "",
@@ -509,8 +558,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000019",
-        "completion": "0.00000078",
+        "prompt": "0.0000003",
+        "completion": "0.0000012",
         "request": "0",
         "image": "0",
         "web_search": "0",
@@ -1978,21 +2027,12 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
-        "frequency_penalty",
         "include_reasoning",
         "max_tokens",
-        "min_p",
-        "presence_penalty",
         "reasoning",
-        "repetition_penalty",
-        "response_format",
         "seed",
         "stop",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_k",
-        "top_p"
+        "temperature"
       ],
       "default_parameters": {}
     },
@@ -5024,7 +5064,7 @@
       "name": "Mistral: Magistral Small 2506",
       "created": 1749569561,
       "description": "Magistral Small is a 24B parameter instruction-tuned model based on Mistral-Small-3.1 (2503), enhanced through supervised fine-tuning on traces from Magistral Medium and further refined via reinforcement learning. It is optimized for reasoning and supports a wide multilingual range, including over 20 languages.",
-      "context_length": 40000,
+      "context_length": 32768,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -5045,7 +5085,7 @@
         "internal_reasoning": "0"
       },
       "top_provider": {
-        "context_length": 40000,
+        "context_length": 32768,
         "max_completion_tokens": 40000,
         "is_moderated": false
       },
@@ -8350,7 +8390,7 @@
       "name": "Qwen: Qwen2.5 VL 32B Instruct (free)",
       "created": 1742839838,
       "description": "Qwen2.5-VL-32B is a multimodal vision-language model fine-tuned through reinforcement learning for enhanced mathematical reasoning, structured outputs, and visual problem-solving capabilities. It excels at visual analysis tasks, including object recognition, textual interpretation within images, and precise event localization in extended videos. Qwen2.5-VL-32B demonstrates state-of-the-art performance across multimodal benchmarks such as MMMU, MathVista, and VideoMME, while maintaining strong reasoning and clarity in text-based tasks like MMLU, mathematical problem-solving, and code generation.",
-      "context_length": 8192,
+      "context_length": 16384,
       "architecture": {
         "modality": "text+image->text",
         "input_modalities": [
@@ -8372,7 +8412,7 @@
         "internal_reasoning": "0"
       },
       "top_provider": {
-        "context_length": 8192,
+        "context_length": 16384,
         "max_completion_tokens": null,
         "is_moderated": false
       },
@@ -13906,7 +13946,7 @@
       "name": "Meta: Llama 3.1 8B Instruct",
       "created": 1721692800,
       "description": "Meta's latest class of model (Llama 3.1) launched with a variety of sizes & flavors. This 8B instruct-tuned version is fast and efficient.\n\nIt has demonstrated strong performance compared to leading closed-source models in human evaluations.\n\nTo read more about the model release, [click here](https://ai.meta.com/blog/meta-llama-3-1/). Usage of this model is subject to [Meta's Acceptable Use Policy](https://llama.meta.com/llama3/use-policy/).",
-      "context_length": 16384,
+      "context_length": 131072,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -13927,7 +13967,7 @@
         "internal_reasoning": "0"
       },
       "top_provider": {
-        "context_length": 16384,
+        "context_length": 131072,
         "max_completion_tokens": 16384,
         "is_moderated": false
       },
@@ -16337,7 +16377,7 @@
       "default_parameters": {}
     }
   ],
-  "lastUpdate": "2025-10-07T01:50:48.397Z",
+  "lastUpdate": "2025-10-08T01:50:45.572Z",
   "generatedBy": "GitHub Actions",
-  "totalModels": 324
+  "totalModels": 325
 }
