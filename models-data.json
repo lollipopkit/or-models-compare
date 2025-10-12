@@ -4832,8 +4832,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000003",
-        "completion": "0.00000165",
+        "prompt": "0.0000004",
+        "completion": "0.0000022",
         "request": "0",
         "image": "0",
         "web_search": "0",
@@ -16633,7 +16633,7 @@
       "default_parameters": {}
     }
   ],
-  "lastUpdate": "2025-10-11T01:47:41.586Z",
+  "lastUpdate": "2025-10-12T01:56:13.021Z",
   "generatedBy": "GitHub Actions",
   "totalModels": 330
 }
