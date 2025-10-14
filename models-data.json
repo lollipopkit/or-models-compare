@@ -231,7 +231,7 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000003",
+        "prompt": "0.00000029",
         "completion": "0.000001",
         "request": "0",
         "image": "0",
@@ -289,7 +289,7 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000003",
+        "prompt": "0.00000029",
         "completion": "0.000001",
         "request": "0",
         "image": "0",
@@ -761,7 +761,7 @@
       "name": "Qwen: Qwen3 VL 235B A22B Thinking",
       "created": 1758668690,
       "description": "Qwen3-VL-235B-A22B Thinking is a multimodal model that unifies strong text generation with visual understanding across images and video. The Thinking model is optimized for multimodal reasoning in STEM and math. The series emphasizes robust perception (recognition of diverse real-world and synthetic categories), spatial understanding (2D/3D grounding), and long-form visual comprehension, with competitive results on public multimodal benchmarks for both perception and reasoning.\n\nBeyond analysis, Qwen3-VL supports agentic interaction and tool use: it can follow complex instructions over multi-image, multi-turn dialogues; align text to video timelines for precise temporal queries; and operate GUI elements for automation tasks. The models also enable visual coding workflows, turning sketches or mockups into code and assisting with UI debugging, while maintaining strong text-only performance comparable to the flagship Qwen3 language models. This makes Qwen3-VL suitable for production scenarios spanning document AI, multilingual OCR, software/UI assistance, spatial/embodied tasks, and research on vision-language agents.",
-      "context_length": 65536,
+      "context_length": 262144,
       "architecture": {
         "modality": "text+image->text",
         "input_modalities": [
@@ -775,7 +775,7 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000005",
+        "prompt": "0.00000045",
         "completion": "0.0000035",
         "request": "0",
         "image": "0",
@@ -783,8 +783,8 @@
         "internal_reasoning": "0"
       },
       "top_provider": {
-        "context_length": 65536,
-        "max_completion_tokens": 65536,
+        "context_length": 262144,
+        "max_completion_tokens": 262144,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -16691,7 +16691,7 @@
       "default_parameters": {}
     }
   ],
-  "lastUpdate": "2025-10-13T01:59:54.726Z",
+  "lastUpdate": "2025-10-14T01:52:52.709Z",
   "generatedBy": "GitHub Actions",
   "totalModels": 331
 }
