@@ -49,61 +49,6 @@
       }
     },
     {
-      "id": "qwen/qwen3-vl-32b-instruct",
-      "canonical_slug": "qwen/qwen3-vl-32b-instruct",
-      "hugging_face_id": "Qwen/Qwen3-VL-32B-Instruct",
-      "name": "Qwen: Qwen3 VL 32B Instruct",
-      "created": 1761231332,
-      "description": "Qwen3-VL-32B-Instruct is a large-scale multimodal vision-language model designed for high-precision understanding and reasoning across text, images, and video. With 32 billion parameters, it combines deep visual perception with advanced text comprehension, enabling fine-grained spatial reasoning, document and scene analysis, and long-horizon video understanding.Robust OCR in 32 languages, and enhanced multimodal fusion through Interleaved-MRoPE and DeepStack architectures. Optimized for agentic interaction and visual tool use, Qwen3-VL-32B delivers state-of-the-art performance for complex real-world multimodal tasks.",
-      "context_length": 262144,
-      "architecture": {
-        "modality": "text+image->text",
-        "input_modalities": [
-          "text",
-          "image"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Qwen",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0.00000035",
-        "completion": "0.0000011",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
-      },
-      "top_provider": {
-        "context_length": 262144,
-        "max_completion_tokens": 262144,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "logit_bias",
-        "max_tokens",
-        "min_p",
-        "presence_penalty",
-        "repetition_penalty",
-        "response_format",
-        "seed",
-        "stop",
-        "structured_outputs",
-        "temperature",
-        "top_k",
-        "top_p"
-      ],
-      "default_parameters": {
-        "temperature": null,
-        "top_p": null,
-        "frequency_penalty": null
-      }
-    },
-    {
       "id": "openrouter/andromeda-alpha",
       "canonical_slug": "openrouter/andromeda-alpha",
       "hugging_face_id": "",
@@ -712,8 +657,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000004",
-        "completion": "0.000002",
+        "prompt": "0.00000057",
+        "completion": "0.00000228",
         "request": "0",
         "image": "0",
         "web_search": "0",
@@ -727,12 +672,7 @@
       "per_request_limits": null,
       "supported_parameters": [
         "frequency_penalty",
-        "max_tokens",
-        "presence_penalty",
-        "repetition_penalty",
         "response_format",
-        "seed",
-        "stop",
         "structured_outputs",
         "temperature",
         "tool_choice",
@@ -1114,6 +1054,7 @@
       "supported_parameters": [
         "frequency_penalty",
         "logit_bias",
+        "logprobs",
         "max_tokens",
         "min_p",
         "presence_penalty",
@@ -1126,6 +1067,7 @@
         "tool_choice",
         "tools",
         "top_k",
+        "top_logprobs",
         "top_p"
       ],
       "default_parameters": {
@@ -1716,6 +1658,7 @@
       "supported_parameters": [
         "frequency_penalty",
         "logit_bias",
+        "logprobs",
         "max_tokens",
         "min_p",
         "presence_penalty",
@@ -1728,6 +1671,7 @@
         "tool_choice",
         "tools",
         "top_k",
+        "top_logprobs",
         "top_p"
       ],
       "default_parameters": {
@@ -12654,7 +12598,7 @@
       },
       "top_provider": {
         "context_length": 131072,
-        "max_completion_tokens": 2048,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -17430,7 +17374,7 @@
       "default_parameters": {}
     }
   ],
-  "lastUpdate": "2025-10-25T01:52:58.221Z",
+  "lastUpdate": "2025-10-26T02:02:07.354Z",
   "generatedBy": "GitHub Actions",
-  "totalModels": 348
+  "totalModels": 347
 }
