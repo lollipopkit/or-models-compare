@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Particle Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #fdf2f8;
+            color: #334155;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #1a0d1f;
+                color: #e2e8f0;
+            }
+
+            body::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(ellipse at center,
+                    rgba(30, 41, 59, 0.3) 0%,
+                    rgba(15, 23, 42, 0.5) 100%);
+                pointer-events: none;
+                z-index: -2;
+            }
+        }
+
+        .test-container {
+            position: relative;
+            z-index: 10;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .test-container {
+                background: rgba(30, 41, 59, 0.9);
+            }
+        }
+
+        h1 {
+            color: #ec4899;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .info {
+            margin: 20px 0;
+            padding: 16px;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .stat-card {
+                background: rgba(51, 65, 85, 0.6);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🎨 Google Antigravity 风格背景粒子效果</h1>
+
+        <div class="info">
+            <strong>特性说明：</strong>
+            <ul>
+                <li>基于 Google Antigravity 的蓝色粒子效果</li>
+                <li>支持亮色/暗色模式自动切换</li>
+                <li>鼠标排斥交互效果</li>
+                <li>响应式设计，适配移动端</li>
+                <li>性能优化，低端设备友好</li>
+            </ul>
+        </div>
+
+        <div class="stats" id="stats">
+            <div class="stat-card">
+                <h3>屏幕尺寸</h3>
+                <p id="screenSize">-</p>
+            </div>
+            <div class="stat-card">
+                <h3>设备类型</h3>
+                <p id="deviceType">-</p>
+            </div>
+            <div class="stat-card">
+                <h3>颜色模式</h3>
+                <p id="colorMode">-</p>
+            </div>
+            <div class="stat-card">
+                <h3>粒子数量</h3>
+                <p id="particleCount">-</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="./particles.js"></script>
+    <script>
+        // 初始化粒子系统
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                // 初始化粒子系统
+                const particleSystem = new ParticleSystem('html-root');
+                document.particleSystem = particleSystem;
+                console.log('ParticleSystem initialized successfully');
+
+                // 更新统计信息
+                updateStats();
+                window.addEventListener('resize', updateStats);
+
+                // 监听颜色模式变化
+                const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+                darkModeQuery.addListener(updateStats);
+
+            } catch (error) {
+                console.error('Failed to initialize ParticleSystem:', error);
+            }
+        });
+
+        function updateStats() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            const isMobile = width <= 768;
+            const isTablet = width <= 1024;
+            const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            document.getElementById('screenSize').textContent = `${width} × ${height}`;
+
+            let deviceType = 'Desktop';
+            if (isMobile) deviceType = 'Mobile';
+            else if (isTablet) deviceType = 'Tablet';
+            document.getElementById('deviceType').textContent = deviceType;
+
+            document.getElementById('colorMode').textContent = isDarkMode ? 'Dark Mode' : 'Light Mode';
+
+            if (document.particleSystem && document.particleSystem.config) {
+                document.getElementById('particleCount').textContent =
+                    document.particleSystem.config.particleCount;
+            }
+        }
+    </script>
+</body>
+</html>
