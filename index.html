@@ -6,63 +6,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenRouter Models Compare</title>
     <script src="./i18n.js"></script>
+    <script src="./particles.js"></script>
     <style>
+        :root {
+            --bg: #fdf2f8;
+            --card: #ffffff;
+            --border: #00000000;
+            --text: #334155;
+            --muted: #64748b;
+            --accent: #ec4899;
+            --accent-strong: #8b5cf6;
+            --pill: #f1f5f9;
+            --soft: #f8fafc;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #fdf2f8 0%, #fae8ff 50%, #dbeafe 100%);
-            color: #334155;
-            line-height: 1.6;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1400px;
+        .app-shell {
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 28px 20px 40px;
         }
 
-        .header {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 20px 30px;
-            border-radius: 12px;
-            border: 1px solid rgba(219, 234, 254, 0.4);
-            margin-bottom: 30px;
-            transition: background-color 0.3s ease;
-            position: relative;
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 30;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 14px 18px;
+            background: var(--card);
+            border-radius: 14px;
+            box-shadow: 0 14px 36px rgba(15, 23, 42, 0.06);
         }
 
-        .github-button {
-            position: absolute;
-            top: 20px;
-            right: 30px;
+        .brand {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .brand h1 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .brand p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .topbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .meta-chip {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 10px 16px;
-            background: rgba(255, 255, 255, 0.8);
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
+            padding: 8px 12px;
+            background: var(--pill);
+            border-radius: 999px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .meta-chip strong {
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .actions-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .github-button {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            background: #f6f8fa;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #656d76;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
             text-decoration: none;
-            color: #334155;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            backdrop-filter: blur(10px);
+            padding: 0;
+            border: 1px solid #d0d7de;
         }
 
         .github-button:hover {
-            background: rgba(255, 255, 255, 0.95);
-            border-color: #ec4899;
-            color: #ec4899;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2);
+            background-color: #f3f4f6;
+            color: #24292f;
         }
 
         .github-icon {
@@ -71,151 +135,521 @@
             fill: currentColor;
         }
 
-        .header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #ec4899, #8b5cf6, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-            transition: color 0.3s ease;
+        .lang-switch {
+            position: relative;
         }
 
-        .header p {
-            color: #64748b;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
-        }
-
-        .controls {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid rgba(236, 72, 153, 0.2);
-            margin-bottom: 25px;
-            transition: background-color 0.3s ease;
-        }
-
-        .controls-row {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
-        .search-box {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 14px;
-            transition: border-color 0.2s, background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .search-box input:focus {
-            outline: none;
-            border-color: #ec4899;
-        }
-
-        .filter-group {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .filter-group label {
-            font-weight: 500;
-            color: #475569;
-            transition: color 0.3s ease;
-        }
-
-        .filter-group select {
-            padding: 8px 12px;
-            border: 2px solid #e2e8f0;
+        .icon-button {
+            width: 32px;
+            height: 32px;
             border-radius: 6px;
-            background: white;
-            font-size: 14px;
-            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+            background: #f6f8fa;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #656d76;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            padding: 0;
+            border: 1px solid #d0d7de;
         }
 
-        .column-toggle {
-            background: #f1f5f9;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #e2e8f0;
+        .icon-button:hover {
+            background-color: #f3f4f6;
+            color: #24292f;
         }
 
-        .column-toggle h3 {
-            margin-bottom: 10px;
+        .lang-menu {
+            position: absolute;
+            top: 46px;
+            right: 0;
+            background: var(--card);
+            border-radius: 12px;
+            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+            min-width: 180px;
+            padding: 6px;
+            display: none;
+            z-index: 25;
+        }
+
+        .lang-menu.open {
+            display: block;
+        }
+
+        .lang-option {
+            width: 100%;
+            text-align: left;
+            padding: 10px 12px;
+            background: transparent;
+            border-radius: 10px;
+            color: var(--text);
             font-size: 14px;
-            font-weight: 600;
-            color: #475569;
+            cursor: pointer;
+            transition: background-color 0.15s ease, color 0.15s ease;
+        }
+
+        .lang-option:hover,
+        .lang-option.active {
+            background: #eef2ff;
+            color: var(--accent-strong);
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 18px;
+            box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .panel-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            line-height: 1.2;
+            min-height: 32px; /* 与header-toggle按钮高度一致 */
+        }
+
+        .panel-subtitle {
+            font-size: 12px;
+            color: var(--muted);
+            margin-top: 2px;
         }
 
         .column-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px 12px;
         }
 
         .column-option {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            color: var(--muted);
+            font-size: 13px;
         }
 
-        .column-option input[type="checkbox"] {
+        .compare-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .compare-button {
+            padding: 6px 12px;
+            border-radius: 6px;
+            background: #238636;
+            color: #fff;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease, opacity 0.2s ease;
+            min-height: 28px;
+            font-size: 12px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+            line-height: 1.25;
+            touch-action: manipulation; /* 改善触控响应 */
+            border: 1px solid transparent;
+        }
+
+        .compare-button:hover:not(:disabled) {
+            background-color: #2ea043;
+        }
+
+        .compare-button:active:not(:disabled) {
+            background-color: #238636;
+        }
+
+        .compare-button:disabled {
+            background-color: #94d3a2;
+            color: rgba(255, 255, 255, 0.8);
+            cursor: not-allowed;
+        }
+
+        .clear-button {
+            padding: 6px 12px;
+            border-radius: 6px;
+            background: #f6f8fa;
+            color: #24292f;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            min-height: 28px;
+            font-size: 12px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+            line-height: 1.25;
+            touch-action: manipulation;
+            border: 1px solid #d0d7de;
+        }
+
+        .clear-button:hover:not(:disabled) {
+            background-color: #f3f4f6;
+        }
+
+        .clear-button:active:not(:disabled) {
+            background-color: #f6f8fa;
+        }
+
+        .clear-button:disabled {
+            background-color: #f6f8fa;
+            color: #8c959f;
+            cursor: not-allowed;
+        }
+
+        .compare-mode-active {
+            background: #eef2ff;
+            color: var(--accent-strong);
+        }
+
+        .workspace {
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 16px;
+            align-items: start;
+            margin-top: 16px;
+        }
+
+        .filters-pane {
+            position: sticky;
+            top: 86px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .controls {
+            padding: 0;
+        }
+
+        .controls-body {
+            padding: 8px 14px 12px;
+            overflow: hidden;
+            transition: max-height 0.25s ease, opacity 0.25s ease;
+        }
+
+        .collapsed .controls-body {
+            padding: 0 14px 0;
+        }
+
+        .controls .card-header {
+            align-items: center;
+        }
+
+        .controls-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
+        }
+
+        .header-toggle,
+        #filtersToggle {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            background: #f6f8fa;
+            cursor: pointer;
+            color: #656d76;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            min-width: 28px;
+            min-height: 28px;
+            border: 1px solid #d0d7de;
+        }
+
+        .chevron-icon {
+            transition: transform 0.25s ease;
             width: 16px;
             height: 16px;
         }
 
-        .column-option label {
+        .chevron-icon.chevron-right {
+            transform: rotate(-90deg);
+        }
+
+        .chevron-icon:not(.chevron-right) {
+            transform: rotate(0deg);
+        }
+
+        .header-toggle:hover,
+        #filtersToggle:hover {
+            background-color: #f3f4f6;
+            color: #24292f;
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: var(--muted);
             font-size: 13px;
-            color: #64748b;
-            cursor: pointer;
+        }
+
+        .filter-group select {
+            padding: 8px 32px 8px 12px;
+            border-radius: 13px;
+            background-color: #ffffff;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23657676' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 8px center;
+            background-size: 16px;
+            font-size: 14px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+            line-height: 20px;
+            color: #24292f;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid #d0d7de;
+            min-height: 32px;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+        .search-box input {
+            padding: 8px 12px;
+            border-radius: 13px;
+            background: #ffffff;
+            font-size: 14px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+            line-height: 20px;
+            color: #24292f;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid #d0d7de;
+            min-height: 32px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-results {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            right: 0;
+            background: var(--card);
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            z-index: 10;
+            max-height: 320px;
+            overflow: auto;
+            display: none;
+        }
+
+        .search-results-topbar {
+            position: fixed;
+            top: 85px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(600px, calc(100vw - 40px));
+            background: var(--card);
+            border-radius: 12px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+            z-index: 100;
+            max-height: 400px;
+            overflow: auto;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .search-results-topbar {
+                top: 70px;
+                width: calc(100vw - 20px);
+                max-width: none;
+            }
+
+            .app-shell {
+                padding: 16px 12px 30px;
+                max-width: none;
+                width: 100%;
+            }
+
+            .topbar {
+                padding: 12px 14px;
+            }
+
+            .filters-pane {
+                gap: 6px;
+            }
+
+            .card {
+                padding: 14px;
+            }
+
+            .controls-body {
+                padding: 10px 14px 14px;
+            }
+
+            .table-card {
+                margin: 0;
+                width: 100%;
+            }
+
+            .table-container {
+                margin: 0;
+                width: 100%;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .controls .card-header {
+                padding: 10px 14px;
+                margin-bottom: 0;
+                line-height: 1.2;
+            }
+        }
+
+        .search-result-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 10px 12px;
+            min-height: 40px;
+        }
+
+        .search-result-name {
+            font-weight: 600;
+            color: var(--text);
+            flex: 1;
+            min-width: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 13px;
+        }
+
+        .filter-group select:focus,
+        .search-box input:focus {
+            outline: none;
+            border-color: #0969da;
+            box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.3);
+        }
+
+        .content-pane {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            min-width: 0;
+        }
+
+        .table-card {
+            padding: 0;
+        }
+
+        select:focus,
+        .search-box input:focus {
+            border-color: #1f6feb;
+            box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.3);
+        }
+
+        .table-toolbar {
+            padding: 14px 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
         }
 
         .table-container {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            border: 1px solid rgba(139, 92, 246, 0.2);
+            background: var(--card);
+            border-radius: 0 0 14px 14px;
             overflow: hidden;
-            transition: background-color 0.3s ease;
+            min-width: 0;
         }
 
         .table-wrapper {
             overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+
+        .table-wrapper::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 20px;
+            background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.1));
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .table-wrapper.scrollable::after {
+            opacity: 1;
+        }
+
+        .table-wrapper::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .table-wrapper::-webkit-scrollbar-track {
+            background: var(--soft);
+            border-radius: 3px;
+        }
+
+        .table-wrapper::-webkit-scrollbar-thumb {
+            background: var(--muted);
+            border-radius: 3px;
+        }
+
+        .table-wrapper::-webkit-scrollbar-thumb:hover {
+            background: var(--muted);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
             border-spacing: 0;
+            table-layout: auto;
+            min-width: 800px;
         }
 
         th {
             background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(139, 92, 246, 0.1));
-            padding: 16px 12px;
+            padding: 14px 12px;
             text-align: left;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 13px;
             color: #6d28d9;
-            border: none;
             cursor: pointer;
             user-select: none;
-            transition: background-color 0.2s, color 0.3s ease;
             position: sticky;
             top: 0;
-            z-index: 10;
+            z-index: 5;
+        }
+
+        th:first-child {
+            border-top-left-radius: 14px;
+        }
+
+        th:last-child {
+            border-top-right-radius: 14px;
         }
 
         th:hover {
@@ -230,71 +664,64 @@
 
         th.sort-asc::after {
             content: ' ↑';
-            color: #ec4899;
+            color: var(--accent);
         }
 
         th.sort-desc::after {
             content: ' ↓';
-            color: #ec4899;
+            color: var(--accent);
         }
 
         td {
             padding: 12px;
-            border: none;
             font-size: 14px;
-            transition: color 0.3s ease;
             vertical-align: middle;
-            min-height: 60px;
         }
 
-        tr {
-            height: auto;
-            min-height: 60px;
+        .cell-text,
+        .cell-html {
+            display: -webkit-box;
+            line-clamp: 2;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            word-break: break-word;
+            white-space: normal;
+        }
+
+        .cell-html {
+            line-height: 1.4;
         }
 
         tr:hover {
             background: linear-gradient(135deg, rgba(236, 72, 153, 0.05), rgba(139, 92, 246, 0.05));
-            transition: background-color 0.2s ease;
             cursor: pointer;
         }
 
         .model-name {
-            font-weight: 600;
-            color: #1e293b;
-            transition: color 0.3s ease;
-            position: relative;
+            font-weight: 700;
+            color: var(--text);
             display: flex;
             align-items: center;
             gap: 8px;
-        }
-
-        .model-name::after {
-            content: '→';
-            color: #94a3b8;
-            font-size: 14px;
-            transition: color 0.2s ease, transform 0.2s ease;
-        }
-
-        tr:hover .model-name::after {
-            color: #ec4899;
-            transform: translateX(2px);
+            min-width: 0;
         }
 
         .model-description {
-            max-width: 300px;
+            max-width: 320px;
             overflow: hidden;
             text-overflow: ellipsis;
-            white-space: nowrap;
+            color: var(--muted);
         }
 
         .price {
-            font-family: 'Monaco', 'Consolas', monospace;
+            font-family: 'Menlo', 'Consolas', monospace;
             font-size: 13px;
             color: #059669;
         }
 
         .context-length {
-            font-weight: 500;
+            font-weight: 600;
             color: #7c3aed;
         }
 
@@ -307,14 +734,18 @@
             padding: 2px 6px;
             background: #fef3c7;
             color: #92400e;
-            border-radius: 4px;
+            border-radius: 6px;
             font-size: 11px;
-            margin-left: 5px;
+            margin-left: 6px;
+        }
+
+        .selected-row {
+            background: #eef2ff;
         }
 
         .loading {
             text-align: center;
-            padding: 40px;
+            padding: 30px;
             color: #64748b;
         }
 
@@ -326,222 +757,444 @@
             margin: 20px 0;
         }
 
-        .stats {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .stat-item {
-            background: #f8fafc;
-            padding: 12px 16px;
-            border-radius: 8px;
-            border: 1px solid #e2e8f0;
-        }
-
-        .stat-number {
-            font-size: 18px;
-            font-weight: 700;
-            color: #1e293b;
-        }
-
-        .stat-label {
-            font-size: 12px;
-            color: #64748b;
-            margin-top: 2px;
-        }
-
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
+        @media (max-width: 1024px) {
+            .workspace {
+                grid-template-columns: 1fr;
+                gap: 16px;
             }
 
-            .header h1 {
-                font-size: 2rem;
+            .filters-pane {
+                position: static;
             }
 
-            .controls-row {
+            .content-pane {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .topbar {
                 flex-direction: column;
                 align-items: stretch;
+                gap: 12px;
             }
 
-            .column-options {
-                grid-template-columns: repeat(2, 1fr);
+            .topbar-actions {
+                flex-wrap: wrap;
+                justify-content: stretch;
+                gap: 8px;
+            }
+
+            .topbar-actions .search-box {
+                order: -1;
+                max-width: none;
+                width: 100%;
+            }
+
+            .meta-chip {
+                flex: 1;
+                min-width: 0;
+            }
+
+            .actions-group {
+                flex-shrink: 0;
+            }
+
+            .table-toolbar {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
 
-        /* 夜间模式 */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background: linear-gradient(135deg, #1a0d1f 0%, #1e0a3c 50%, #0f1629 100%);
-                color: #e2e8f0;
+        @media (max-width: 480px) {
+            .app-shell {
+                padding: 12px 8px 20px;
+                max-width: none;
+                width: 100%;
             }
 
-            .header {
-                background: rgba(30, 41, 59, 0.9);
-                backdrop-filter: blur(10px);
-                border: 1px solid rgba(236, 72, 153, 0.3);
-            }
-
-            .header h1 {
-                background: linear-gradient(135deg, #f472b6, #c084fc, #60a5fa);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-            }
-
-            .header p {
-                color: #94a3b8;
-            }
-
-            .controls {
-                background: rgba(30, 41, 59, 0.9);
-                backdrop-filter: blur(10px);
-                border: 1px solid rgba(139, 92, 246, 0.3);
-            }
-
-            .search-box input {
-                background: #334155;
-                border-color: #475569;
-                color: #e2e8f0;
-            }
-
-            .search-box input::placeholder {
-                color: #94a3b8;
-            }
-
-            .search-box input:focus {
-                border-color: #f472b6;
-            }
-
-            .filter-group label {
-                color: #cbd5e1;
-            }
-
-            .filter-group select {
-                background: #334155;
-                border-color: #475569;
-                color: #e2e8f0;
-            }
-
-            .column-toggle {
-                background: #334155;
-                border-color: #475569;
-            }
-
-            .column-toggle h3 {
-                color: #cbd5e1;
-            }
-
-            .column-option label {
-                color: #94a3b8;
+            .table-card {
+                margin: 0;
+                width: 100%;
+                border-radius: 12px;
             }
 
             .table-container {
-                background: rgba(30, 41, 59, 0.95);
-                backdrop-filter: blur(10px);
-                border: 1px solid rgba(59, 130, 246, 0.3);
+                margin: 0;
+                width: 100%;
+            }
+
+            .content-pane {
+                gap: 8px;
+            }
+
+            .topbar {
+                padding: 10px 12px;
+                gap: 10px;
+            }
+
+            .brand h1 {
+                font-size: 18px;
+            }
+
+            .meta-chip {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+
+            .card {
+                padding: 12px;
+                border-radius: 12px;
+            }
+
+            .controls-body {
+                padding: 8px 12px 12px;
+            }
+
+            .filter-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .filter-group select {
+                padding: 8px 28px 8px 10px;
+                font-size: 16px;
+            }
+
+            .search-box input {
+                padding: 8px 10px;
+                font-size: 16px;
+            }
+
+            .github-button,
+            .icon-button {
+                width: 40px;
+                height: 40px;
+            }
+
+            .header-toggle,
+            #filtersToggle {
+                width: 32px;
+                height: 32px;
+                min-width: 32px;
+                min-height: 32px;
+            }
+
+            .column-options {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 8px 10px;
+            }
+
+            .column-option {
+                font-size: 12px;
+            }
+
+            .table-wrapper {
+                border-radius: 0 0 12px 12px;
+                -webkit-overflow-scrolling: touch;
+                scroll-snap-type: x proximity;
+            }
+
+            tr {
+                scroll-snap-align: start;
+            }
+
+            .table-container {
+                transform: translateZ(0);
+                -webkit-transform: translateZ(0);
+            }
+
+            th,
+            td {
+                padding: 10px 8px;
+                font-size: 13px;
+            }
+
+            .model-name {
+                font-size: 14px;
+            }
+
+            .price {
+                font-size: 12px;
+            }
+
+            .context-length {
+                font-size: 12px;
+            }
+
+            .provider-info {
+                font-size: 12px;
+            }
+
+            .cell-text,
+            .cell-html {
+                -webkit-line-clamp: 3;
+                line-clamp: 3;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .app-shell {
+                padding: 8px 4px 16px;
+                max-width: none;
+                width: 100%;
+            }
+
+            .table-card {
+                margin: 0;
+                width: 100%;
+                border-radius: 12px;
+            }
+
+            .table-container {
+                margin: 0;
+                width: 100%;
+            }
+
+            .content-pane {
+                gap: 6px;
+            }
+
+            .filters-pane {
+                gap: 2px;
+            }
+
+            .brand h1 {
+                font-size: 16px;
+            }
+
+            .column-options {
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+
+            .column-option {
+                font-size: 11px;
+            }
+
+            .card {
+                padding: 8px;
+            }
+
+            .controls-body {
+                padding: 6px 8px 8px;
+            }
+
+            .collapsed .controls-body {
+                padding: 0 8px 0;
+            }
+
+            th,
+            td {
+                padding: 8px 6px;
+                font-size: 12px;
+            }
+
+            .model-name {
+                font-size: 13px;
+            }
+
+            .price,
+            .context-length,
+            .provider-info {
+                font-size: 11px;
+            }
+
+            .meta-chip {
+                font-size: 11px;
+                padding: 4px 8px;
+            }
+
+            .compare-button,
+            .clear-button {
+                padding: 6px 12px;
+                font-size: 12px;
+                min-height: 28px;
+            }
+
+            .search-result-item {
+                padding: 8px 10px;
+            }
+
+            .cell-text,
+            .cell-html {
+                -webkit-line-clamp: 2;
+                line-clamp: 2;
+                font-size: 11px;
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #1a0d1f;
+                --card: #1e293b;
+                --border: #475569;
+                --text: #e2e8f0;
+                --muted: #94a3b8;
+                --pill: #334155;
+                --soft: #334155;
+            }
+
+            body {
+                position: relative;
+            }
+
+            body::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(ellipse at center,
+                    rgba(30, 41, 59, 0.3) 0%,
+                    rgba(15, 23, 42, 0.5) 100%);
+                pointer-events: none;
+                z-index: -2;
+            }
+
+            body {
+                background: var(--bg);
+                color: var(--text);
+            }
+
+            .filter-group select {
+                background-color: #0d1117;
+                color: #f0f6fc;
+                border-color: #30363d;
+                background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+                background-repeat: no-repeat;
+                background-position: right 8px center;
+                background-size: 16px;
+            }
+
+            .search-box input {
+                background: #0d1117;
+                color: #f0f6fc;
+                border-color: #30363d;
+            }
+
+            .filter-group select:focus,
+            .search-box input:focus {
+                border-color: #1f6feb;
+                box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.3);
+            }
+
+            select option,
+            .lang-menu,
+            .lang-option {
+                background: #334155;
+                color: var(--text);
             }
 
             th {
                 background: linear-gradient(135deg, rgba(244, 114, 182, 0.2), rgba(196, 132, 252, 0.2));
                 color: #c084fc;
-                border: none;
             }
 
-            th:hover {
-                background: linear-gradient(135deg, rgba(244, 114, 182, 0.3), rgba(196, 132, 252, 0.3));
+            th:first-child {
+                border-top-left-radius: 14px;
             }
 
-            th.sort-asc::after,
-            th.sort-desc::after {
-                color: #f472b6;
-            }
-
-            td {
-                border: none;
-                color: #e2e8f0;
-                vertical-align: middle;
-                min-height: 60px;
-            }
-
-            tr {
-                height: auto;
-                min-height: 60px;
+            th:last-child {
+                border-top-right-radius: 14px;
             }
 
             tr:hover {
                 background: linear-gradient(135deg, rgba(244, 114, 182, 0.1), rgba(196, 132, 252, 0.1));
-                cursor: pointer;
             }
 
-            .model-name {
-                color: #f1f5f9;
+            .selected-row {
+                background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(236, 72, 153, 0.2));
             }
 
-            .model-name::after {
-                color: #64748b;
+            .meta-chip {
+                background: #1e293b;
+                color: var(--muted);
             }
 
-            tr:hover .model-name::after {
-                color: #f472b6;
+            .lang-menu {
+                box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
             }
 
             .price {
-                color: #34d399;
+                color: #7dd3fc;
             }
 
             .context-length {
-                color: #a78bfa;
+                color: #c4b5fd;
             }
 
-            .provider-info {
-                color: #cbd5e1;
+            .provider-info,
+            .panel-subtitle,
+            .filter-group label,
+            .compare-table th {
+                color: var(--muted);
             }
 
-            .moderated {
-                background: #451a03;
-                color: #fbbf24;
+            .clear-button {
+                background: #21262d;
+                color: #c9d1d9;
+                border-color: #30363d;
+            }
+
+            .clear-button:hover:not(:disabled) {
+                background: #30363d;
+                color: #f0f6fc;
+            }
+
+            .github-button,
+            .icon-button {
+                background: #21262d;
+                color: #8b949e;
+                border-color: #30363d;
+            }
+
+            .github-button:hover,
+            .icon-button:hover {
+                background: #30363d;
+                color: #c9d1d9;
+            }
+
+            .header-toggle,
+            #filtersToggle {
+                background: #21262d;
+                color: #8b949e;
+                border-color: #30363d;
+            }
+
+            .header-toggle:hover,
+            #filtersToggle:hover {
+                background: #30363d;
+                color: #c9d1d9;
+            }
+
+            .json-content {
+                background: #334155;
             }
 
             .loading {
                 color: #94a3b8;
             }
 
-            .error {
-                background: #450a0a;
-                color: #fca5a5;
+            .search-results-topbar {
+                background: #1e293b;
+                box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
             }
 
-            .stat-item {
-                background: #334155;
-                border-color: #475569;
+            /* 删除按钮暗色模式样式 */
+            .delete-button {
+                background: #21262d !important;
+                border-color: #30363d !important;
+                color: #f85149 !important;
             }
 
-            .stat-number {
-                color: #f1f5f9;
-            }
-
-            .stat-label {
-                color: #94a3b8;
-            }
-
-
-            .github-button {
-                background: rgba(30, 41, 59, 0.8);
-                border-color: #475569;
-                color: #e2e8f0;
-            }
-
-            .github-button:hover {
-                background: rgba(30, 41, 59, 0.95);
-                border-color: #f472b6;
-                color: #f472b6;
+            .delete-button:hover {
+                background: #2d1a1a !important;
+                border-color: #f85149 !important;
             }
         }
 
-        /* JSON Modal Styles */
         .json-modal {
             display: none;
             position: fixed;
@@ -554,7 +1207,7 @@
         }
 
         .json-modal-content {
-            background-color: white;
+            background-color: var(--card);
             margin: 5% auto;
             padding: 0;
             border-radius: 12px;
@@ -568,26 +1221,24 @@
 
         .json-modal-header {
             padding: 20px;
-            border-bottom: 1px solid #e2e8f0;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #f8fafc;
+            background-color: var(--soft);
         }
 
         .json-modal-title {
             font-size: 18px;
             font-weight: 600;
-            color: #1e293b;
+            color: var(--text);
             margin: 0;
         }
 
         .json-modal-close {
             background: none;
-            border: none;
             font-size: 24px;
             cursor: pointer;
-            color: #64748b;
+            color: var(--muted);
             padding: 0;
             width: 30px;
             height: 30px;
@@ -599,8 +1250,8 @@
         }
 
         .json-modal-close:hover {
-            background-color: #e2e8f0;
-            color: #1e293b;
+            background-color: var(--muted);
+            color: var(--text);
         }
 
         .json-modal-body {
@@ -610,8 +1261,7 @@
         }
 
         .json-content {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
+            background: var(--soft);
             border-radius: 8px;
             padding: 16px;
             font-family: 'Monaco', 'Consolas', 'Menlo', monospace;
@@ -619,164 +1269,361 @@
             line-height: 1.5;
             white-space: pre-wrap;
             word-break: break-word;
-            color: #1e293b;
+            color: var(--text);
             overflow-x: auto;
         }
 
-        /* Dark mode for JSON modal */
-        @media (prefers-color-scheme: dark) {
-            .json-modal-content {
-                background-color: #1e293b;
-                color: #e2e8f0;
+        .compare-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .compare-modal-content {
+            background: var(--card);
+            width: 95%;
+            max-width: 1100px;
+            margin: 4% auto;
+            border-radius: 12px;
+            overflow: hidden;
+            max-height: 85vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .compare-modal-header {
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .compare-modal-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .compare-modal-body {
+            overflow: auto;
+        }
+
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .compare-table th,
+        .compare-table td {
+            padding: 12px;
+            text-align: left;
+            font-size: 13px;
+            vertical-align: top;
+        }
+
+        .compare-table th {
+            background: var(--soft);
+            font-weight: 700;
+            color: var(--muted);
+        }
+
+        .compare-modal-footer {
+            padding: 12px 20px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        /* Info Dialog */
+        .info-dialog {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1001;
+        }
+
+        .info-dialog-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+
+        .info-dialog-content {
+            position: relative;
+            background: var(--card);
+            margin: 20vh auto;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .info-dialog.show .info-dialog-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .info-dialog-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background: var(--soft);
+        }
+
+        .info-dialog-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text);
+            margin: 0;
+        }
+
+        .info-dialog-close {
+            width: 32px;
+            height: 32px;
+            background: transparent;
+            border-radius: 8px;
+            color: var(--muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            padding: 0;
+        }
+
+        .info-dialog-close:hover {
+            background: var(--muted);
+            color: var(--text);
+        }
+
+        .info-dialog-body {
+            padding: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+        }
+
+        .info-label {
+            font-weight: 500;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .info-value {
+            font-weight: 600;
+            color: var(--text);
+            font-size: 14px;
+            text-align: right;
+        }
+
+        .desktop-only {
+            display: block;
+        }
+
+        .mobile-only {
+            display: none;
+        }
+
+        .info-button {
+            display: none;
+        }
+
+        @media (max-width: 640px) {
+            .desktop-only {
+                display: none !important;
             }
 
-            .json-modal-header {
-                background-color: #334155;
-                border-bottom-color: #475569;
+            .mobile-only {
+                display: block !important;
             }
 
-            .json-modal-title {
-                color: #f1f5f9;
+            .info-button {
+                display: inline-flex !important;
             }
 
-            .json-modal-close {
-                color: #94a3b8;
-            }
-
-            .json-modal-close:hover {
-                background-color: #475569;
-                color: #e2e8f0;
-            }
-
-            .json-content {
-                background: #334155;
-                border-color: #475569;
-                color: #e2e8f0;
+            .info-dialog-content {
+                margin: 15vh auto;
+                width: 85%;
+                max-width: 320px;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="header">
-            <a href="https://github.com/lollipopkit/or-models-compare" target="_blank" class="github-button">
-                <svg class="github-icon" viewBox="0 0 24 24">
-                    <path d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
-                </svg>
-                GitHub
-            </a>
-            <h1 data-i18n="title">OpenRouter Models Compare</h1>
-
-            <div class="stats" id="stats">
-                <div class="stat-item">
-                    <div class="stat-number" id="totalModels">-</div>
-                    <div class="stat-label" data-i18n="total_models">总模型数</div>
+    <div class="app-shell">
+        <header class="topbar" id="headerCard">
+            <div class="brand">
+                <h1 data-i18n="title">OpenRouter Models Compare</h1>
+            </div>
+            <div class="topbar-actions">
+                <div class="search-box" style="flex: 1; min-width: 260px; max-width: 400px; position: relative;">
+                    <input type="text" id="searchInput" placeholder="搜索模型名称、描述..."
+                        data-i18n="search_placeholder" style="width: 100%;">
+                    <div id="searchResults" class="search-results-topbar"></div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="filteredModels">-</div>
-                    <div class="stat-label" data-i18n="current_display">当前显示</div>
+                <div class="meta-chip desktop-only" aria-live="polite">
+                    <span data-i18n="current_display">当前显示</span>
+                    <strong id="filteredMeta">-</strong>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="lastUpdate">-</div>
-                    <div class="stat-label" data-i18n="last_update">最后更新</div>
+                <div class="meta-chip desktop-only" aria-live="polite">
+                    <span data-i18n="last_update">最后更新</span>
+                    <strong id="lastUpdateMeta">-</strong>
+                </div>
+                <div class="actions-group">
+                    <div id="languageMount"></div>
+                    <button id="infoButton" class="icon-button info-button" aria-label="信息">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                        </svg>
+                    </button>
+                    <a href="https://github.com/lollipopkit/or-models-compare" target="_blank" class="github-button"
+                        aria-label="GitHub">
+                        <svg class="github-icon" viewBox="0 0 24 24">
+                            <path
+                                d="M12 0C5.374 0 0 5.373 0 12 0 17.302 3.438 21.8 8.207 23.387c.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                        </svg>
+                    </a>
                 </div>
             </div>
-        </div>
+        </header>
 
-        <div class="controls">
-            <div class="controls-row">
-                <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="搜索模型名称、描述..." data-i18n="search_placeholder">
-                </div>
-                <div class="filter-group">
-                    <label data-i18n="price_range">价格范围:</label>
-                    <select id="priceFilter">
-                        <option value="" data-i18n="all">全部</option>
-                        <option value="free" data-i18n="free">免费</option>
-                        <option value="low" data-i18n="low">低价 (< $1)</option>
-                        <option value="medium" data-i18n="medium">中价 ($1 - $10)</option>
-                        <option value="high" data-i18n="high">高价 (> $10)</option>
-                    </select>
-                </div>
-                <div class="filter-group">
-                    <label data-i18n="context_length">上下文长度:</label>
-                    <select id="contextFilter">
-                        <option value="" data-i18n="all">全部</option>
-                        <option value="short" data-i18n="short">短 (< 10K)</option>
-                        <option value="medium" data-i18n="medium_ctx">中 (10K - 50K)</option>
-                        <option value="long" data-i18n="long">长 (50K - 200K)</option>
-                        <option value="extra_long" data-i18n="extra_long">超长 (> 200K)</option>
-                    </select>
-                </div>
-            </div>
+        <div class="workspace">
+            <aside class="filters-pane">
+                <div class="card controls" id="viewCard">
+                    <div class="card-header">
+                        <div class="panel-title" data-i18n="view_compare">视图与对比</div>
+                        <button id="viewToggle" class="header-toggle" aria-expanded="true"
+                            aria-controls="viewBody">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon">
+                                <polyline points="6,9 12,15 18,9"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="controls-body" id="viewBody">
+                        <div class="column-options">
+                            <label class="column-option"><input type="checkbox" id="col-name" checked><span
+                                    data-i18n="model_name">模型名称</span></label>
+                            <label class="column-option"><input type="checkbox" id="col-description"><span
+                                    data-i18n="description">描述</span></label>
+                            <label class="column-option"><input type="checkbox" id="col-pricing" checked><span
+                                    data-i18n="price">价格</span></label>
+                            <label class="column-option"><input type="checkbox" id="col-context" checked><span
+                                    data-i18n="context_length">上下文长度</span></label>
+                            <label class="column-option"><input type="checkbox" id="col-provider" checked><span
+                                    data-i18n="provider_info">供应商信息</span></label>
+                            <label class="column-option"><input type="checkbox" id="col-modalities" checked><span
+                                    data-i18n="input_output_modality">输入/输出模态</span></label>
+                            <label class="column-option"><input type="checkbox" id="col-tokenizer"><span
+                                    data-i18n="tokenizer">Tokenizer</span></label>
+                            <label class="column-option"><input type="checkbox" id="col-created" checked><span
+                                    data-i18n="created_time">创建时间</span></label>
+                        </div>
 
-            <div class="column-toggle">
-                <h3 data-i18n="column_settings">显示列设置</h3>
-                <div class="column-options">
-                    <div class="column-option">
-                        <input type="checkbox" id="col-name" checked>
-                        <label for="col-name" data-i18n="model_name">模型名称</label>
+                      </div>
+                </div>
+
+                <div class="card controls" id="controlsCard">
+                    <div class="card-header">
+                        <div class="panel-title" data-i18n="filters">筛选</div>
+                        <button id="filtersToggle" class="header-toggle" aria-expanded="false"
+                            aria-controls="filtersBody">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon chevron-right">
+                                <polyline points="6,9 12,15 18,9"></polyline>
+                            </svg>
+                        </button>
                     </div>
-                    <div class="column-option">
-                        <input type="checkbox" id="col-description">
-                        <label for="col-description" data-i18n="description">描述</label>
-                    </div>
-                    <div class="column-option">
-                        <input type="checkbox" id="col-pricing" checked>
-                        <label for="col-pricing" data-i18n="price">价格</label>
-                    </div>
-                    <div class="column-option">
-                        <input type="checkbox" id="col-context" checked>
-                        <label for="col-context" data-i18n="context_length">上下文长度</label>
-                    </div>
-                    <div class="column-option">
-                        <input type="checkbox" id="col-provider" checked>
-                        <label for="col-provider" data-i18n="provider_info">供应商信息</label>
-                    </div>
-                    <div class="column-option">
-                        <input type="checkbox" id="col-modalities" checked>
-                        <label for="col-modalities" data-i18n="input_output_modality">输入/输出模态</label>
-                    </div>
-                    <div class="column-option">
-                        <input type="checkbox" id="col-tokenizer">
-                        <label for="col-tokenizer" data-i18n="tokenizer">Tokenizer</label>
-                    </div>
-                    <div class="column-option">
-                        <input type="checkbox" id="col-created" checked>
-                        <label for="col-created" data-i18n="created_time">创建时间</label>
+                    <div class="controls-body" id="filtersBody">
+                        <div class="filter-grid">
+                            <div class="filter-group">
+                                <label data-i18n="price_range">价格范围:</label>
+                                <select id="priceFilter">
+                                    <option value="" data-i18n="all">全部</option>
+                                    <option value="free" data-i18n="free">免费</option>
+                                    <option value="low" data-i18n="low">低价 (< $1)</option>
+                                    <option value="medium" data-i18n="medium">中价 ($1 - $10)</option>
+                                    <option value="high" data-i18n="high">高价 (> $10)</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label data-i18n="context_length">上下文长度:</label>
+                                <select id="contextFilter">
+                                    <option value="" data-i18n="all">全部</option>
+                                    <option value="short" data-i18n="short">短 (< 10K)</option>
+                                    <option value="medium" data-i18n="medium_ctx">中 (10K - 50K)</option>
+                                    <option value="long" data-i18n="long">长 (50K - 200K)</option>
+                                    <option value="extra_long" data-i18n="extra_long">超长 (> 200K)</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="inputModalityFilter" data-i18n="input_modality">输入模态:</label>
+                                <select id="inputModalityFilter">
+                                    <option value="" data-i18n="all">全部</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label for="outputModalityFilter" data-i18n="output_modality">输出模态:</label>
+                                <select id="outputModalityFilter">
+                                    <option value="" data-i18n="all">全部</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </aside>
 
-        <div class="table-container">
-            <div id="loading" class="loading" data-i18n="loading">加载中...</div>
-            <div id="error" class="error" style="display: none;"></div>
-            <div class="table-wrapper">
-                <table id="modelsTable" style="display: none;">
-                    <thead>
-                        <tr>
-                            <th class="sortable" data-column="name" data-visible="col-name" data-i18n="model_name">模型名称
-                            </th>
-                            <th data-column="description" data-visible="col-description" data-i18n="description">描述</th>
-                            <th class="sortable" data-column="pricing" data-visible="col-pricing" data-i18n="price">价格
-                                (每百万tokens)</th>
-                            <th class="sortable" data-column="context_length" data-visible="col-context"
-                                data-i18n="context_length">上下文长度</th>
-                            <th data-column="provider" data-visible="col-provider" data-i18n="provider_info">供应商信息</th>
-                            <th data-column="modalities" data-visible="col-modalities"
-                                data-i18n="input_output_modality">输入/输出模态</th>
-                            <th data-column="tokenizer" data-visible="col-tokenizer" data-i18n="tokenizer">Tokenizer
-                            </th>
-                            <th class="sortable" data-column="created" data-visible="col-created"
-                                data-i18n="created_time">创建时间</th>
-                        </tr>
-                    </thead>
-                    <tbody id="modelsBody">
-                    </tbody>
-                </table>
-            </div>
+            <section class="content-pane">
+                <div class="card table-card">
+                    <div class="table-container">
+                        <div id="loading" class="loading" data-i18n="loading">加载中...</div>
+                        <div id="error" class="error" style="display: none;"></div>
+                        <div class="table-wrapper">
+                            <table id="modelsTable" style="display: none;">
+                                <thead>
+                                    <tr>
+                                        <th class="sortable" data-column="name" data-visible="col-name"
+                                            data-i18n="model_name">模型名称</th>
+                                        <th data-column="description" data-visible="col-description"
+                                            data-i18n="description">描述</th>
+                                        <th class="sortable" data-column="pricing" data-visible="col-pricing"
+                                            data-i18n="price">价格 (每百万tokens)</th>
+                                        <th class="sortable" data-column="context_length" data-visible="col-context"
+                                            data-i18n="context_length">上下文长度</th>
+                                        <th data-column="provider" data-visible="col-provider"
+                                            data-i18n="provider_info">供应商信息</th>
+                                        <th data-column="modalities" data-visible="col-modalities"
+                                            data-i18n="input_output_modality">输入/输出模态</th>
+                                        <th data-column="tokenizer" data-visible="col-tokenizer" data-i18n="tokenizer">
+                                            Tokenizer</th>
+                                        <th class="sortable" data-column="created" data-visible="col-created"
+                                            data-i18n="created_time">创建时间</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="modelsBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 
@@ -793,6 +1640,31 @@
         </div>
     </div>
 
+    <!-- Info Dialog -->
+    <div id="infoDialog" class="info-dialog">
+        <div class="info-dialog-overlay"></div>
+        <div class="info-dialog-content">
+            <div class="info-dialog-header">
+                <h3 class="info-dialog-title">信息</h3>
+                <button class="info-dialog-close" aria-label="关闭">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="info-dialog-body">
+                <div class="info-item">
+                    <div class="info-label" data-i18n="current_display">当前显示</div>
+                    <div class="info-value" id="filteredMetaDialog">-</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label" data-i18n="last_update">最后更新</div>
+                    <div class="info-value" id="lastUpdateMetaDialog">-</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         class ModelsManager {
             constructor() {
@@ -800,7 +1672,17 @@
                 this.filteredModels = [];
                 this.sortColumn = '';
                 this.sortDirection = 'asc';
+                this.inputModalities = [];
+                this.outputModalities = [];
+                this.selectedModelIds = new Set();
+                this.compareMode = false;
                 this.i18n = null;
+                this.headerCollapsed = true;
+
+                const isNarrowScreen = window.innerWidth <= 640;
+                this.viewCollapsed = isNarrowScreen;
+                this.filtersCollapsed = isNarrowScreen;
+
                 this.init();
             }
 
@@ -810,7 +1692,6 @@
                     this.i18n.init();
                 } catch (error) {
                     console.warn('Failed to initialize i18n:', error);
-                    // 创建一个简单的回退对象
                     this.i18n = {
                         t: (key) => key,
                         setLanguage: () => { },
@@ -825,13 +1706,47 @@
 
                 this.loadData();
                 this.setupEventListeners();
-                this.loadColumnSettings();
+                setTimeout(() => {
+                    this.setupHeaderCollapse();
+                    this.setupFiltersCollapse();
+                    this.setupViewCollapse();
+                    this.setupResponsiveCollapse();
+                    this.applyViewState();
+                    this.applyFiltersState();
+                    this.loadColumnSettings();
+                }, 10);
+            }
+
+            setupViewCollapse() {
+                const card = document.getElementById('viewCard');
+                const toggle = document.getElementById('viewToggle');
+                const body = document.getElementById('viewBody');
+                if (!card || !toggle || !body) return;
+
+                const applyState = () => {
+                    const collapsed = this.viewCollapsed;
+                    card.classList.toggle('collapsed', collapsed);
+                    toggle.setAttribute('aria-expanded', String(!collapsed));
+                    const icon = toggle.querySelector('.chevron-icon');
+                    if (icon) {
+                        icon.classList.toggle('chevron-right', collapsed);
+                    }
+                    body.style.maxHeight = collapsed ? '0px' : `${body.scrollHeight}px`;
+                    body.style.opacity = collapsed ? '0' : '1';
+                };
+
+                applyState();
+
+                toggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.viewCollapsed = !this.viewCollapsed;
+                    applyState();
+                });
             }
 
             onLanguageChanged() {
-                // 重新渲染表格内容
                 this.renderTable();
-                // 更新选择框的选项文本
+                this.renderModalityFilters();
                 this.updateSelectOptions();
             }
 
@@ -840,7 +1755,6 @@
                     return;
                 }
 
-                // 更新价格过滤器选项
                 const priceFilter = document.getElementById('priceFilter');
                 const priceOptions = priceFilter.querySelectorAll('option');
                 priceOptions[0].textContent = this.i18n.t('all');
@@ -849,7 +1763,6 @@
                 priceOptions[3].textContent = this.i18n.t('medium');
                 priceOptions[4].textContent = this.i18n.t('high');
 
-                // 更新上下文长度过滤器选项
                 const contextFilter = document.getElementById('contextFilter');
                 const contextOptions = contextFilter.querySelectorAll('option');
                 contextOptions[0].textContent = this.i18n.t('all');
@@ -857,11 +1770,19 @@
                 contextOptions[2].textContent = this.i18n.t('medium_ctx');
                 contextOptions[3].textContent = this.i18n.t('long');
                 contextOptions[4].textContent = this.i18n.t('extra_long');
+
+                const inputModalityFilter = document.getElementById('inputModalityFilter');
+                if (inputModalityFilter?.options.length) {
+                    inputModalityFilter.options[0].textContent = this.i18n.t('all');
+                }
+                const outputModalityFilter = document.getElementById('outputModalityFilter');
+                if (outputModalityFilter?.options.length) {
+                    outputModalityFilter.options[0].textContent = this.i18n.t('all');
+                }
             }
 
             async loadData() {
                 try {
-                    // 尝试加载本地数据文件（GitHub Actions生成）
                     const response = await fetch('./models-data.json');
                     if (response.ok) {
                         const data = await response.json();
@@ -871,6 +1792,8 @@
                         await this.fetchFromAPI();
                     }
                     this.filteredModels = [...this.models];
+                    this.extractModalityOptions();
+                    this.renderModalityFilters();
                     this.renderTable();
                     this.updateStats();
                     document.getElementById('loading').style.display = 'none';
@@ -889,15 +1812,57 @@
 
             updateLastUpdateTime(timestamp) {
                 const date = new Date(timestamp || Date.now());
-                document.getElementById('lastUpdate').textContent =
-                    date.toLocaleDateString('zh-CN') + ' ' + date.toLocaleTimeString('zh-CN');
+                const formatted = date.toLocaleDateString('zh-CN') + ' ' + date.toLocaleTimeString('zh-CN');
+                const lastUpdateEl = document.getElementById('lastUpdate');
+                if (lastUpdateEl) {
+                    lastUpdateEl.textContent = formatted;
+                }
+                const lastUpdateMeta = document.getElementById('lastUpdateMeta');
+                if (lastUpdateMeta) {
+                    lastUpdateMeta.textContent = formatted;
+                }
+                const lastUpdateMetaDialog = document.getElementById('lastUpdateMetaDialog');
+                if (lastUpdateMetaDialog) {
+                    lastUpdateMetaDialog.textContent = formatted;
+                }
             }
 
             setupEventListeners() {
-                // 搜索
+                // 搜索 - 只更新悬浮列表，不影响主表格
                 document.getElementById('searchInput').addEventListener('input', (e) => {
-                    this.applyFilters();
+                    this.renderSearchResults(this.getSearchTerm());
                 });
+
+                document.addEventListener('click', (e) => {
+                    const searchBox = document.querySelector('.search-box');
+                    const searchResults = document.getElementById('searchResults');
+                    if (!searchBox.contains(e.target) && searchResults.style.display === 'block') {
+                        searchResults.style.display = 'none';
+                    }
+                });
+
+                const infoButton = document.getElementById('infoButton');
+                if (infoButton) {
+                    infoButton.addEventListener('click', () => {
+                        this.showInfoDialog();
+                    });
+                }
+
+                const infoDialogClose = document.querySelector('.info-dialog-close');
+                if (infoDialogClose) {
+                    infoDialogClose.addEventListener('click', () => {
+                        this.hideInfoDialog();
+                    });
+                }
+
+                const infoDialog = document.getElementById('infoDialog');
+                if (infoDialog) {
+                    infoDialog.addEventListener('click', (e) => {
+                        if (e.target === infoDialog || e.target.classList.contains('info-dialog-overlay')) {
+                            this.hideInfoDialog();
+                        }
+                    });
+                }
 
                 // 过滤器
                 document.getElementById('priceFilter').addEventListener('change', () => {
@@ -905,6 +1870,14 @@
                 });
 
                 document.getElementById('contextFilter').addEventListener('change', () => {
+                    this.applyFilters();
+                });
+
+                document.getElementById('inputModalityFilter').addEventListener('change', () => {
+                    this.applyFilters();
+                });
+
+                document.getElementById('outputModalityFilter').addEventListener('change', () => {
                     this.applyFilters();
                 });
 
@@ -924,10 +1897,64 @@
                 });
             }
 
+            setupHeaderCollapse() {
+                const header = document.getElementById('headerCard');
+                const toggle = document.getElementById('headerToggle');
+                const body = document.getElementById('headerBody');
+                if (!header || !toggle) return;
+
+                const applyState = () => {
+                    header.classList.toggle('collapsed', this.headerCollapsed);
+                    toggle.setAttribute('aria-expanded', String(!this.headerCollapsed));
+                    const icon = toggle.querySelector('.chevron-icon');
+                    if (icon) {
+                        icon.classList.toggle('chevron-right', this.headerCollapsed);
+                    }
+                    if (body) {
+                        body.style.maxHeight = this.headerCollapsed ? '0px' : `${body.scrollHeight}px`;
+                        body.style.opacity = this.headerCollapsed ? '0' : '1';
+                    }
+                };
+
+                applyState();
+                toggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.headerCollapsed = !this.headerCollapsed;
+                    applyState();
+                });
+            }
+
+            setupFiltersCollapse() {
+                const controls = document.getElementById('controlsCard');
+                const toggle = document.getElementById('filtersToggle');
+                const body = document.getElementById('filtersBody');
+                if (!controls || !toggle || !body) return;
+
+                const applyState = () => {
+                    controls.classList.toggle('collapsed', this.filtersCollapsed);
+                    toggle.setAttribute('aria-expanded', String(!this.filtersCollapsed));
+                    const icon = toggle.querySelector('.chevron-icon');
+                    if (icon) {
+                        icon.classList.toggle('chevron-right', this.filtersCollapsed);
+                    }
+                    body.style.maxHeight = this.filtersCollapsed ? '0px' : `${body.scrollHeight}px`;
+                    body.style.opacity = this.filtersCollapsed ? '0' : '1';
+                };
+
+                applyState();
+                toggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.filtersCollapsed = !this.filtersCollapsed;
+                    applyState();
+                });
+            }
+
             applyFilters() {
-                const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+                const searchTerm = this.getSearchTerm();
                 const priceFilter = document.getElementById('priceFilter').value;
                 const contextFilter = document.getElementById('contextFilter').value;
+                const inputModalityFilter = document.getElementById('inputModalityFilter').value;
+                const outputModalityFilter = document.getElementById('outputModalityFilter').value;
 
                 this.filteredModels = this.models.filter(model => {
                     // 搜索过滤
@@ -976,11 +2003,18 @@
                         }
                     }
 
-                    return matchesSearch && matchesPrice && matchesContext;
+                    // 输入/输出模态过滤
+                    const inputs = (model.architecture?.input_modalities || []).map(mod => this.normalizeModality(mod));
+                    const outputs = (model.architecture?.output_modalities || []).map(mod => this.normalizeModality(mod));
+                    const matchesInputModality = !inputModalityFilter || inputs.includes(inputModalityFilter);
+                    const matchesOutputModality = !outputModalityFilter || outputs.includes(outputModalityFilter);
+
+                    return matchesSearch && matchesPrice && matchesContext && matchesInputModality && matchesOutputModality;
                 });
 
                 this.renderTable();
                 this.updateStats();
+                this.renderSearchResults(searchTerm);
             }
 
             sort(column) {
@@ -1041,20 +2075,92 @@
                 const tbody = document.getElementById('modelsBody');
                 tbody.innerHTML = '';
 
-                this.filteredModels.forEach(model => {
+                const inCompareMode = this.compareMode && this.selectedModelIds.size > 0;
+                const displayModels = inCompareMode
+                    ? this.models.filter(m => this.selectedModelIds.has(this.getModelId(m)))
+                    : this.filteredModels;
+
+                displayModels.forEach(model => {
                     const row = document.createElement('tr');
+                    const modelId = this.getModelId(model);
+                    row.dataset.modelId = modelId;
+                    if (this.selectedModelIds.has(modelId)) {
+                        row.classList.add('selected-row');
+                    }
 
                     // 模型名称
                     const nameCell = document.createElement('td');
                     nameCell.className = 'model-name';
-                    nameCell.textContent = model.name || model.id;
+
+                    // 在对比模式下添加删除按钮
+                    if (inCompareMode) {
+                        const nameContainer = document.createElement('div');
+                        nameContainer.style.display = 'flex';
+                        nameContainer.style.alignItems = 'center';
+                        nameContainer.style.justifyContent = 'space-between';
+                        nameContainer.style.gap = '8px';
+
+                        const nameSpan = document.createElement('span');
+                        nameSpan.className = 'cell-text';
+                        nameSpan.textContent = model.name || model.id;
+                        nameSpan.style.flex = '1';
+                        nameContainer.appendChild(nameSpan);
+
+                        const deleteButton = document.createElement('button');
+                        deleteButton.type = 'button';
+                        deleteButton.className = 'delete-button';
+                        deleteButton.innerHTML = '×';
+                        deleteButton.style.width = '20px';
+                        deleteButton.style.height = '20px';
+                        deleteButton.style.borderRadius = '50%';
+                        deleteButton.style.border = '1px solid #d0d7de';
+                        deleteButton.style.backgroundColor = '#fff';
+                        deleteButton.style.color = '#cf222e';
+                        deleteButton.style.fontSize = '14px';
+                        deleteButton.style.fontWeight = 'bold';
+                        deleteButton.style.cursor = 'pointer';
+                        deleteButton.style.display = 'flex';
+                        deleteButton.style.alignItems = 'center';
+                        deleteButton.style.justifyContent = 'center';
+                        deleteButton.style.transition = 'all 0.2s ease';
+                        deleteButton.setAttribute('aria-label', `删除 ${model.name || model.id}`);
+                        deleteButton.title = `删除 ${model.name || model.id}`;
+
+                        deleteButton.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            this.removeFromCompare(modelId);
+                        });
+
+                        deleteButton.addEventListener('mouseenter', () => {
+                            deleteButton.style.backgroundColor = '#ffebe9';
+                            deleteButton.style.borderColor = '#cf222e';
+                        });
+
+                        deleteButton.addEventListener('mouseleave', () => {
+                            deleteButton.style.backgroundColor = '#fff';
+                            deleteButton.style.borderColor = '#d0d7de';
+                        });
+
+                        nameContainer.appendChild(deleteButton);
+                        nameCell.appendChild(nameContainer);
+                    } else {
+                        const nameSpan = document.createElement('span');
+                        nameSpan.className = 'cell-text';
+                        nameSpan.textContent = model.name || model.id;
+                        nameCell.appendChild(nameSpan);
+                    }
+
                     nameCell.dataset.visible = 'col-name';
                     row.appendChild(nameCell);
 
                     // 描述
                     const descCell = document.createElement('td');
                     descCell.className = 'model-description';
-                    descCell.textContent = model.description || '-';
+                    const descText = model.description || '-';
+                    const descSpan = document.createElement('span');
+                    descSpan.className = 'cell-text';
+                    descSpan.textContent = descText;
+                    descCell.appendChild(descSpan);
                     descCell.title = model.description || '';
                     descCell.dataset.visible = 'col-description';
                     row.appendChild(descCell);
@@ -1066,14 +2172,20 @@
                     const completionPrice = model.pricing?.completion || '0';
                     const formattedPromptPrice = this.formatPrice(promptPrice);
                     const formattedCompletionPrice = this.formatPrice(completionPrice);
-                    priceCell.textContent = `${formattedPromptPrice} / ${formattedCompletionPrice}`;
+                    const priceSpan = document.createElement('span');
+                    priceSpan.className = 'cell-text';
+                    priceSpan.textContent = `${formattedPromptPrice} / ${formattedCompletionPrice}`;
+                    priceCell.appendChild(priceSpan);
                     priceCell.dataset.visible = 'col-pricing';
                     row.appendChild(priceCell);
 
                     // 上下文长度
                     const contextCell = document.createElement('td');
                     contextCell.className = 'context-length';
-                    contextCell.textContent = this.formatContextLength(model.context_length);
+                    const contextSpan = document.createElement('span');
+                    contextSpan.className = 'cell-text';
+                    contextSpan.textContent = this.formatContextLength(model.context_length);
+                    contextCell.appendChild(contextSpan);
                     contextCell.dataset.visible = 'col-context';
                     row.appendChild(contextCell);
 
@@ -1093,42 +2205,51 @@
                             providerText += `<span class="moderated">${moderatedText}</span>`;
                         }
                     }
-                    providerCell.innerHTML = providerText;
+                    const providerSpan = document.createElement('div');
+                    providerSpan.className = 'cell-html';
+                    providerSpan.innerHTML = providerText;
+                    providerCell.appendChild(providerSpan);
+                    providerCell.title = providerSpan.textContent || providerText;
                     providerCell.dataset.visible = 'col-provider';
                     row.appendChild(providerCell);
 
                     // 输入/输出模态
                     const modalityCell = document.createElement('td');
-                    if (model.architecture) {
-                        const input = (model.architecture.input_modalities || []).join(', ');
-                        const output = (model.architecture.output_modalities || []).join(', ');
-                        const inputText = (this.i18n && typeof this.i18n.t === 'function')
-                            ? this.i18n.t('input')
-                            : '输入';
-                        const outputText = (this.i18n && typeof this.i18n.t === 'function')
-                            ? this.i18n.t('output')
-                            : '输出';
-                        modalityCell.innerHTML = `<div style="line-height: 1.4; margin-bottom: 2px;">${inputText}: ${input || '-'}</div><div style="line-height: 1.4;">${outputText}: ${output || '-'}</div>`;
-                    } else {
-                        modalityCell.textContent = '-';
-                    }
+                    const inputModalities = model.architecture?.input_modalities || [];
+                    const outputModalities = model.architecture?.output_modalities || [];
+                    const inputLabel = (this.i18n && typeof this.i18n.t === 'function') ? this.i18n.t('input') : '输入';
+                    const outputLabel = (this.i18n && typeof this.i18n.t === 'function') ? this.i18n.t('output') : '输出';
+                    const inputText = inputModalities.length ? inputModalities.join(', ') : '-';
+                    const outputText = outputModalities.length ? outputModalities.join(', ') : '-';
+                    const modalityText = `${inputLabel}: ${inputText} | ${outputLabel}: ${outputText}`;
+                    const modalitySpan = document.createElement('span');
+                    modalitySpan.className = 'cell-text';
+                    modalitySpan.textContent = modalityText;
+                    modalityCell.appendChild(modalitySpan);
+                    modalityCell.title = modalityText;
                     modalityCell.dataset.visible = 'col-modalities';
                     row.appendChild(modalityCell);
 
                     // Tokenizer
                     const tokenizerCell = document.createElement('td');
-                    tokenizerCell.textContent = model.architecture?.tokenizer || '-';
+                    const tokenizerSpan = document.createElement('span');
+                    tokenizerSpan.className = 'cell-text';
+                    tokenizerSpan.textContent = model.architecture?.tokenizer || '-';
+                    tokenizerCell.appendChild(tokenizerSpan);
                     tokenizerCell.dataset.visible = 'col-tokenizer';
                     row.appendChild(tokenizerCell);
 
                     // 创建时间
                     const createdCell = document.createElement('td');
+                    const createdSpan = document.createElement('span');
+                    createdSpan.className = 'cell-text';
                     if (model.created) {
                         const date = new Date(model.created * 1000);
-                        createdCell.textContent = date.toLocaleDateString('zh-CN');
+                        createdSpan.textContent = date.toLocaleDateString('zh-CN');
                     } else {
-                        createdCell.textContent = '-';
+                        createdSpan.textContent = '-';
                     }
+                    createdCell.appendChild(createdSpan);
                     createdCell.dataset.visible = 'col-created';
                     row.appendChild(createdCell);
 
@@ -1141,6 +2262,25 @@
                 });
 
                 this.updateColumnVisibility();
+
+                // 检查表格是否可滚动并添加指示器
+                this.updateScrollIndicator();
+            }
+
+            updateScrollIndicator() {
+                const tableWrapper = document.querySelector('.table-wrapper');
+                const table = document.getElementById('modelsTable');
+
+                if (!tableWrapper || !table || table.style.display === 'none') return;
+
+                // 检查表格是否溢出容器
+                const isScrollable = table.scrollWidth > tableWrapper.clientWidth;
+
+                if (isScrollable) {
+                    tableWrapper.classList.add('scrollable');
+                } else {
+                    tableWrapper.classList.remove('scrollable');
+                }
             }
 
             toggleColumn(columnId, visible) {
@@ -1177,9 +2317,96 @@
                 }
             }
 
+            extractModalityOptions() {
+                const inputSet = new Set();
+                const outputSet = new Set();
+
+                this.models.forEach(model => {
+                    (model.architecture?.input_modalities || []).forEach(mod => {
+                        const normalized = this.normalizeModality(mod);
+                        const raw = (mod || '').toString();
+                        if (normalized) {
+                            inputSet.add(raw.trim());
+                        }
+                    });
+
+                    (model.architecture?.output_modalities || []).forEach(mod => {
+                        const normalized = this.normalizeModality(mod);
+                        const raw = (mod || '').toString();
+                        if (normalized) {
+                            outputSet.add(raw.trim());
+                        }
+                    });
+                });
+
+                this.inputModalities = Array.from(inputSet).sort();
+                this.outputModalities = Array.from(outputSet).sort();
+            }
+
+            renderModalityFilters() {
+                const allText = (this.i18n && typeof this.i18n.t === 'function')
+                    ? this.i18n.t('all')
+                    : '全部';
+
+                const inputSelect = document.getElementById('inputModalityFilter');
+                if (inputSelect) {
+                    const currentValue = inputSelect.value;
+                    inputSelect.innerHTML = '';
+                    const defaultOption = document.createElement('option');
+                    defaultOption.value = '';
+                    defaultOption.textContent = allText;
+                    inputSelect.appendChild(defaultOption);
+
+                    this.inputModalities.forEach(mod => {
+                        const option = document.createElement('option');
+                        option.value = this.normalizeModality(mod);
+                        option.textContent = mod;
+                        inputSelect.appendChild(option);
+                    });
+
+                    if (currentValue && this.inputModalities.some(mod => this.normalizeModality(mod) === currentValue)) {
+                        inputSelect.value = currentValue;
+                    }
+                }
+
+                const outputSelect = document.getElementById('outputModalityFilter');
+                if (outputSelect) {
+                    const currentValue = outputSelect.value;
+                    outputSelect.innerHTML = '';
+                    const defaultOption = document.createElement('option');
+                    defaultOption.value = '';
+                    defaultOption.textContent = allText;
+                    outputSelect.appendChild(defaultOption);
+
+                    this.outputModalities.forEach(mod => {
+                        const option = document.createElement('option');
+                        option.value = this.normalizeModality(mod);
+                        option.textContent = mod;
+                        outputSelect.appendChild(option);
+                    });
+
+                    if (currentValue && this.outputModalities.some(mod => this.normalizeModality(mod) === currentValue)) {
+                        outputSelect.value = currentValue;
+                    }
+                }
+            }
+
             updateStats() {
-                document.getElementById('totalModels').textContent = this.models.length;
-                document.getElementById('filteredModels').textContent = this.filteredModels.length;
+                const total = this.models.length;
+                const filtered = this.filteredModels.length;
+                const totalEl = document.getElementById('totalModels');
+                const filteredEl = document.getElementById('filteredModels');
+                if (totalEl) totalEl.textContent = total;
+                if (filteredEl) filteredEl.textContent = filtered;
+
+                const filteredMeta = document.getElementById('filteredMeta');
+                if (filteredMeta) filteredMeta.textContent = filtered;
+
+                const filteredMetaDialog = document.getElementById('filteredMetaDialog');
+                if (filteredMetaDialog) filteredMetaDialog.textContent = filtered;
+
+                const toolbarCount = document.getElementById('toolbarCount');
+                if (toolbarCount) toolbarCount.textContent = filtered;
             }
 
             showError(message) {
@@ -1218,15 +2445,201 @@
                 return `$${pricePerMillion.toFixed(2)}`;
             }
 
+            normalizeModality(modality) {
+                return (modality || '').toString().trim().toLowerCase();
+            }
+
+            getModelId(model) {
+                return model.id || model.name || model.slug || '';
+            }
+
+            addToCompare(modelId) {
+                if (!modelId) return;
+                this.selectedModelIds.add(modelId);
+                this.updateCompareState();
+                this.renderTable();
+                this.renderSearchResults(this.getSearchTerm());
+            }
+
+            removeFromCompare(modelId) {
+                if (!modelId) return;
+                this.selectedModelIds.delete(modelId);
+                this.updateCompareState();
+                this.renderTable();
+                this.renderSearchResults(this.getSearchTerm());
+            }
+
+            updateCompareState() {
+                this.compareMode = this.selectedModelIds.size > 0;
+            }
+
+            renderSearchResults(searchTerm) {
+                const container = document.getElementById('searchResults');
+                if (!container) return;
+                container.innerHTML = '';
+
+                if (!searchTerm) {
+                    container.style.display = 'none';
+                    return;
+                }
+
+                // 从所有模型中搜索匹配项，不依赖当前筛选结果
+                const allMatches = this.models.filter(model => {
+                    const modelName = (model.name || model.id || '').toLowerCase();
+                    const description = (model.description || '').toLowerCase();
+                    return modelName.includes(searchTerm) || description.includes(searchTerm);
+                });
+
+                const matches = allMatches.slice(0, 10);
+                matches.forEach(model => {
+                    const modelId = this.getModelId(model);
+                    const item = document.createElement('div');
+                    item.className = 'search-result-item';
+
+                    const name = document.createElement('div');
+                    name.className = 'search-result-name';
+                    name.textContent = model.name || modelId;
+                    item.appendChild(name);
+
+                    const actionButton = document.createElement('button');
+                    actionButton.type = 'button';
+                    const inSelected = this.selectedModelIds.has(modelId);
+                    if (inSelected) {
+                        actionButton.className = 'clear-button';
+                        actionButton.textContent = (this.i18n && typeof this.i18n.t === 'function')
+                            ? this.i18n.t('remove') || '删除'
+                            : '删除';
+                        actionButton.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            this.removeFromCompare(modelId);
+                        });
+                    } else {
+                        actionButton.className = 'compare-button';
+                        actionButton.textContent = (this.i18n && typeof this.i18n.t === 'function')
+                            ? this.i18n.t('compare')
+                            : 'Compare';
+                        actionButton.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            this.addToCompare(modelId);
+                        });
+                    }
+
+                    item.appendChild(actionButton);
+                    item.addEventListener('click', () => {
+                        this.showModelJson(model);
+                    });
+
+                    container.appendChild(item);
+                });
+
+                container.style.display = matches.length ? 'block' : 'none';
+            }
+
+            setupResponsiveCollapse() {
+                const handleResize = () => {
+                    const isNarrowScreen = window.innerWidth <= 640;
+                    const shouldCollapseView = isNarrowScreen;
+                    const shouldCollapseFilters = isNarrowScreen;
+
+                    // 只有在屏幕宽度跨越边界时才改变状态
+                    if (this.viewCollapsed !== shouldCollapseView) {
+                        this.viewCollapsed = shouldCollapseView;
+                        this.applyViewState();
+                    }
+
+                    if (this.filtersCollapsed !== shouldCollapseFilters) {
+                        this.filtersCollapsed = shouldCollapseFilters;
+                        this.applyFiltersState();
+                    }
+                };
+
+                // 防抖处理，避免频繁触发
+                let resizeTimeout;
+                const debouncedResize = () => {
+                    clearTimeout(resizeTimeout);
+                    resizeTimeout = setTimeout(() => {
+                        handleResize();
+                        this.updateScrollIndicator();
+                    }, 150);
+                };
+
+                window.addEventListener('resize', debouncedResize);
+            }
+
+            applyViewState() {
+                const card = document.getElementById('viewCard');
+                const toggle = document.getElementById('viewToggle');
+                const body = document.getElementById('viewBody');
+                if (!card || !toggle || !body) return;
+
+                const collapsed = this.viewCollapsed;
+                card.classList.toggle('collapsed', collapsed);
+                toggle.setAttribute('aria-expanded', String(!collapsed));
+                const icon = toggle.querySelector('.chevron-icon');
+                if (icon) {
+                    icon.classList.toggle('chevron-right', collapsed);
+                }
+
+                if (collapsed) {
+                    body.style.maxHeight = '0px';
+                    body.style.opacity = '0';
+                } else {
+                    // 确保内容可见时能正确计算高度
+                    body.style.maxHeight = 'none';
+                    const height = body.scrollHeight;
+                    body.style.maxHeight = '0px';
+                    // 使用requestAnimationFrame确保动画流畅
+                    requestAnimationFrame(() => {
+                        body.style.maxHeight = `${height}px`;
+                        body.style.opacity = '1';
+                    });
+                }
+            }
+
+            applyFiltersState() {
+                const controls = document.getElementById('controlsCard');
+                const toggle = document.getElementById('filtersToggle');
+                const body = document.getElementById('filtersBody');
+                if (!controls || !toggle || !body) return;
+
+                const collapsed = this.filtersCollapsed;
+                controls.classList.toggle('collapsed', collapsed);
+                toggle.setAttribute('aria-expanded', String(!collapsed));
+                const icon = toggle.querySelector('.chevron-icon');
+                if (icon) {
+                    icon.classList.toggle('chevron-right', collapsed);
+                }
+
+                if (collapsed) {
+                    body.style.maxHeight = '0px';
+                    body.style.opacity = '0';
+                } else {
+                    // 确保内容可见时能正确计算高度
+                    body.style.maxHeight = 'none';
+                    const height = body.scrollHeight;
+                    body.style.maxHeight = '0px';
+                    // 使用requestAnimationFrame确保动画流畅
+                    requestAnimationFrame(() => {
+                        body.style.maxHeight = `${height}px`;
+                        body.style.opacity = '1';
+                    });
+                }
+            }
+
+          getSearchTerm() {
+                const input = document.getElementById('searchInput');
+                return (input?.value || '').toLowerCase();
+            }
+
             showModelJson(model) {
                 const modal = document.getElementById('jsonModal');
                 const modelName = document.getElementById('jsonModalTitle');
                 const jsonContent = document.getElementById('jsonContent');
-                
+
                 modelName.textContent = model.name || model.id;
                 jsonContent.textContent = JSON.stringify(model, null, 2);
                 modal.style.display = 'block';
-                
+
                 // 阻止事件冒泡
                 modal.addEventListener('click', (e) => {
                     if (e.target === modal) {
@@ -1239,16 +2652,47 @@
                 const modal = document.getElementById('jsonModal');
                 modal.style.display = 'none';
             }
+
+            showInfoDialog() {
+                const dialog = document.getElementById('infoDialog');
+                if (dialog) {
+                    dialog.style.display = 'block';
+                    // 触发动画
+                    setTimeout(() => {
+                        dialog.classList.add('show');
+                    }, 10);
+
+                    // 防止背景滚动
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            hideInfoDialog() {
+                const dialog = document.getElementById('infoDialog');
+                if (dialog) {
+                    dialog.classList.remove('show');
+                    setTimeout(() => {
+                        dialog.style.display = 'none';
+                        // 恢复背景滚动
+                        document.body.style.overflow = '';
+                    }, 300);
+                }
+            }
         }
 
         // 初始化应用
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('DOM loaded, initializing ModelsManager...');
+            console.log('DOM loaded, initializing...');
             try {
+                // 初始化粒子系统
+                document.particleSystem = new ParticleSystem('html-root');
+                console.log('ParticleSystem initialized successfully');
+
+                // 初始化主应用
                 document.modelsManager = new ModelsManager();
                 console.log('ModelsManager initialized successfully');
             } catch (error) {
-                console.error('Failed to initialize ModelsManager:', error);
+                console.error('Failed to initialize application:', error);
             }
         });
 
@@ -1256,6 +2700,7 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && document.modelsManager) {
                 document.modelsManager.hideModelJson();
+                document.modelsManager.hideInfoDialog();
             }
         });
 
