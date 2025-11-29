@@ -263,7 +263,9 @@
       "supported_parameters": [
         "max_tokens",
         "response_format",
-        "structured_outputs"
+        "structured_outputs",
+        "tool_choice",
+        "tools"
       ],
       "default_parameters": {
         "temperature": 0.0645,
@@ -16710,7 +16712,7 @@
       "default_parameters": {}
     }
   ],
-  "lastUpdate": "2025-11-28T12:15:08.035Z",
+  "lastUpdate": "2025-11-29T01:58:46.781Z",
   "generatedBy": "GitHub Actions",
   "totalModels": 330
 }
