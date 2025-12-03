@@ -1,9 +1,166 @@
 {
   "data": [
     {
+      "id": "amazon/nova-2-lite-v1:free",
+      "canonical_slug": "amazon/nova-2-lite-v1",
+      "hugging_face_id": "",
+      "name": "Amazon: Nova 2 Lite (free)",
+      "created": 1764696672,
+      "description": "Nova 2 Lite is a fast, cost-effective reasoning model for everyday workloads that can process text, images, and videos to generate text. \n\nNova 2 Lite demonstrates standout capabilities in processing documents, extracting information from videos, generating code, providing accurate grounded answers, and automating multi-step agentic workflows.",
+      "context_length": 1000000,
+      "architecture": {
+        "modality": "text+image->text",
+        "input_modalities": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Nova",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0",
+        "completion": "0",
+        "request": "0",
+        "image": "0",
+        "web_search": "0",
+        "internal_reasoning": "0"
+      },
+      "top_provider": {
+        "context_length": 1000000,
+        "max_completion_tokens": null,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "include_reasoning",
+        "max_tokens",
+        "reasoning",
+        "seed",
+        "stop",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_p"
+      ],
+      "default_parameters": {
+        "temperature": null,
+        "top_p": null,
+        "frequency_penalty": null
+      }
+    },
+    {
+      "id": "amazon/nova-2-lite-v1",
+      "canonical_slug": "amazon/nova-2-lite-v1",
+      "hugging_face_id": "",
+      "name": "Amazon: Nova 2 Lite",
+      "created": 1764696672,
+      "description": "Nova 2 Lite is a fast, cost-effective reasoning model for everyday workloads that can process text, images, and videos to generate text. \n\nNova 2 Lite demonstrates standout capabilities in processing documents, extracting information from videos, generating code, providing accurate grounded answers, and automating multi-step agentic workflows.",
+      "context_length": 1000000,
+      "architecture": {
+        "modality": "text+image->text",
+        "input_modalities": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Nova",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.0000003",
+        "completion": "0.0000025",
+        "request": "0",
+        "image": "0",
+        "web_search": "0",
+        "internal_reasoning": "0"
+      },
+      "top_provider": {
+        "context_length": 1000000,
+        "max_completion_tokens": null,
+        "is_moderated": true
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "include_reasoning",
+        "max_tokens",
+        "reasoning",
+        "stop",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_p"
+      ],
+      "default_parameters": {
+        "temperature": null,
+        "top_p": null,
+        "frequency_penalty": null
+      }
+    },
+    {
+      "id": "mistralai/mistral-large-2512",
+      "canonical_slug": "mistralai/mistral-large-2512",
+      "hugging_face_id": "",
+      "name": "Mistral: Mistral Large 3 2512",
+      "created": 1764624472,
+      "description": "Mistral Large 3 2512 is Mistral’s most capable model to date, featuring a sparse mixture-of-experts architecture with 41B active parameters (675B total), and released under the Apache 2.0 license.",
+      "context_length": 262144,
+      "architecture": {
+        "modality": "text+image->text",
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Mistral",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.0000005",
+        "completion": "0.0000015",
+        "request": "0",
+        "image": "0",
+        "web_search": "0",
+        "internal_reasoning": "0"
+      },
+      "top_provider": {
+        "context_length": 262144,
+        "max_completion_tokens": null,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "max_tokens",
+        "presence_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_p"
+      ],
+      "default_parameters": {
+        "temperature": 0.0645,
+        "top_p": null,
+        "frequency_penalty": null
+      }
+    },
+    {
       "id": "arcee-ai/trinity-mini:free",
       "canonical_slug": "arcee-ai/trinity-mini-20251201",
-      "hugging_face_id": "",
+      "hugging_face_id": "arcee-ai/Trinity-Mini",
       "name": "Arcee AI: Trinity Mini (free)",
       "created": 1764601720,
       "description": "Trinity Mini is a 26B-parameter (3B active) sparse mixture-of-experts language model featuring 128 experts with 8 active per token. Engineered for efficient reasoning over long contexts (131k) with robust function calling and multi-step agent workflows.",
@@ -54,7 +211,7 @@
     {
       "id": "arcee-ai/trinity-mini",
       "canonical_slug": "arcee-ai/trinity-mini-20251201",
-      "hugging_face_id": "",
+      "hugging_face_id": "arcee-ai/Trinity-Mini",
       "name": "Arcee AI: Trinity Mini",
       "created": 1764601720,
       "description": "Trinity Mini is a 26B-parameter (3B active) sparse mixture-of-experts language model featuring 128 experts with 8 active per token. Engineered for efficient reasoning over long contexts (131k) with robust function calling and multi-step agent workflows.",
@@ -443,57 +600,10 @@
       }
     },
     {
-      "id": "openrouter/bert-nebulon-alpha",
-      "canonical_slug": "openrouter/bert-nebulon-alpha",
-      "hugging_face_id": "",
-      "name": "Bert-Nebulon Alpha",
-      "created": 1764005058,
-      "description": "This is a cloaked model provided to the community to gather feedback. A general-purpose multimodal model (text/image in, text out) designed for reliability, long-context comprehension, and adaptive logic. It is engineered for production-grade assistants, retrieval-augmented systems, science workloads, and complex agentic workflows.\n\n**Note:** All prompts and completions for this model are logged by the provider and may be used to improve the model.",
-      "context_length": 256000,
-      "architecture": {
-        "modality": "text+image->text",
-        "input_modalities": [
-          "text",
-          "image"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Other",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0",
-        "completion": "0",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
-      },
-      "top_provider": {
-        "context_length": 256000,
-        "max_completion_tokens": null,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "max_tokens",
-        "response_format",
-        "structured_outputs",
-        "tool_choice",
-        "tools"
-      ],
-      "default_parameters": {
-        "temperature": 0.0645,
-        "top_p": null,
-        "frequency_penalty": null
-      }
-    },
-    {
-      "id": "allenai/olmo-3-32b-think",
+      "id": "allenai/olmo-3-32b-think:free",
       "canonical_slug": "allenai/olmo-3-32b-think-20251121",
       "hugging_face_id": "allenai/Olmo-3-32B-Think",
-      "name": "AllenAI: Olmo 3 32B Think",
+      "name": "AllenAI: Olmo 3 32B Think (free)",
       "created": 1763758276,
       "description": "Olmo 3 32B Think is a large-scale, 32-billion-parameter model purpose-built for deep reasoning, complex logic chains and advanced instruction-following scenarios. Its capacity enables strong performance on demanding evaluation tasks and highly nuanced conversational reasoning. Developed by Ai2 under the Apache 2.0 license, Olmo 3 32B Think embodies the Olmo initiative’s commitment to openness, offering full transparency across weights, code and training methodology.",
       "context_length": 65536,
@@ -509,8 +619,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000003",
-        "completion": "0.00000055",
+        "prompt": "0",
+        "completion": "0",
         "request": "0",
         "image": "0",
         "web_search": "0",
@@ -2766,16 +2876,17 @@
         "instruct_type": "deepseek-v3.1"
       },
       "pricing": {
-        "prompt": "0.000000216",
-        "completion": "0.000000328",
+        "prompt": "0.00000021",
+        "completion": "0.00000032",
         "request": "0",
         "image": "0",
         "web_search": "0",
-        "internal_reasoning": "0"
+        "internal_reasoning": "0",
+        "input_cache_read": "0.000000168"
       },
       "top_provider": {
         "context_length": 163840,
-        "max_completion_tokens": 65536,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -3285,13 +3396,13 @@
       }
     },
     {
-      "id": "deepseek/deepseek-v3.1-terminus:exacto",
+      "id": "deepseek/deepseek-v3.1-terminus",
       "canonical_slug": "deepseek/deepseek-v3.1-terminus",
       "hugging_face_id": "deepseek-ai/DeepSeek-V3.1-Terminus",
-      "name": "DeepSeek: DeepSeek V3.1 Terminus (exacto)",
+      "name": "DeepSeek: DeepSeek V3.1 Terminus",
       "created": 1758548275,
       "description": "DeepSeek-V3.1 Terminus is an update to [DeepSeek V3.1](/deepseek/deepseek-chat-v3.1) that maintains the model's original capabilities while addressing issues reported by users, including language consistency and agent capabilities, further optimizing the model's performance in coding and search agents. It is a large hybrid reasoning model (671B parameters, 37B active) that supports both thinking and non-thinking modes. It extends the DeepSeek-V3 base with a two-phase long-context training process, reaching up to 128K tokens, and uses FP8 microscaling for efficient inference. Users can control the reasoning behaviour with the `reasoning` `enabled` boolean. [Learn more in our docs](https://openrouter.ai/docs/use-cases/reasoning-tokens#enable-reasoning-with-default-config)\n\nThe model improves tool use, code generation, and reasoning efficiency, achieving performance comparable to DeepSeek-R1 on difficult benchmarks while responding more quickly. It supports structured tool calling, code agents, and search agents, making it suitable for research, coding, and agentic workflows. ",
-      "context_length": 131072,
+      "context_length": 163840,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -3304,16 +3415,17 @@
         "instruct_type": "deepseek-v3.1"
       },
       "pricing": {
-        "prompt": "0.000000216",
-        "completion": "0.0000008",
+        "prompt": "0.00000021",
+        "completion": "0.00000079",
         "request": "0",
         "image": "0",
         "web_search": "0",
-        "internal_reasoning": "0"
+        "internal_reasoning": "0",
+        "input_cache_read": "0.000000168"
       },
       "top_provider": {
-        "context_length": 131072,
-        "max_completion_tokens": 65536,
+        "context_length": 163840,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -3342,10 +3454,10 @@
       }
     },
     {
-      "id": "deepseek/deepseek-v3.1-terminus",
+      "id": "deepseek/deepseek-v3.1-terminus:exacto",
       "canonical_slug": "deepseek/deepseek-v3.1-terminus",
       "hugging_face_id": "deepseek-ai/DeepSeek-V3.1-Terminus",
-      "name": "DeepSeek: DeepSeek V3.1 Terminus",
+      "name": "DeepSeek: DeepSeek V3.1 Terminus (exacto)",
       "created": 1758548275,
       "description": "DeepSeek-V3.1 Terminus is an update to [DeepSeek V3.1](/deepseek/deepseek-chat-v3.1) that maintains the model's original capabilities while addressing issues reported by users, including language consistency and agent capabilities, further optimizing the model's performance in coding and search agents. It is a large hybrid reasoning model (671B parameters, 37B active) that supports both thinking and non-thinking modes. It extends the DeepSeek-V3 base with a two-phase long-context training process, reaching up to 128K tokens, and uses FP8 microscaling for efficient inference. Users can control the reasoning behaviour with the `reasoning` `enabled` boolean. [Learn more in our docs](https://openrouter.ai/docs/use-cases/reasoning-tokens#enable-reasoning-with-default-config)\n\nThe model improves tool use, code generation, and reasoning efficiency, achieving performance comparable to DeepSeek-R1 on difficult benchmarks while responding more quickly. It supports structured tool calling, code agents, and search agents, making it suitable for research, coding, and agentic workflows. ",
       "context_length": 131072,
@@ -8314,7 +8426,7 @@
       "hugging_face_id": "",
       "name": "Arcee AI: Spotlight",
       "created": 1746481552,
-      "description": "Spotlight is a 7‑billion‑parameter vision‑language model derived from Qwen 2.5‑VL and fine‑tuned by Arcee AI for tight image‑text grounding tasks. It offers a 32 k‑token context window, enabling rich multimodal conversations that combine lengthy documents with one or more images. Training emphasized fast inference on consumer GPUs while retaining strong captioning, visual‐question‑answering, and diagram‑analysis accuracy. As a result, Spotlight slots neatly into agent workflows where screenshots, charts or UI mock‑ups need to be interpreted on the fly. Early benchmarks show it matching or out‑scoring larger VLMs such as LLaVA‑1.6 13 B on popular VQA and POPE alignment tests. ",
+      "description": "Spotlight is a 7‑billion‑parameter vision‑language model derived from Qwen 2.5‑VL and fine���tuned by Arcee AI for tight image‑text grounding tasks. It offers a 32 k‑token context window, enabling rich multimodal conversations that combine lengthy documents with one or more images. Training emphasized fast inference on consumer GPUs while retaining strong captioning, visual‐question‑answering, and diagram‑analysis accuracy. As a result, Spotlight slots neatly into agent workflows where screenshots, charts or UI mock‑ups need to be interpreted on the fly. Early benchmarks show it matching or out‑scoring larger VLMs such as LLaVA‑1.6 13 B on popular VQA and POPE alignment tests. ",
       "context_length": 131072,
       "architecture": {
         "modality": "text+image->text",
@@ -16876,7 +16988,7 @@
       "default_parameters": {}
     }
   ],
-  "lastUpdate": "2025-12-02T02:04:14.739Z",
+  "lastUpdate": "2025-12-03T02:03:35.871Z",
   "generatedBy": "GitHub Actions",
-  "totalModels": 333
+  "totalModels": 335
 }
