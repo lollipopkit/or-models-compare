@@ -1,6 +1,58 @@
 {
   "data": [
     {
+      "id": "mistralai/devstral-2512:free",
+      "canonical_slug": "mistralai/devstral-2512",
+      "hugging_face_id": "mistralai/Devstral-2-123B-Instruct-2512",
+      "name": "Mistral: Devstral 2 2512 (free)",
+      "created": 1765285419,
+      "description": "Devstral 2 is a state-of-the-art open-source model by Mistral AI specializing in agentic coding. It is a 123B-parameter dense transformer model supporting a 256K context window.\n\nDevstral 2 supports exploring codebases and orchestrating changes across multiple files while maintaining architecture-level context. It tracks framework dependencies, detects failures, and retries with corrections—solving challenges like bug fixing and modernizing legacy systems. The model can be fine-tuned to prioritize specific languages or optimize for large enterprise codebases. It is available under a modified MIT license.",
+      "context_length": 262144,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Mistral",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0",
+        "completion": "0",
+        "request": "0",
+        "image": "0",
+        "web_search": "0",
+        "internal_reasoning": "0"
+      },
+      "top_provider": {
+        "context_length": 262144,
+        "max_completion_tokens": null,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "max_tokens",
+        "presence_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_p"
+      ],
+      "default_parameters": {
+        "temperature": 0.3,
+        "top_p": null,
+        "frequency_penalty": null
+      }
+    },
+    {
       "id": "relace/relace-search",
       "canonical_slug": "relace/relace-search-20251208",
       "hugging_face_id": null,
@@ -86,10 +138,22 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "frequency_penalty",
         "include_reasoning",
+        "logit_bias",
         "max_tokens",
+        "min_p",
+        "presence_penalty",
         "reasoning",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
         "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
         "top_p"
       ],
       "default_parameters": {
@@ -638,11 +702,12 @@
         "request": "0",
         "image": "0",
         "web_search": "0",
-        "internal_reasoning": "0"
+        "internal_reasoning": "0",
+        "input_cache_read": "0"
       },
       "top_provider": {
         "context_length": 131072,
-        "max_completion_tokens": null,
+        "max_completion_tokens": 131072,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -706,8 +771,10 @@
       "supported_parameters": [
         "frequency_penalty",
         "include_reasoning",
+        "logit_bias",
         "logprobs",
         "max_tokens",
+        "min_p",
         "presence_penalty",
         "reasoning",
         "repetition_penalty",
@@ -2114,7 +2181,7 @@
       "name": "MiniMax: MiniMax M2",
       "created": 1761252093,
       "description": "MiniMax-M2 is a compact, high-efficiency large language model optimized for end-to-end coding and agentic workflows. With 10 billion activated parameters (230 billion total), it delivers near-frontier intelligence across general reasoning, tool use, and multi-step task execution while maintaining low latency and deployment efficiency.\n\nThe model excels in code generation, multi-file editing, compile-run-fix loops, and test-validated repair, showing strong results on SWE-Bench Verified, Multi-SWE-Bench, and Terminal-Bench. It also performs competitively in agentic evaluations such as BrowseComp and GAIA, effectively handling long-horizon planning, retrieval, and recovery from execution errors.\n\nBenchmarked by [Artificial Analysis](https://artificialanalysis.ai/models/minimax-m2), MiniMax-M2 ranks among the top open-source models for composite intelligence, spanning mathematics, science, and instruction-following. Its small activation footprint enables fast inference, high concurrency, and improved unit economics, making it well-suited for large-scale agents, developer assistants, and reasoning-driven applications that require responsiveness and cost efficiency.\n\nTo avoid degrading this model's performance, MiniMax highly recommends preserving reasoning between turns. Learn more about using reasoning_details to pass back reasoning in our [docs](https://openrouter.ai/docs/use-cases/reasoning-tokens#preserving-reasoning-blocks).",
-      "context_length": 204800,
+      "context_length": 262144,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -2127,16 +2194,17 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.000000255",
+        "prompt": "0.000000254",
         "completion": "0.00000102",
         "request": "0",
         "image": "0",
         "web_search": "0",
-        "internal_reasoning": "0"
+        "internal_reasoning": "0",
+        "input_cache_read": "0.000000127"
       },
       "top_provider": {
-        "context_length": 204800,
-        "max_completion_tokens": 131072,
+        "context_length": 262144,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -5112,7 +5180,7 @@
       "name": "DeepSeek: DeepSeek V3.1",
       "created": 1755779628,
       "description": "DeepSeek-V3.1 is a large hybrid reasoning model (671B parameters, 37B active) that supports both thinking and non-thinking modes via prompt templates. It extends the DeepSeek-V3 base with a two-phase long-context training process, reaching up to 128K tokens, and uses FP8 microscaling for efficient inference. Users can control the reasoning behaviour with the `reasoning` `enabled` boolean. [Learn more in our docs](https://openrouter.ai/docs/use-cases/reasoning-tokens#enable-reasoning-with-default-config)\n\nThe model improves tool use, code generation, and reasoning efficiency, achieving performance comparable to DeepSeek-R1 on difficult benchmarks while responding more quickly. It supports structured tool calling, code agents, and search agents, making it suitable for research, coding, and agentic workflows. \n\nIt succeeds the [DeepSeek V3-0324](/deepseek/deepseek-chat-v3-0324) model and performs well on a variety of tasks.",
-      "context_length": 163840,
+      "context_length": 8192,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -5125,16 +5193,16 @@
         "instruct_type": "deepseek-v3.1"
       },
       "pricing": {
-        "prompt": "0.0000002",
-        "completion": "0.0000008",
+        "prompt": "0.00000015",
+        "completion": "0.00000075",
         "request": "0",
         "image": "0",
         "web_search": "0",
         "internal_reasoning": "0"
       },
       "top_provider": {
-        "context_length": 163840,
-        "max_completion_tokens": 163840,
+        "context_length": 8192,
+        "max_completion_tokens": 7168,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -10380,7 +10448,7 @@
       "name": "DeepSeek: DeepSeek V3 0324",
       "created": 1742824755,
       "description": "DeepSeek V3, a 685B-parameter, mixture-of-experts model, is the latest iteration of the flagship chat model family from the DeepSeek team.\n\nIt succeeds the [DeepSeek V3](/deepseek/deepseek-chat-v3) model and performs really well on a variety of tasks.",
-      "context_length": 8192,
+      "context_length": 163840,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -10393,16 +10461,17 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000015",
-        "completion": "0.0000007",
+        "prompt": "0.0000002",
+        "completion": "0.00000088",
         "request": "0",
         "image": "0",
         "web_search": "0",
-        "internal_reasoning": "0"
+        "internal_reasoning": "0",
+        "input_cache_read": "0.000000106"
       },
       "top_provider": {
-        "context_length": 8192,
-        "max_completion_tokens": 7168,
+        "context_length": 163840,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -10958,15 +11027,12 @@
       },
       "top_provider": {
         "context_length": 131072,
-        "max_completion_tokens": null,
+        "max_completion_tokens": 8192,
         "is_moderated": false
       },
       "per_request_limits": null,
       "supported_parameters": [
-        "frequency_penalty",
         "max_tokens",
-        "presence_penalty",
-        "repetition_penalty",
         "response_format",
         "seed",
         "stop",
@@ -10997,8 +11063,8 @@
         "instruct_type": "gemma"
       },
       "pricing": {
-        "prompt": "0.00000005",
-        "completion": "0.00000022",
+        "prompt": "0.00000004",
+        "completion": "0.00000015",
         "request": "0",
         "image": "0",
         "web_search": "0",
@@ -17214,7 +17280,7 @@
       "default_parameters": {}
     }
   ],
-  "lastUpdate": "2025-12-09T02:04:51.013Z",
+  "lastUpdate": "2025-12-10T02:07:03.205Z",
   "generatedBy": "GitHub Actions",
-  "totalModels": 339
+  "totalModels": 340
 }
