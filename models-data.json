@@ -53,6 +53,60 @@
       }
     },
     {
+      "id": "mistralai/devstral-2512",
+      "canonical_slug": "mistralai/devstral-2512",
+      "hugging_face_id": "mistralai/Devstral-2-123B-Instruct-2512",
+      "name": "Mistral: Devstral 2 2512",
+      "created": 1765285419,
+      "description": "Devstral 2 is a state-of-the-art open-source model by Mistral AI specializing in agentic coding. It is a 123B-parameter dense transformer model supporting a 256K context window.\n\nDevstral 2 supports exploring codebases and orchestrating changes across multiple files while maintaining architecture-level context. It tracks framework dependencies, detects failures, and retries with corrections—solving challenges like bug fixing and modernizing legacy systems. The model can be fine-tuned to prioritize specific languages or optimize for large enterprise codebases. It is available under a modified MIT license.",
+      "context_length": 262144,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Mistral",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.00000015",
+        "completion": "0.0000006",
+        "request": "0",
+        "image": "0",
+        "web_search": "0",
+        "internal_reasoning": "0"
+      },
+      "top_provider": {
+        "context_length": 262144,
+        "max_completion_tokens": 65536,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "max_tokens",
+        "presence_penalty",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_p"
+      ],
+      "default_parameters": {
+        "temperature": 0.3,
+        "top_p": null,
+        "frequency_penalty": null
+      }
+    },
+    {
       "id": "relace/relace-search",
       "canonical_slug": "relace/relace-search-20251208",
       "hugging_face_id": null,
@@ -159,6 +213,59 @@
       "default_parameters": {
         "temperature": 0.8,
         "top_p": 0.6,
+        "frequency_penalty": null
+      }
+    },
+    {
+      "id": "nex-agi/deepseek-v3.1-nex-n1:free",
+      "canonical_slug": "nex-agi/deepseek-v3.1-nex-n1",
+      "hugging_face_id": "nex-agi/DeepSeek-V3.1-Nex-N1",
+      "name": "Nex AGI: DeepSeek V3.1 Nex N1 (free)",
+      "created": 1765204393,
+      "description": "DeepSeek V3.1 Nex-N1 is the flagship release of the Nex-N1 series — a post-trained model designed to highlight agent autonomy, tool use, and real-world productivity. \n\nNex-N1 demonstrates competitive performance across all evaluation scenarios, showing particularly strong results in practical coding and HTML generation tasks.",
+      "context_length": 131072,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "DeepSeek",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0",
+        "completion": "0",
+        "request": "0",
+        "image": "0",
+        "web_search": "0",
+        "internal_reasoning": "0",
+        "input_cache_read": "0",
+        "input_cache_write": "0"
+      },
+      "top_provider": {
+        "context_length": 131072,
+        "max_completion_tokens": 163840,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "reasoning",
+        "response_format",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_p"
+      ],
+      "default_parameters": {
+        "temperature": null,
+        "top_p": null,
         "frequency_penalty": null
       }
     },
@@ -287,20 +394,14 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
-        "frequency_penalty",
         "include_reasoning",
-        "logit_bias",
-        "logprobs",
         "max_tokens",
-        "presence_penalty",
         "reasoning",
         "response_format",
         "seed",
-        "stop",
         "structured_outputs",
         "tool_choice",
-        "tools",
-        "top_logprobs"
+        "tools"
       ],
       "default_parameters": {
         "temperature": null,
@@ -417,7 +518,7 @@
     {
       "id": "mistralai/ministral-14b-2512",
       "canonical_slug": "mistralai/ministral-14b-2512",
-      "hugging_face_id": "",
+      "hugging_face_id": "mistralai/Ministral-3-14B-Instruct-2512",
       "name": "Mistral: Ministral 3 14B 2512",
       "created": 1764681735,
       "description": "The largest model in the Ministral 3 family, Ministral 3 14B offers frontier capabilities and performance comparable to its larger Mistral Small 3.2 24B counterpart. A powerful and efficient language model with vision capabilities.",
@@ -450,8 +551,11 @@
       "per_request_limits": null,
       "supported_parameters": [
         "frequency_penalty",
+        "logit_bias",
         "max_tokens",
+        "min_p",
         "presence_penalty",
+        "repetition_penalty",
         "response_format",
         "seed",
         "stop",
@@ -459,6 +563,7 @@
         "temperature",
         "tool_choice",
         "tools",
+        "top_k",
         "top_p"
       ],
       "default_parameters": {
@@ -470,7 +575,7 @@
     {
       "id": "mistralai/ministral-8b-2512",
       "canonical_slug": "mistralai/ministral-8b-2512",
-      "hugging_face_id": "",
+      "hugging_face_id": "mistralai/Ministral-3-8B-Instruct-2512",
       "name": "Mistral: Ministral 3 8B 2512",
       "created": 1764681654,
       "description": "A balanced model in the Ministral 3 family, Ministral 3 8B is a powerful, efficient tiny language model with vision capabilities.",
@@ -523,7 +628,7 @@
     {
       "id": "mistralai/ministral-3b-2512",
       "canonical_slug": "mistralai/ministral-3b-2512",
-      "hugging_face_id": "",
+      "hugging_face_id": "mistralai/Ministral-3-3B-Instruct-2512",
       "name": "Mistral: Ministral 3 3B 2512",
       "created": 1764681560,
       "description": "The smallest model in the Ministral 3 family, Ministral 3 3B is a powerful, efficient tiny language model with vision capabilities.",
@@ -830,6 +935,7 @@
       "supported_parameters": [
         "frequency_penalty",
         "include_reasoning",
+        "logit_bias",
         "logprobs",
         "max_tokens",
         "min_p",
@@ -1503,20 +1609,14 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
-        "frequency_penalty",
         "include_reasoning",
-        "logit_bias",
-        "logprobs",
         "max_tokens",
-        "presence_penalty",
         "reasoning",
         "response_format",
         "seed",
-        "stop",
         "structured_outputs",
         "tool_choice",
-        "tools",
-        "top_logprobs"
+        "tools"
       ],
       "default_parameters": {
         "temperature": null,
@@ -1561,18 +1661,12 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
-        "frequency_penalty",
-        "logit_bias",
-        "logprobs",
         "max_tokens",
-        "presence_penalty",
         "response_format",
         "seed",
-        "stop",
         "structured_outputs",
         "tool_choice",
-        "tools",
-        "top_logprobs"
+        "tools"
       ],
       "default_parameters": {
         "temperature": null,
@@ -1616,20 +1710,14 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
-        "frequency_penalty",
         "include_reasoning",
-        "logit_bias",
-        "logprobs",
         "max_tokens",
-        "presence_penalty",
         "reasoning",
         "response_format",
         "seed",
-        "stop",
         "structured_outputs",
         "tool_choice",
-        "tools",
-        "top_logprobs"
+        "tools"
       ],
       "default_parameters": {
         "temperature": null,
@@ -1673,20 +1761,14 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
-        "frequency_penalty",
         "include_reasoning",
-        "logit_bias",
-        "logprobs",
         "max_tokens",
-        "presence_penalty",
         "reasoning",
         "response_format",
         "seed",
-        "stop",
         "structured_outputs",
         "tool_choice",
-        "tools",
-        "top_logprobs"
+        "tools"
       ],
       "default_parameters": {
         "temperature": null,
@@ -4233,8 +4315,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000015",
-        "completion": "0.0000006",
+        "prompt": "0.0000001",
+        "completion": "0.00000039",
         "request": "0",
         "image": "0",
         "web_search": "0",
@@ -6836,7 +6918,6 @@
         "max_tokens",
         "min_p",
         "presence_penalty",
-        "reasoning",
         "repetition_penalty",
         "response_format",
         "seed",
@@ -10302,17 +10383,16 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.000000136",
-        "completion": "0.00000068",
+        "prompt": "0.00000015",
+        "completion": "0.0000006",
         "request": "0",
         "image": "0.0006684",
         "web_search": "0",
-        "internal_reasoning": "0",
-        "input_cache_read": "0"
+        "internal_reasoning": "0"
       },
       "top_provider": {
         "context_length": 1048576,
-        "max_completion_tokens": 8192,
+        "max_completion_tokens": 16384,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -11027,12 +11107,15 @@
       },
       "top_provider": {
         "context_length": 131072,
-        "max_completion_tokens": 8192,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "frequency_penalty",
         "max_tokens",
+        "presence_penalty",
+        "repetition_penalty",
         "response_format",
         "seed",
         "stop",
@@ -17280,7 +17363,7 @@
       "default_parameters": {}
     }
   ],
-  "lastUpdate": "2025-12-10T02:07:03.205Z",
+  "lastUpdate": "2025-12-11T02:08:34.727Z",
   "generatedBy": "GitHub Actions",
-  "totalModels": 340
+  "totalModels": 342
 }
