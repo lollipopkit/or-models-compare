@@ -186,7 +186,7 @@
       },
       "top_provider": {
         "context_length": 262144,
-        "max_completion_tokens": 262144,
+        "max_completion_tokens": 65536,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -1334,7 +1334,7 @@
         "image": "0",
         "web_search": "0",
         "internal_reasoning": "0",
-        "input_cache_read": "0.00000011",
+        "input_cache_read": "0.00000002",
         "input_cache_write": "0"
       },
       "top_provider": {
@@ -1513,7 +1513,7 @@
       },
       "top_provider": {
         "context_length": 163840,
-        "max_completion_tokens": 163840,
+        "max_completion_tokens": 65536,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -2261,8 +2261,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000045",
-        "completion": "0.00000235",
+        "prompt": "0.0000004",
+        "completion": "0.00000175",
         "request": "0",
         "image": "0",
         "web_search": "0",
@@ -2270,7 +2270,7 @@
       },
       "top_provider": {
         "context_length": 262144,
-        "max_completion_tokens": 16384,
+        "max_completion_tokens": 65535,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -6615,7 +6615,7 @@
       "name": "Qwen: Qwen3 Coder 30B A3B Instruct",
       "created": 1753972379,
       "description": "Qwen3-Coder-30B-A3B-Instruct is a 30.5B parameter Mixture-of-Experts (MoE) model with 128 experts (8 active per forward pass), designed for advanced code generation, repository-scale understanding, and agentic tool use. Built on the Qwen3 architecture, it supports a native context length of 256K tokens (extendable to 1M with Yarn) and performs strongly in tasks involving function calls, browser use, and structured code completion.\n\nThis model is optimized for instruction-following without “thinking mode”, and integrates well with OpenAI-compatible tool-use formats. ",
-      "context_length": 262144,
+      "context_length": 160000,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -6628,16 +6628,16 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000006",
-        "completion": "0.00000025",
+        "prompt": "0.00000007",
+        "completion": "0.00000027",
         "request": "0",
         "image": "0",
         "web_search": "0",
         "internal_reasoning": "0"
       },
       "top_provider": {
-        "context_length": 262144,
-        "max_completion_tokens": 262144,
+        "context_length": 160000,
+        "max_completion_tokens": 32768,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -6737,15 +6737,13 @@
       },
       "top_provider": {
         "context_length": 131072,
-        "max_completion_tokens": 131072,
+        "max_completion_tokens": 65536,
         "is_moderated": false
       },
       "per_request_limits": null,
       "supported_parameters": [
         "frequency_penalty",
         "include_reasoning",
-        "logit_bias",
-        "logprobs",
         "max_tokens",
         "min_p",
         "presence_penalty",
@@ -6758,9 +6756,7 @@
         "temperature",
         "tool_choice",
         "tools",
-        "top_a",
         "top_k",
-        "top_logprobs",
         "top_p"
       ],
       "default_parameters": {
@@ -7278,11 +7274,14 @@
       "per_request_limits": null,
       "supported_parameters": [
         "frequency_penalty",
+        "include_reasoning",
         "logit_bias",
         "logprobs",
         "max_tokens",
         "min_p",
         "presence_penalty",
+        "reasoning",
+        "reasoning_effort",
         "repetition_penalty",
         "response_format",
         "seed",
@@ -7418,6 +7417,7 @@
       "per_request_limits": null,
       "supported_parameters": [
         "frequency_penalty",
+        "logprobs",
         "max_tokens",
         "min_p",
         "presence_penalty",
@@ -7430,6 +7430,7 @@
         "tool_choice",
         "tools",
         "top_k",
+        "top_logprobs",
         "top_p"
       ],
       "default_parameters": {}
@@ -9844,56 +9845,6 @@
         "tools",
         "top_k",
         "top_logprobs",
-        "top_p"
-      ],
-      "default_parameters": {}
-    },
-    {
-      "id": "qwen/qwen3-235b-a22b:free",
-      "canonical_slug": "qwen/qwen3-235b-a22b-04-28",
-      "hugging_face_id": "Qwen/Qwen3-235B-A22B",
-      "name": "Qwen: Qwen3 235B A22B (free)",
-      "created": 1745875757,
-      "description": "Qwen3-235B-A22B is a 235B parameter mixture-of-experts (MoE) model developed by Qwen, activating 22B parameters per forward pass. It supports seamless switching between a \"thinking\" mode for complex reasoning, math, and code tasks, and a \"non-thinking\" mode for general conversational efficiency. The model demonstrates strong reasoning ability, multilingual support (100+ languages and dialects), advanced instruction-following, and agent tool-calling capabilities. It natively handles a 32K token context window and extends up to 131K tokens using YaRN-based scaling.",
-      "context_length": 131072,
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Qwen3",
-        "instruct_type": "qwen3"
-      },
-      "pricing": {
-        "prompt": "0",
-        "completion": "0",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
-      },
-      "top_provider": {
-        "context_length": 131072,
-        "max_completion_tokens": null,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "include_reasoning",
-        "max_tokens",
-        "presence_penalty",
-        "reasoning",
-        "response_format",
-        "stop",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_k",
         "top_p"
       ],
       "default_parameters": {}
@@ -14768,20 +14719,12 @@
       "per_request_limits": null,
       "supported_parameters": [
         "frequency_penalty",
-        "logit_bias",
-        "logprobs",
         "max_tokens",
-        "min_p",
         "presence_penalty",
-        "repetition_penalty",
         "response_format",
-        "seed",
         "stop",
         "structured_outputs",
         "temperature",
-        "top_a",
-        "top_k",
-        "top_logprobs",
         "top_p"
       ],
       "default_parameters": {}
@@ -17760,7 +17703,7 @@
       "default_parameters": {}
     }
   ],
-  "lastUpdate": "2025-12-20T02:00:51.244Z",
+  "lastUpdate": "2025-12-21T02:20:31.662Z",
   "generatedBy": "GitHub Actions",
-  "totalModels": 350
+  "totalModels": 349
 }
