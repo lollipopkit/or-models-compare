@@ -142,13 +142,23 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "frequency_penalty",
         "include_reasoning",
+        "logit_bias",
+        "logprobs",
         "max_tokens",
+        "presence_penalty",
         "reasoning",
+        "repetition_penalty",
         "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
         "temperature",
         "tool_choice",
         "tools",
+        "top_k",
+        "top_logprobs",
         "top_p"
       ],
       "default_parameters": {
@@ -2859,7 +2869,7 @@
       },
       "top_provider": {
         "context_length": 196608,
-        "max_completion_tokens": 131072,
+        "max_completion_tokens": 65536,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -3877,7 +3887,7 @@
       "name": "Z.AI: GLM 4.6",
       "created": 1759235576,
       "description": "Compared with GLM-4.5, this generation brings several key improvements:\n\nLonger context window: The context window has been expanded from 128K to 200K tokens, enabling the model to handle more complex agentic tasks.\nSuperior coding performance: The model achieves higher scores on code benchmarks and demonstrates better real-world performance in applications such as Claude Code、Cline、Roo Code and Kilo Code, including improvements in generating visually polished front-end pages.\nAdvanced reasoning: GLM-4.6 shows a clear improvement in reasoning performance and supports tool use during inference, leading to stronger overall capability.\nMore capable agents: GLM-4.6 exhibits stronger performance in tool using and search-based agents, and integrates more effectively within agent frameworks.\nRefined writing: Better aligns with human preferences in style and readability, and performs more naturally in role-playing scenarios.",
-      "context_length": 204800,
+      "context_length": 202752,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -3890,16 +3900,16 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000039",
-        "completion": "0.0000019",
+        "prompt": "0.00000035",
+        "completion": "0.0000015",
         "request": "0",
         "image": "0",
         "web_search": "0",
         "internal_reasoning": "0"
       },
       "top_provider": {
-        "context_length": 204800,
-        "max_completion_tokens": 204800,
+        "context_length": 202752,
+        "max_completion_tokens": 65536,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -6630,7 +6640,7 @@
       },
       "top_provider": {
         "context_length": 131072,
-        "max_completion_tokens": 128000,
+        "max_completion_tokens": 131072,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -17916,7 +17926,7 @@
       "default_parameters": {}
     }
   ],
-  "lastUpdate": "2025-12-29T02:24:34.919Z",
+  "lastUpdate": "2025-12-30T02:09:46.411Z",
   "generatedBy": "GitHub Actions",
   "totalModels": 353
 }
