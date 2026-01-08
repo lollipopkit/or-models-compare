@@ -203,6 +203,7 @@
         "frequency_penalty",
         "include_reasoning",
         "logit_bias",
+        "logprobs",
         "max_tokens",
         "min_p",
         "presence_penalty",
@@ -215,7 +216,9 @@
         "temperature",
         "tool_choice",
         "tools",
+        "top_a",
         "top_k",
+        "top_logprobs",
         "top_p"
       ],
       "default_parameters": {
@@ -698,7 +701,7 @@
       "hugging_face_id": "mistralai/Devstral-2-123B-Instruct-2512",
       "name": "Mistral: Devstral 2 2512 (free)",
       "created": 1765285419,
-      "description": "Devstral 2 is a state-of-the-art open-source model by Mistral AI specializing in agentic coding. It is a 123B-parameter dense transformer model supporting a 256K context window.\n\nDevstral 2 supports exploring codebases and orchestrating changes across multiple files while maintaining architecture-level context. It tracks framework dependencies, detects failures, and retries with corrections��solving challenges like bug fixing and modernizing legacy systems. The model can be fine-tuned to prioritize specific languages or optimize for large enterprise codebases. It is available under a modified MIT license.",
+      "description": "Devstral 2 is a state-of-the-art open-source model by Mistral AI specializing in agentic coding. It is a 123B-parameter dense transformer model supporting a 256K context window.\n\nDevstral 2 supports exploring codebases and orchestrating changes across multiple files while maintaining architecture-level context. It tracks framework dependencies, detects failures, and retries with corrections—solving challenges like bug fixing and modernizing legacy systems. The model can be fine-tuned to prioritize specific languages or optimize for large enterprise codebases. It is available under a modified MIT license.",
       "context_length": 262144,
       "architecture": {
         "modality": "text->text",
@@ -1750,6 +1753,7 @@
         "response_format",
         "seed",
         "stop",
+        "structured_outputs",
         "temperature",
         "tool_choice",
         "tools",
@@ -11492,7 +11496,7 @@
     {
       "id": "google/gemma-3-27b-it:free",
       "canonical_slug": "google/gemma-3-27b-it",
-      "hugging_face_id": "",
+      "hugging_face_id": "google/gemma-3-27b-it",
       "name": "Google: Gemma 3 27B (free)",
       "created": 1741756359,
       "description": "Gemma 3 introduces multimodality, supporting vision-language input and text outputs. It handles context windows up to 128k tokens, understands over 140 languages, and offers improved math, reasoning, and chat capabilities, including structured outputs and function calling. Gemma 3 27B is Google's latest open source model, successor to [Gemma 2](google/gemma-2-27b-it)",
@@ -11537,12 +11541,16 @@
         "tools",
         "top_p"
       ],
-      "default_parameters": {}
+      "default_parameters": {
+        "temperature": null,
+        "top_p": null,
+        "frequency_penalty": null
+      }
     },
     {
       "id": "google/gemma-3-27b-it",
       "canonical_slug": "google/gemma-3-27b-it",
-      "hugging_face_id": "",
+      "hugging_face_id": "google/gemma-3-27b-it",
       "name": "Google: Gemma 3 27B",
       "created": 1741756359,
       "description": "Gemma 3 introduces multimodality, supporting vision-language input and text outputs. It handles context windows up to 128k tokens, understands over 140 languages, and offers improved math, reasoning, and chat capabilities, including structured outputs and function calling. Gemma 3 27B is Google's latest open source model, successor to [Gemma 2](google/gemma-2-27b-it)",
@@ -11590,7 +11598,11 @@
         "top_k",
         "top_p"
       ],
-      "default_parameters": {}
+      "default_parameters": {
+        "temperature": null,
+        "top_p": null,
+        "frequency_penalty": null
+      }
     },
     {
       "id": "thedrummer/skyfall-36b-v2",
@@ -17637,7 +17649,7 @@
       "default_parameters": {}
     }
   ],
-  "lastUpdate": "2026-01-07T02:11:19.156Z",
+  "lastUpdate": "2026-01-08T02:11:26.230Z",
   "generatedBy": "GitHub Actions",
   "totalModels": 347
 }
