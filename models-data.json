@@ -1,10 +1,10 @@
 {
   "data": [
     {
-      "id": "allenai/molmo-2-8b",
+      "id": "allenai/molmo-2-8b:free",
       "canonical_slug": "allenai/molmo-2-8b-20260109",
       "hugging_face_id": "allenai/Molmo2-8B",
-      "name": "AllenAI: Molmo2 8B",
+      "name": "AllenAI: Molmo2 8B (free)",
       "created": 1767996672,
       "description": "Molmo2-8B is an open vision-language model developed by the Allen Institute for AI (Ai2) as part of the Molmo2 family, supporting image, video, and multi-image understanding and grounding. It is based on Qwen3-8B and uses SigLIP 2 as its vision backbone, outperforming other open-weight, open-data models on short videos, counting, and captioning, while remaining competitive on long-video tasks.",
       "context_length": 36864,
@@ -2517,60 +2517,6 @@
         "structured_outputs",
         "tool_choice",
         "tools"
-      ],
-      "default_parameters": {
-        "temperature": null,
-        "top_p": null,
-        "frequency_penalty": null
-      }
-    },
-    {
-      "id": "kwaipilot/kat-coder-pro:free",
-      "canonical_slug": "kwaipilot/kat-coder-pro-v1",
-      "hugging_face_id": "",
-      "name": "Kwaipilot: KAT-Coder-Pro V1 (free)",
-      "created": 1762745912,
-      "description": "KAT-Coder-Pro V1 is KwaiKAT's most advanced agentic coding model in the KAT-Coder series. Designed specifically for agentic coding tasks, it excels in real-world software engineering scenarios, achieving 73.4% solve rate on the SWE-Bench Verified benchmark. \n\nThe model has been optimized for tool-use capability, multi-turn interaction, instruction following, generalization, and comprehensive capabilities through a multi-stage training process, including mid-training, supervised fine-tuning (SFT), reinforcement fine-tuning (RFT), and scalable agentic RL.",
-      "context_length": 256000,
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Other",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0",
-        "completion": "0",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
-      },
-      "top_provider": {
-        "context_length": 256000,
-        "max_completion_tokens": 128000,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "max_tokens",
-        "presence_penalty",
-        "repetition_penalty",
-        "response_format",
-        "seed",
-        "stop",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_k",
-        "top_p"
       ],
       "default_parameters": {
         "temperature": null,
@@ -11358,7 +11304,7 @@
         "max_tokens",
         "response_format",
         "seed",
-        "structured_outputs",
+        "stop",
         "temperature",
         "top_p"
       ],
@@ -11450,6 +11396,7 @@
       "supported_parameters": [
         "max_tokens",
         "seed",
+        "stop",
         "temperature",
         "top_p"
       ],
@@ -11677,7 +11624,6 @@
         "response_format",
         "seed",
         "stop",
-        "structured_outputs",
         "temperature",
         "tool_choice",
         "tools",
@@ -17797,7 +17743,7 @@
       "default_parameters": {}
     }
   ],
-  "lastUpdate": "2026-01-10T02:08:24.103Z",
+  "lastUpdate": "2026-01-11T02:28:28.908Z",
   "generatedBy": "GitHub Actions",
-  "totalModels": 349
+  "totalModels": 348
 }
