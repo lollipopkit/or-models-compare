@@ -619,15 +619,17 @@
       },
       "pricing": {
         "prompt": "0.00000027",
-        "completion": "0.00000112",
+        "completion": "0.0000011",
         "request": "0",
         "image": "0",
         "web_search": "0",
-        "internal_reasoning": "0"
+        "internal_reasoning": "0",
+        "input_cache_read": "0",
+        "input_cache_write": "0"
       },
       "top_provider": {
         "context_length": 196608,
-        "max_completion_tokens": 65536,
+        "max_completion_tokens": 196608,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -751,7 +753,7 @@
         "audio": "0.000001",
         "internal_reasoning": "0.000003",
         "input_cache_read": "0.00000005",
-        "input_cache_write": "0.00000008333333333333333"
+        "input_cache_write": "0.00000008333333333333334"
       },
       "top_provider": {
         "context_length": 1048576,
@@ -4234,7 +4236,7 @@
         "audio": "0.000001",
         "internal_reasoning": "0.0000025",
         "input_cache_read": "0.00000003",
-        "input_cache_write": "0.00000008333333333333333"
+        "input_cache_write": "0.00000008333333333333334"
       },
       "top_provider": {
         "context_length": 32768,
@@ -4783,7 +4785,7 @@
         "audio": "0.000001",
         "internal_reasoning": "0.0000025",
         "input_cache_read": "0.00000003",
-        "input_cache_write": "0.00000008333333333333333"
+        "input_cache_write": "0.00000008333333333333334"
       },
       "top_provider": {
         "context_length": 1048576,
@@ -4841,7 +4843,7 @@
         "audio": "0.0000003",
         "internal_reasoning": "0.0000004",
         "input_cache_read": "0.00000001",
-        "input_cache_write": "0.00000008333333333333333"
+        "input_cache_write": "0.00000008333333333333334"
       },
       "top_provider": {
         "context_length": 1048576,
@@ -5333,7 +5335,7 @@
       },
       "pricing": {
         "prompt": "0.00000009",
-        "completion": "0.00000045",
+        "completion": "0.0000004",
         "request": "0",
         "image": "0",
         "web_search": "0",
@@ -5346,14 +5348,21 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "frequency_penalty",
         "include_reasoning",
         "max_tokens",
+        "min_p",
+        "presence_penalty",
         "reasoning",
+        "repetition_penalty",
         "response_format",
+        "seed",
+        "stop",
         "structured_outputs",
         "temperature",
         "tool_choice",
         "tools",
+        "top_k",
         "top_p"
       ],
       "default_parameters": {
@@ -7930,7 +7939,7 @@
         "audio": "0.0000003",
         "internal_reasoning": "0.0000004",
         "input_cache_read": "0.00000001",
-        "input_cache_write": "0.00000008333333333333333"
+        "input_cache_write": "0.00000008333333333333334"
       },
       "top_provider": {
         "context_length": 1048576,
@@ -8923,7 +8932,7 @@
         "audio": "0.000001",
         "internal_reasoning": "0.0000025",
         "input_cache_read": "0.00000003",
-        "input_cache_write": "0.00000008333333333333333"
+        "input_cache_write": "0.00000008333333333333334"
       },
       "top_provider": {
         "context_length": 1048576,
@@ -9743,7 +9752,7 @@
       "hugging_face_id": "",
       "name": "Arcee AI: Spotlight",
       "created": 1746481552,
-      "description": "Spotlight is a 7‑billion‑parameter vision‑language model derived from Qwen 2.5‑VL and fine‑tuned by Arcee AI for tight image‑text grounding tasks. It offers a 32 k‑token context window, enabling rich multimodal conversations that combine lengthy documents with one or more images. Training emphasized fast inference on consumer GPUs while retaining strong captioning, visual‐question‑answering, and diagram‑analysis accuracy. As a result, Spotlight slots neatly into agent workflows where screenshots, charts or UI mock‑ups need to be interpreted on the fly. Early benchmarks show it matching or out‑scoring larger VLMs such as LLaVA‑1.6 13 B on popular VQA and POPE alignment tests. ",
+      "description": "Spotlight is a 7‑billion‑parameter vision‑language model derived from Qwen 2.5‑VL and fine‑tuned by Arcee AI for tight image‑text grounding tasks. It offers a 32 k‑token context window, enabling rich multimodal conversations that combine lengthy documents with one or more images. Training emphasized fast inference on consumer GPUs while retaining strong captioning, visual‐question‑answering, and diagram‑analysis accuracy. As a result, Spotlight slots neatly into agent workflows where screenshots, charts or UI mock‑ups need to be interpreted on the fly. Early benchmarks show it matching or out‑scoring larger VLMs such as LLaVA��1.6 13 B on popular VQA and POPE alignment tests. ",
       "context_length": 131072,
       "architecture": {
         "modality": "text+image->text",
@@ -10759,7 +10768,7 @@
       "hugging_face_id": "",
       "name": "OpenAI: GPT-4.1 Nano",
       "created": 1744651369,
-      "description": "For tasks that demand low latency, GPT‑4.1 nano is the fastest and cheapest model in the GPT-4.1 series. It delivers exceptional performance at a small size with its 1 million token context window, and scores 80.1% on MMLU, 50.3% on GPQA, and 9.8% on Aider polyglot coding – even higher than GPT‑4o mini. It’s ideal for tasks like classification or autocompletion.",
+      "description": "For tasks that demand low latency, GPT‑4.1 nano is the fastest and cheapest model in the GPT-4.1 series. It delivers exceptional performance at a small size with its 1 million token context window, and scores 80.1% on MMLU, 50.3% on GPQA, and 9.8% on Aider polyglot coding �� even higher than GPT‑4o mini. It’s ideal for tasks like classification or autocompletion.",
       "context_length": 1047576,
       "architecture": {
         "modality": "text+image+file->text",
@@ -12176,7 +12185,7 @@
         "top_p": null,
         "frequency_penalty": null
       },
-      "expiration_date": "2026-02-06"
+      "expiration_date": "2026-03-03"
     },
     {
       "id": "anthropic/claude-3.7-sonnet:thinking",
@@ -12456,7 +12465,7 @@
         "audio": "0.0000007",
         "internal_reasoning": "0.0000004",
         "input_cache_read": "0.000000025",
-        "input_cache_write": "0.00000008333333333333333"
+        "input_cache_write": "0.00000008333333333333334"
       },
       "top_provider": {
         "context_length": 1048576,
@@ -13561,7 +13570,7 @@
         "audio": "0.0000007",
         "internal_reasoning": "0.0000004",
         "input_cache_read": "0.000000025",
-        "input_cache_write": "0.00000008333333333333333"
+        "input_cache_write": "0.00000008333333333333334"
       },
       "top_provider": {
         "context_length": 1048576,
@@ -13580,7 +13589,7 @@
         "top_p"
       ],
       "default_parameters": {},
-      "expiration_date": "2026-02-06"
+      "expiration_date": "2026-03-03"
     },
     {
       "id": "meta-llama/llama-3.3-70b-instruct:free",
@@ -17672,7 +17681,7 @@
       "expiration_date": null
     }
   ],
-  "lastUpdate": "2026-01-23T02:19:32.882Z",
+  "lastUpdate": "2026-01-24T02:09:15.173Z",
   "generatedBy": "GitHub Actions",
   "totalModels": 345
 }
