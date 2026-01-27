@@ -63,11 +63,7 @@
       },
       "pricing": {
         "prompt": "0.0000006",
-        "completion": "0.000006",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
+        "completion": "0.000006"
       },
       "top_provider": {
         "context_length": 1040000,
@@ -886,55 +882,6 @@
       "expiration_date": null
     },
     {
-      "id": "xiaomi/mimo-v2-flash:free",
-      "canonical_slug": "xiaomi/mimo-v2-flash-20251210",
-      "hugging_face_id": "XiaomiMiMo/MiMo-V2-Flash",
-      "name": "Xiaomi: MiMo-V2-Flash (free)",
-      "created": 1765731308,
-      "description": "MiMo-V2-Flash is an open-source foundation language model developed by Xiaomi. It is a Mixture-of-Experts model with 309B total parameters and 15B active parameters, adopting hybrid attention architecture. MiMo-V2-Flash supports a hybrid-thinking toggle and a 256K context window, and excels at reasoning, coding, and agent scenarios. On SWE-bench Verified and SWE-bench Multilingual, MiMo-V2-Flash ranks as the top #1 open-source model globally, delivering performance comparable to Claude Sonnet 4.5 while costing only about 3.5% as much.\n\nUsers can control the reasoning behaviour with the `reasoning` `enabled` boolean. [Learn more in our docs](https://openrouter.ai/docs/use-cases/reasoning-tokens#enable-reasoning-with-default-config).",
-      "context_length": 262144,
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Other",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0",
-        "completion": "0"
-      },
-      "top_provider": {
-        "context_length": 262144,
-        "max_completion_tokens": 65536,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "include_reasoning",
-        "max_tokens",
-        "presence_penalty",
-        "reasoning",
-        "response_format",
-        "stop",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_p"
-      ],
-      "default_parameters": {
-        "temperature": null,
-        "top_p": 0.95,
-        "frequency_penalty": null
-      },
-      "expiration_date": "2026-01-26"
-    },
-    {
       "id": "xiaomi/mimo-v2-flash",
       "canonical_slug": "xiaomi/mimo-v2-flash-20251210",
       "hugging_face_id": "XiaomiMiMo/MiMo-V2-Flash",
@@ -1665,11 +1612,7 @@
       },
       "pricing": {
         "prompt": "0.0000003",
-        "completion": "0.0000025",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
+        "completion": "0.0000025"
       },
       "top_provider": {
         "context_length": 1000000,
@@ -2583,10 +2526,7 @@
       "pricing": {
         "prompt": "0.0000002",
         "completion": "0.0000005",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0",
+        "web_search": "0.005",
         "input_cache_read": "0.00000005"
       },
       "top_provider": {
@@ -3060,10 +3000,6 @@
       "pricing": {
         "prompt": "0.0000025",
         "completion": "0.0000125",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0",
         "input_cache_read": "0.000000625"
       },
       "top_provider": {
@@ -3736,7 +3672,7 @@
       "top_provider": {
         "context_length": 200000,
         "max_completion_tokens": 64000,
-        "is_moderated": true
+        "is_moderated": false
       },
       "per_request_limits": null,
       "supported_parameters": [
@@ -4512,7 +4448,7 @@
       "top_provider": {
         "context_length": 1000000,
         "max_completion_tokens": 64000,
-        "is_moderated": true
+        "is_moderated": false
       },
       "per_request_limits": null,
       "supported_parameters": [
@@ -5201,10 +5137,7 @@
       "pricing": {
         "prompt": "0.0000002",
         "completion": "0.0000005",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0",
+        "web_search": "0.005",
         "input_cache_read": "0.00000005"
       },
       "top_provider": {
@@ -5567,7 +5500,7 @@
       },
       "top_provider": {
         "context_length": 131072,
-        "max_completion_tokens": 131072,
+        "max_completion_tokens": 32768,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -6099,10 +6032,7 @@
       "pricing": {
         "prompt": "0.0000002",
         "completion": "0.0000015",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0",
+        "web_search": "0.005",
         "input_cache_read": "0.00000002"
       },
       "top_provider": {
@@ -7101,10 +7031,7 @@
       "pricing": {
         "prompt": "0.000015",
         "completion": "0.000075",
-        "request": "0",
-        "image": "0.024",
-        "web_search": "0",
-        "internal_reasoning": "0",
+        "web_search": "0.01",
         "input_cache_read": "0.0000015",
         "input_cache_write": "0.00001875"
       },
@@ -8144,10 +8071,7 @@
       "pricing": {
         "prompt": "0.000003",
         "completion": "0.000015",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0",
+        "web_search": "0.005",
         "input_cache_read": "0.00000075"
       },
       "top_provider": {
@@ -8384,11 +8308,7 @@
       },
       "pricing": {
         "prompt": "0.0000009",
-        "completion": "0.0000019",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
+        "completion": "0.0000019"
       },
       "top_provider": {
         "context_length": 262144,
@@ -8429,11 +8349,7 @@
       },
       "pricing": {
         "prompt": "0.0000008",
-        "completion": "0.0000012",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
+        "completion": "0.0000012"
       },
       "top_provider": {
         "context_length": 81920,
@@ -8937,10 +8853,7 @@
       "pricing": {
         "prompt": "0.0000003",
         "completion": "0.0000005",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0",
+        "web_search": "0.005",
         "input_cache_read": "0.000000075"
       },
       "top_provider": {
@@ -8993,10 +8906,7 @@
       "pricing": {
         "prompt": "0.000003",
         "completion": "0.000015",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0",
+        "web_search": "0.005",
         "input_cache_read": "0.00000075"
       },
       "top_provider": {
@@ -9206,10 +9116,7 @@
       "pricing": {
         "prompt": "0.000015",
         "completion": "0.000075",
-        "request": "0",
-        "image": "0.024",
-        "web_search": "0",
-        "internal_reasoning": "0",
+        "web_search": "0.01",
         "input_cache_read": "0.0000015",
         "input_cache_write": "0.00001875"
       },
@@ -9261,10 +9168,7 @@
       "pricing": {
         "prompt": "0.000003",
         "completion": "0.000015",
-        "request": "0",
-        "image": "0.0048",
-        "web_search": "0",
-        "internal_reasoning": "0",
+        "web_search": "0.01",
         "input_cache_read": "0.0000003",
         "input_cache_write": "0.00000375"
       },
@@ -10673,10 +10577,7 @@
       "pricing": {
         "prompt": "0.0000003",
         "completion": "0.0000005",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0",
+        "web_search": "0.005",
         "input_cache_read": "0.000000075"
       },
       "top_provider": {
@@ -10728,10 +10629,7 @@
       "pricing": {
         "prompt": "0.000003",
         "completion": "0.000015",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0",
+        "web_search": "0.005",
         "input_cache_read": "0.00000075"
       },
       "top_provider": {
@@ -11920,10 +11818,7 @@
       "pricing": {
         "prompt": "0.000003",
         "completion": "0.000015",
-        "request": "0",
-        "image": "0.0048",
-        "web_search": "0",
-        "internal_reasoning": "0",
+        "web_search": "0.01",
         "input_cache_read": "0.0000003",
         "input_cache_write": "0.00000375"
       },
@@ -11974,10 +11869,7 @@
       "pricing": {
         "prompt": "0.000003",
         "completion": "0.000015",
-        "request": "0",
-        "image": "0.0048",
-        "web_search": "0",
-        "internal_reasoning": "0",
+        "web_search": "0.01",
         "input_cache_read": "0.0000003",
         "input_cache_write": "0.00000375"
       },
@@ -13373,11 +13265,7 @@
       },
       "pricing": {
         "prompt": "0.00000006",
-        "completion": "0.00000024",
-        "request": "0",
-        "image": "0.00009",
-        "web_search": "0",
-        "internal_reasoning": "0"
+        "completion": "0.00000024"
       },
       "top_provider": {
         "context_length": 300000,
@@ -13417,11 +13305,7 @@
       },
       "pricing": {
         "prompt": "0.000000035",
-        "completion": "0.00000014",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
+        "completion": "0.00000014"
       },
       "top_provider": {
         "context_length": 128000,
@@ -13462,11 +13346,7 @@
       },
       "pricing": {
         "prompt": "0.0000008",
-        "completion": "0.0000032",
-        "request": "0",
-        "image": "0.0012",
-        "web_search": "0",
-        "internal_reasoning": "0"
+        "completion": "0.0000032"
       },
       "top_provider": {
         "context_length": 300000,
@@ -13842,10 +13722,7 @@
       "pricing": {
         "prompt": "0.0000008",
         "completion": "0.000004",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0",
+        "web_search": "0.01",
         "input_cache_read": "0.00000008",
         "input_cache_write": "0.000001"
       },
@@ -13892,11 +13769,7 @@
       },
       "pricing": {
         "prompt": "0.000003",
-        "completion": "0.000005",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
+        "completion": "0.000005"
       },
       "top_provider": {
         "context_length": 16384,
@@ -13947,11 +13820,7 @@
       },
       "pricing": {
         "prompt": "0.000006",
-        "completion": "0.00003",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
+        "completion": "0.00003"
       },
       "top_provider": {
         "context_length": 200000,
@@ -15090,10 +14959,6 @@
       "pricing": {
         "prompt": "0.0000025",
         "completion": "0.00001",
-        "request": "0",
-        "image": "0.003613",
-        "web_search": "0",
-        "internal_reasoning": "0",
         "input_cache_read": "0.00000125"
       },
       "top_provider": {
@@ -16331,11 +16196,7 @@
       },
       "pricing": {
         "prompt": "0.000001",
-        "completion": "0.000002",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
+        "completion": "0.000002"
       },
       "top_provider": {
         "context_length": 4095,
@@ -16624,11 +16485,7 @@
       },
       "pricing": {
         "prompt": "0.00000375",
-        "completion": "0.0000075",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
+        "completion": "0.0000075"
       },
       "top_provider": {
         "context_length": 6144,
@@ -16900,11 +16757,7 @@
       },
       "pricing": {
         "prompt": "0.00000075",
-        "completion": "0.000001",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
+        "completion": "0.000001"
       },
       "top_provider": {
         "context_length": 8000,
@@ -17177,7 +17030,7 @@
       "expiration_date": null
     }
   ],
-  "lastUpdate": "2026-01-26T02:29:44.615Z",
+  "lastUpdate": "2026-01-27T02:25:51.659Z",
   "generatedBy": "GitHub Actions",
-  "totalModels": 346
+  "totalModels": 345
 }
