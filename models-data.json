@@ -4,7 +4,7 @@
       "id": "openrouter/free",
       "canonical_slug": "openrouter/free",
       "hugging_face_id": "",
-      "name": "Free Router",
+      "name": "Free Models Router",
       "created": 1769917427,
       "description": "The simplest way to get free inference. openrouter/free is a router that selects free models at random from the models available on OpenRouter. The router smartly filters for models that support features needed for your request such as image understanding, tool calling, structured outputs and more. ",
       "context_length": 200000,
@@ -21,8 +21,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "-1",
-        "completion": "-1"
+        "prompt": "0",
+        "completion": "0"
       },
       "top_provider": {
         "context_length": null,
@@ -30,7 +30,25 @@
         "is_moderated": false
       },
       "per_request_limits": null,
-      "supported_parameters": [],
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "logit_bias",
+        "max_tokens",
+        "min_p",
+        "presence_penalty",
+        "reasoning",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_p"
+      ],
       "default_parameters": {
         "temperature": null,
         "top_p": null,
@@ -59,23 +77,23 @@
       },
       "pricing": {
         "prompt": "0",
-        "completion": "0",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
+        "completion": "0"
       },
       "top_provider": {
         "context_length": 256000,
-        "max_completion_tokens": null,
+        "max_completion_tokens": 256000,
         "is_moderated": false
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "frequency_penalty",
         "include_reasoning",
         "max_tokens",
         "reasoning",
-        "temperature"
+        "stop",
+        "temperature",
+        "tools",
+        "top_p"
       ],
       "default_parameters": {
         "temperature": null,
@@ -930,8 +948,10 @@
         "logprobs",
         "max_tokens",
         "min_p",
+        "parallel_tool_calls",
         "presence_penalty",
         "reasoning",
+        "reasoning_effort",
         "repetition_penalty",
         "response_format",
         "seed",
@@ -3410,7 +3430,7 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000002",
+        "prompt": "0.000000255",
         "completion": "0.000001",
         "input_cache_read": "0.00000003"
       },
@@ -4577,9 +4597,8 @@
         "instruct_type": "deepseek-v3.1"
       },
       "pricing": {
-        "prompt": "0.00000021",
-        "completion": "0.00000032",
-        "input_cache_read": "0.00000021"
+        "prompt": "0.00000027",
+        "completion": "0.00000041"
       },
       "top_provider": {
         "context_length": 163840,
@@ -9774,7 +9793,7 @@
       },
       "pricing": {
         "prompt": "0.00000005",
-        "completion": "0.00000025",
+        "completion": "0.0000004",
         "input_cache_read": "0.00000005"
       },
       "top_provider": {
@@ -16332,7 +16351,29 @@
         "is_moderated": false
       },
       "per_request_limits": null,
-      "supported_parameters": [],
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "logit_bias",
+        "logprobs",
+        "max_tokens",
+        "min_p",
+        "presence_penalty",
+        "reasoning",
+        "reasoning_effort",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_logprobs",
+        "top_p",
+        "web_search_options"
+      ],
       "default_parameters": {
         "temperature": null,
         "top_p": null,
@@ -16820,7 +16861,7 @@
       "expiration_date": null
     }
   ],
-  "lastUpdate": "2026-02-02T02:49:11.955Z",
+  "lastUpdate": "2026-02-03T02:45:21.528Z",
   "generatedBy": "GitHub Actions",
   "totalModels": 347
 }
