@@ -1,6 +1,59 @@
 {
   "data": [
     {
+      "id": "qwen/qwen3-coder-next",
+      "canonical_slug": "qwen/qwen3-coder-next-2025-02-03",
+      "hugging_face_id": "Qwen/Qwen3-Coder-Next",
+      "name": "Qwen: Qwen3 Coder Next",
+      "created": 1770164101,
+      "description": "Qwen3-Coder-Next is an open-weight causal language model optimized for coding agents and local development workflows. It uses a sparse MoE design with 80B total parameters and only 3B activated per token, delivering performance comparable to models with 10 to 20x higher active compute, which makes it well suited for cost-sensitive, always-on agent deployment.\n\nThe model is trained with a strong agentic focus and performs reliably on long-horizon coding tasks, complex tool usage, and recovery from execution failures. With a native 256k context window, it integrates cleanly into real-world CLI and IDE environments and adapts well to common agent scaffolds used by modern coding tools. The model operates exclusively in non-thinking mode and does not emit <think> blocks, simplifying integration for production coding agents.",
+      "context_length": 262144,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Qwen",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.0000002",
+        "completion": "0.0000015"
+      },
+      "top_provider": {
+        "context_length": 262144,
+        "max_completion_tokens": 65536,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "logit_bias",
+        "max_tokens",
+        "min_p",
+        "presence_penalty",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_p"
+      ],
+      "default_parameters": {
+        "temperature": 1,
+        "top_p": 0.95,
+        "frequency_penalty": null
+      },
+      "expiration_date": null
+    },
+    {
       "id": "openrouter/free",
       "canonical_slug": "openrouter/free",
       "hugging_face_id": "",
@@ -168,12 +221,12 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000005",
-        "completion": "0.0000028"
+        "prompt": "0.00000045",
+        "completion": "0.0000025"
       },
       "top_provider": {
         "context_length": 262144,
-        "max_completion_tokens": null,
+        "max_completion_tokens": 65535,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -8743,7 +8796,7 @@
         "top_p"
       ],
       "default_parameters": {},
-      "expiration_date": null
+      "expiration_date": "2026-02-08"
     },
     {
       "id": "openai/o3-pro",
@@ -11329,15 +11382,12 @@
       },
       "top_provider": {
         "context_length": 131072,
-        "max_completion_tokens": null,
+        "max_completion_tokens": 8192,
         "is_moderated": false
       },
       "per_request_limits": null,
       "supported_parameters": [
-        "frequency_penalty",
         "max_tokens",
-        "presence_penalty",
-        "repetition_penalty",
         "response_format",
         "seed",
         "stop",
@@ -12992,7 +13042,7 @@
       "name": "Meta: Llama 3.3 70B Instruct (free)",
       "created": 1733506137,
       "description": "The Meta Llama 3.3 multilingual large language model (LLM) is a pretrained and instruction tuned generative model in 70B (text in/text out). The Llama 3.3 instruction tuned text only model is optimized for multilingual dialogue use cases and outperforms many of the available open source and closed chat models on common industry benchmarks.\n\nSupported languages: English, German, French, Italian, Portuguese, Hindi, Spanish, and Thai.\n\n[Model Card](https://github.com/meta-llama/llama-models/blob/main/models/llama3_3/MODEL_CARD.md)",
-      "context_length": 131072,
+      "context_length": 128000,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -13009,16 +13059,15 @@
         "completion": "0"
       },
       "top_provider": {
-        "context_length": 131072,
-        "max_completion_tokens": null,
-        "is_moderated": false
+        "context_length": 128000,
+        "max_completion_tokens": 128000,
+        "is_moderated": true
       },
       "per_request_limits": null,
       "supported_parameters": [
         "frequency_penalty",
         "max_tokens",
         "presence_penalty",
-        "repetition_penalty",
         "seed",
         "stop",
         "temperature",
@@ -14451,46 +14500,6 @@
       "expiration_date": null
     },
     {
-      "id": "qwen/qwen-2.5-vl-7b-instruct:free",
-      "canonical_slug": "qwen/qwen-2-vl-7b-instruct",
-      "hugging_face_id": "Qwen/Qwen2.5-VL-7B-Instruct",
-      "name": "Qwen: Qwen2.5-VL 7B Instruct (free)",
-      "created": 1724803200,
-      "description": "Qwen2.5 VL 7B is a multimodal LLM from the Qwen Team with the following key enhancements:\n\n- SoTA understanding of images of various resolution & ratio: Qwen2.5-VL achieves state-of-the-art performance on visual understanding benchmarks, including MathVista, DocVQA, RealWorldQA, MTVQA, etc.\n\n- Understanding videos of 20min+: Qwen2.5-VL can understand videos over 20 minutes for high-quality video-based question answering, dialog, content creation, etc.\n\n- Agent that can operate your mobiles, robots, etc.: with the abilities of complex reasoning and decision making, Qwen2.5-VL can be integrated with devices like mobile phones, robots, etc., for automatic operation based on visual environment and text instructions.\n\n- Multilingual Support: to serve global users, besides English and Chinese, Qwen2.5-VL now supports the understanding of texts in different languages inside images, including most European languages, Japanese, Korean, Arabic, Vietnamese, etc.\n\nFor more details, see this [blog post](https://qwenlm.github.io/blog/qwen2-vl/) and [GitHub repo](https://github.com/QwenLM/Qwen2-VL).\n\nUsage of this model is subject to [Tongyi Qianwen LICENSE AGREEMENT](https://huggingface.co/Qwen/Qwen1.5-110B-Chat/blob/main/LICENSE).",
-      "context_length": 32768,
-      "architecture": {
-        "modality": "text+image->text",
-        "input_modalities": [
-          "text",
-          "image"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Qwen",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0",
-        "completion": "0"
-      },
-      "top_provider": {
-        "context_length": 32768,
-        "max_completion_tokens": null,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "max_tokens",
-        "presence_penalty",
-        "repetition_penalty",
-        "temperature"
-      ],
-      "default_parameters": {},
-      "expiration_date": null
-    },
-    {
       "id": "qwen/qwen-2.5-vl-7b-instruct",
       "canonical_slug": "qwen/qwen-2-vl-7b-instruct",
       "hugging_face_id": "Qwen/Qwen2.5-VL-7B-Instruct",
@@ -14905,45 +14914,6 @@
         "top_k",
         "top_logprobs",
         "top_p"
-      ],
-      "default_parameters": {},
-      "expiration_date": null
-    },
-    {
-      "id": "meta-llama/llama-3.1-405b-instruct:free",
-      "canonical_slug": "meta-llama/llama-3.1-405b-instruct",
-      "hugging_face_id": "meta-llama/Meta-Llama-3.1-405B-Instruct",
-      "name": "Meta: Llama 3.1 405B Instruct (free)",
-      "created": 1721692800,
-      "description": "The highly anticipated 400B class of Llama3 is here! Clocking in at 128k context with impressive eval scores, the Meta AI team continues to push the frontier of open-source LLMs.\n\nMeta's latest class of model (Llama 3.1) launched with a variety of sizes & flavors. This 405B instruct-tuned version is optimized for high quality dialogue usecases.\n\nIt has demonstrated strong performance compared to leading closed-source models including GPT-4o and Claude 3.5 Sonnet in evaluations.\n\nTo read more about the model release, [click here](https://ai.meta.com/blog/meta-llama-3-1/). Usage of this model is subject to [Meta's Acceptable Use Policy](https://llama.meta.com/llama3/use-policy/).",
-      "context_length": 131072,
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Llama3",
-        "instruct_type": "llama3"
-      },
-      "pricing": {
-        "prompt": "0",
-        "completion": "0"
-      },
-      "top_provider": {
-        "context_length": 131072,
-        "max_completion_tokens": null,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "max_tokens",
-        "presence_penalty",
-        "repetition_penalty",
-        "temperature"
       ],
       "default_parameters": {},
       "expiration_date": null
@@ -15728,7 +15698,7 @@
       },
       "pricing": {
         "prompt": "0.00000003",
-        "completion": "0.00000006"
+        "completion": "0.00000004"
       },
       "top_provider": {
         "context_length": 8192,
@@ -16861,7 +16831,7 @@
       "expiration_date": null
     }
   ],
-  "lastUpdate": "2026-02-03T02:45:21.528Z",
+  "lastUpdate": "2026-02-04T02:39:52.145Z",
   "generatedBy": "GitHub Actions",
-  "totalModels": 347
+  "totalModels": 346
 }
