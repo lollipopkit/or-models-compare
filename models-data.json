@@ -20,8 +20,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000002",
-        "completion": "0.0000015"
+        "prompt": "0.00000007",
+        "completion": "0.0000003"
       },
       "top_provider": {
         "context_length": 262144,
@@ -86,7 +86,6 @@
       "supported_parameters": [
         "frequency_penalty",
         "include_reasoning",
-        "logit_bias",
         "max_tokens",
         "min_p",
         "presence_penalty",
@@ -704,10 +703,10 @@
       "expiration_date": null
     },
     {
-      "id": "allenai/molmo-2-8b:free",
+      "id": "allenai/molmo-2-8b",
       "canonical_slug": "allenai/molmo-2-8b-20260109",
       "hugging_face_id": "allenai/Molmo2-8B",
-      "name": "AllenAI: Molmo2 8B (free)",
+      "name": "AllenAI: Molmo2 8B",
       "created": 1767996672,
       "description": "Molmo2-8B is an open vision-language model developed by the Allen Institute for AI (Ai2) as part of the Molmo2 family, supporting image, video, and multi-image understanding and grounding. It is based on Qwen3-8B and uses SigLIP 2 as its vision backbone, outperforming other open-weight, open-data models on short videos, counting, and captioning, while remaining competitive on long-video tasks.",
       "context_length": 36864,
@@ -725,8 +724,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0",
-        "completion": "0"
+        "prompt": "0.0000002",
+        "completion": "0.0000002"
       },
       "top_provider": {
         "context_length": 36864,
@@ -740,7 +739,6 @@
         "max_tokens",
         "presence_penalty",
         "repetition_penalty",
-        "response_format",
         "seed",
         "stop",
         "temperature",
@@ -929,11 +927,12 @@
       },
       "pricing": {
         "prompt": "0.00000027",
-        "completion": "0.0000011"
+        "completion": "0.00000095",
+        "input_cache_read": "0.0000000299999997"
       },
       "top_provider": {
         "context_length": 196608,
-        "max_completion_tokens": 196608,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -3711,60 +3710,6 @@
       "expiration_date": null
     },
     {
-      "id": "deepcogito/cogito-v2-preview-llama-405b",
-      "canonical_slug": "deepcogito/cogito-v2-preview-llama-405b",
-      "hugging_face_id": "deepcogito/cogito-v2-preview-llama-405B",
-      "name": "Deep Cogito: Cogito V2 Preview Llama 405B",
-      "created": 1760709933,
-      "description": "Cogito v2 405B is a dense hybrid reasoning model that combines direct answering capabilities with advanced self-reflection. It represents a significant step toward frontier intelligence with dense architecture delivering performance competitive with leading closed models. This advanced reasoning system combines policy improvement with massive scale for exceptional capabilities.\n",
-      "context_length": 32768,
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Llama3",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0.0000035",
-        "completion": "0.0000035"
-      },
-      "top_provider": {
-        "context_length": 32768,
-        "max_completion_tokens": null,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "include_reasoning",
-        "logit_bias",
-        "max_tokens",
-        "min_p",
-        "presence_penalty",
-        "reasoning",
-        "repetition_penalty",
-        "response_format",
-        "stop",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_k",
-        "top_p"
-      ],
-      "default_parameters": {
-        "temperature": null,
-        "top_p": null,
-        "frequency_penalty": null
-      },
-      "expiration_date": "2026-02-04"
-    },
-    {
       "id": "openai/gpt-5-image-mini",
       "canonical_slug": "openai/gpt-5-image-mini",
       "hugging_face_id": "",
@@ -4966,7 +4911,8 @@
       },
       "pricing": {
         "prompt": "0.0000002",
-        "completion": "0.0000012"
+        "completion": "0.00000088",
+        "input_cache_read": "0.00000011"
       },
       "top_provider": {
         "context_length": 262144,
@@ -5228,7 +5174,7 @@
       "pricing": {
         "prompt": "0.00000021",
         "completion": "0.00000079",
-        "input_cache_read": "0.000000168"
+        "input_cache_read": "0.0000001300000002"
       },
       "top_provider": {
         "context_length": 163840,
@@ -5945,109 +5891,6 @@
       ],
       "default_parameters": {},
       "expiration_date": null
-    },
-    {
-      "id": "deepcogito/cogito-v2-preview-llama-70b",
-      "canonical_slug": "deepcogito/cogito-v2-preview-llama-70b",
-      "hugging_face_id": "deepcogito/cogito-v2-preview-llama-70B",
-      "name": "Deep Cogito: Cogito V2 Preview Llama 70B",
-      "created": 1756831784,
-      "description": "Cogito v2 70B is a dense hybrid reasoning model that combines direct answering capabilities with advanced self-reflection. Built with iterative policy improvement, it delivers strong performance across reasoning tasks while maintaining efficiency through shorter reasoning chains and improved intuition.",
-      "context_length": 32768,
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Llama3",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0.00000088",
-        "completion": "0.00000088"
-      },
-      "top_provider": {
-        "context_length": 32768,
-        "max_completion_tokens": null,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "include_reasoning",
-        "logit_bias",
-        "max_tokens",
-        "min_p",
-        "presence_penalty",
-        "reasoning",
-        "repetition_penalty",
-        "response_format",
-        "stop",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_k",
-        "top_p"
-      ],
-      "default_parameters": {
-        "temperature": null,
-        "top_p": null,
-        "frequency_penalty": null
-      },
-      "expiration_date": "2026-02-04"
-    },
-    {
-      "id": "deepcogito/cogito-v2-preview-llama-109b-moe",
-      "canonical_slug": "deepcogito/cogito-v2-preview-llama-109b-moe",
-      "hugging_face_id": "deepcogito/cogito-v2-preview-llama-109B-MoE",
-      "name": "Cogito V2 Preview Llama 109B",
-      "created": 1756831568,
-      "description": "An instruction-tuned, hybrid-reasoning Mixture-of-Experts model built on Llama-4-Scout-17B-16E. Cogito v2 can answer directly or engage an extended “thinking” phase, with alignment guided by Iterated Distillation & Amplification (IDA). It targets coding, STEM, instruction following, and general helpfulness, with stronger multilingual, tool-calling, and reasoning performance than size-equivalent baselines. The model supports long-context use (up to 10M tokens) and standard Transformers workflows. Users can control the reasoning behaviour with the `reasoning` `enabled` boolean. [Learn more in our docs](https://openrouter.ai/docs/use-cases/reasoning-tokens#enable-reasoning-with-default-config)",
-      "context_length": 32767,
-      "architecture": {
-        "modality": "text+image->text",
-        "input_modalities": [
-          "image",
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Llama4",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0.00000018",
-        "completion": "0.00000059"
-      },
-      "top_provider": {
-        "context_length": 32767,
-        "max_completion_tokens": null,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "include_reasoning",
-        "logit_bias",
-        "max_tokens",
-        "min_p",
-        "presence_penalty",
-        "reasoning",
-        "repetition_penalty",
-        "stop",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_k",
-        "top_p"
-      ],
-      "default_parameters": {},
-      "expiration_date": "2026-02-04"
     },
     {
       "id": "stepfun-ai/step3",
@@ -7830,7 +7673,7 @@
       },
       "pricing": {
         "prompt": "0.000000071",
-        "completion": "0.000000463"
+        "completion": "0.0000001"
       },
       "top_provider": {
         "context_length": 262144,
@@ -11410,7 +11253,7 @@
       "name": "Google: Gemma 3 27B",
       "created": 1741756359,
       "description": "Gemma 3 introduces multimodality, supporting vision-language input and text outputs. It handles context windows up to 128k tokens, understands over 140 languages, and offers improved math, reasoning, and chat capabilities, including structured outputs and function calling. Gemma 3 27B is Google's latest open source model, successor to [Gemma 2](google/gemma-2-27b-it)",
-      "context_length": 96000,
+      "context_length": 128000,
       "architecture": {
         "modality": "text+image->text",
         "input_modalities": [
@@ -11428,8 +11271,8 @@
         "completion": "0.00000015"
       },
       "top_provider": {
-        "context_length": 96000,
-        "max_completion_tokens": 96000,
+        "context_length": 128000,
+        "max_completion_tokens": 65536,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -14722,7 +14565,7 @@
         "top_p"
       ],
       "default_parameters": {},
-      "expiration_date": null
+      "expiration_date": "2026-02-17"
     },
     {
       "id": "sao10k/l3-lunaris-8b",
@@ -16831,7 +16674,7 @@
       "expiration_date": null
     }
   ],
-  "lastUpdate": "2026-02-04T02:39:52.145Z",
+  "lastUpdate": "2026-02-05T02:42:04.274Z",
   "generatedBy": "GitHub Actions",
-  "totalModels": 346
+  "totalModels": 343
 }
