@@ -2637,59 +2637,6 @@
       "expiration_date": null
     },
     {
-      "id": "tngtech/tng-r1t-chimera:free",
-      "canonical_slug": "tngtech/tng-r1t-chimera",
-      "hugging_face_id": null,
-      "name": "TNG: R1T Chimera (free)",
-      "created": 1764184161,
-      "description": "TNG-R1T-Chimera is an experimental LLM with a faible for creative storytelling and character interaction. It is a derivate of the original TNG/DeepSeek-R1T-Chimera released in April 2025 and is available exclusively via Chutes and OpenRouter.\n\nCharacteristics and improvements include:\n\nWe think that it has a creative and pleasant personality.\nIt has a preliminary EQ-Bench3 value of about 1305.\nIt is quite a bit more intelligent than the original, albeit a slightly slower.\nIt is much more think-token consistent, i.e. reasoning and answer blocks are properly delineated.\nTool calling is much improved.\n\nTNG Tech, the model authors, ask that users follow the careful guidelines that Microsoft has created for their \"MAI-DS-R1\" DeepSeek-based model. These guidelines are available on Hugging Face (https://huggingface.co/microsoft/MAI-DS-R1).",
-      "context_length": 163840,
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Other",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0",
-        "completion": "0"
-      },
-      "top_provider": {
-        "context_length": 163840,
-        "max_completion_tokens": 65536,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "include_reasoning",
-        "max_tokens",
-        "presence_penalty",
-        "reasoning",
-        "repetition_penalty",
-        "response_format",
-        "seed",
-        "stop",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_k",
-        "top_p"
-      ],
-      "default_parameters": {
-        "temperature": null,
-        "top_p": null,
-        "frequency_penalty": null
-      },
-      "expiration_date": null
-    },
-    {
       "id": "tngtech/tng-r1t-chimera",
       "canonical_slug": "tngtech/tng-r1t-chimera",
       "hugging_face_id": null,
@@ -3873,7 +3820,7 @@
         "top_p": null,
         "frequency_penalty": null
       },
-      "expiration_date": null
+      "expiration_date": "2026-02-25"
     },
     {
       "id": "liquid/lfm2-8b-a1b",
@@ -7514,7 +7461,7 @@
       "name": "Qwen: Qwen3 235B A22B Thinking 2507",
       "created": 1753449557,
       "description": "Qwen3-235B-A22B-Thinking-2507 is a high-performance, open-weight Mixture-of-Experts (MoE) language model optimized for complex reasoning tasks. It activates 22B of its 235B parameters per forward pass and natively supports up to 262,144 tokens of context. This \"thinking-only\" variant enhances structured logical reasoning, mathematics, science, and long-form generation, showing strong benchmark performance across AIME, SuperGPQA, LiveCodeBench, and MMLU-Redux. It enforces a special reasoning mode (</think>) and is designed for high-token outputs (up to 81,920 tokens) in challenging domains.\n\nThe model is instruction-tuned and excels at step-by-step reasoning, tool use, agentic workflows, and multilingual tasks. This release represents the most capable open-source variant in the Qwen3-235B series, surpassing many closed models in structured reasoning use cases.",
-      "context_length": 262144,
+      "context_length": 131072,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -7527,13 +7474,16 @@
         "instruct_type": "qwen3"
       },
       "pricing": {
-        "prompt": "0.00000011",
-        "completion": "0.0000006",
-        "input_cache_read": "0.000000055"
+        "prompt": "0",
+        "completion": "0",
+        "request": "0",
+        "image": "0",
+        "web_search": "0",
+        "internal_reasoning": "0"
       },
       "top_provider": {
-        "context_length": 262144,
-        "max_completion_tokens": 262144,
+        "context_length": 131072,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -8259,51 +8209,6 @@
         "reasoning",
         "response_format",
         "structured_outputs",
-        "temperature",
-        "top_k",
-        "top_p"
-      ],
-      "default_parameters": {},
-      "expiration_date": null
-    },
-    {
-      "id": "tngtech/deepseek-r1t2-chimera:free",
-      "canonical_slug": "tngtech/deepseek-r1t2-chimera",
-      "hugging_face_id": "tngtech/DeepSeek-TNG-R1T2-Chimera",
-      "name": "TNG: DeepSeek R1T2 Chimera (free)",
-      "created": 1751986985,
-      "description": "DeepSeek-TNG-R1T2-Chimera is the second-generation Chimera model from TNG Tech. It is a 671 B-parameter mixture-of-experts text-generation model assembled from DeepSeek-AI’s R1-0528, R1, and V3-0324 checkpoints with an Assembly-of-Experts merge. The tri-parent design yields strong reasoning performance while running roughly 20 % faster than the original R1 and more than 2× faster than R1-0528 under vLLM, giving a favorable cost-to-intelligence trade-off. The checkpoint supports contexts up to 60 k tokens in standard use (tested to ~130 k) and maintains consistent <think> token behaviour, making it suitable for long-context analysis, dialogue and other open-ended generation tasks.",
-      "context_length": 163840,
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "DeepSeek",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0",
-        "completion": "0"
-      },
-      "top_provider": {
-        "context_length": 163840,
-        "max_completion_tokens": null,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "include_reasoning",
-        "max_tokens",
-        "presence_penalty",
-        "reasoning",
-        "repetition_penalty",
-        "seed",
-        "stop",
         "temperature",
         "top_k",
         "top_p"
@@ -9732,6 +9637,50 @@
       "expiration_date": null
     },
     {
+      "id": "qwen/qwen3-4b",
+      "canonical_slug": "qwen/qwen3-4b-04-28",
+      "hugging_face_id": "Qwen/Qwen3-4B",
+      "name": "Qwen: Qwen3 4B",
+      "created": 1746031104,
+      "description": "Qwen3-4B is a 4 billion parameter dense language model from the Qwen3 series, designed to support both general-purpose and reasoning-intensive tasks. It introduces a dual-mode architecture—thinking and non-thinking—allowing dynamic switching between high-precision logical reasoning and efficient dialogue generation. This makes it well-suited for multi-turn chat, instruction following, and complex agent workflows.",
+      "context_length": 131072,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Qwen3",
+        "instruct_type": "qwen3"
+      },
+      "pricing": {
+        "prompt": "0.0000000715",
+        "completion": "0.000000273"
+      },
+      "top_provider": {
+        "context_length": 131072,
+        "max_completion_tokens": 8192,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "include_reasoning",
+        "max_tokens",
+        "presence_penalty",
+        "reasoning",
+        "response_format",
+        "seed",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_p"
+      ],
+      "default_parameters": {},
+      "expiration_date": null
+    },
+    {
       "id": "meta-llama/llama-guard-4-12b",
       "canonical_slug": "meta-llama/llama-guard-4-12b",
       "hugging_face_id": "meta-llama/Llama-Guard-4-12B",
@@ -9866,8 +9815,10 @@
       "supported_parameters": [
         "include_reasoning",
         "max_tokens",
+        "presence_penalty",
         "reasoning",
         "response_format",
+        "seed",
         "structured_outputs",
         "temperature",
         "tool_choice",
@@ -10029,51 +9980,6 @@
         "temperature",
         "tool_choice",
         "tools",
-        "top_k",
-        "top_p"
-      ],
-      "default_parameters": {},
-      "expiration_date": null
-    },
-    {
-      "id": "tngtech/deepseek-r1t-chimera:free",
-      "canonical_slug": "tngtech/deepseek-r1t-chimera",
-      "hugging_face_id": "tngtech/DeepSeek-R1T-Chimera",
-      "name": "TNG: DeepSeek R1T Chimera (free)",
-      "created": 1745760875,
-      "description": "DeepSeek-R1T-Chimera is created by merging DeepSeek-R1 and DeepSeek-V3 (0324), combining the reasoning capabilities of R1 with the token efficiency improvements of V3. It is based on a DeepSeek-MoE Transformer architecture and is optimized for general text generation tasks.\n\nThe model merges pretrained weights from both source models to balance performance across reasoning, efficiency, and instruction-following tasks. It is released under the MIT license and intended for research and commercial use.",
-      "context_length": 163840,
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "DeepSeek",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0",
-        "completion": "0"
-      },
-      "top_provider": {
-        "context_length": 163840,
-        "max_completion_tokens": null,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "include_reasoning",
-        "max_tokens",
-        "presence_penalty",
-        "reasoning",
-        "repetition_penalty",
-        "seed",
-        "stop",
-        "temperature",
         "top_k",
         "top_p"
       ],
@@ -16610,7 +16516,7 @@
       "expiration_date": null
     }
   ],
-  "lastUpdate": "2026-02-13T02:52:23.176Z",
+  "lastUpdate": "2026-02-14T02:39:45.548Z",
   "generatedBy": "GitHub Actions",
-  "totalModels": 342
+  "totalModels": 340
 }
