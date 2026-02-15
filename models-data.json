@@ -488,7 +488,11 @@
       },
       "pricing": {
         "prompt": "0",
-        "completion": "0"
+        "completion": "0",
+        "request": "0",
+        "image": "0",
+        "web_search": "0",
+        "internal_reasoning": "0"
       },
       "top_provider": {
         "context_length": 131000,
@@ -534,12 +538,12 @@
       },
       "pricing": {
         "prompt": "0.00000045",
-        "completion": "0.00000225",
-        "input_cache_read": "0.000000070000002"
+        "completion": "0.00000044",
+        "input_cache_read": "0.0000001125"
       },
       "top_provider": {
         "context_length": 262144,
-        "max_completion_tokens": null,
+        "max_completion_tokens": 65535,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -16516,7 +16520,7 @@
       "expiration_date": null
     }
   ],
-  "lastUpdate": "2026-02-14T02:39:45.548Z",
+  "lastUpdate": "2026-02-15T02:53:15.736Z",
   "generatedBy": "GitHub Actions",
   "totalModels": 340
 }
