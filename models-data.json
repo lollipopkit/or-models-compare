@@ -1,6 +1,60 @@
 {
   "data": [
     {
+      "id": "anthropic/claude-sonnet-4.6",
+      "canonical_slug": "anthropic/claude-4.6-sonnet-20260217",
+      "hugging_face_id": "",
+      "name": "Anthropic: Claude Sonnet 4.6",
+      "created": 1771342990,
+      "description": "Sonnet 4.6 is Anthropic's most capable Sonnet-class model yet, with frontier performance across coding, agents, and professional work. It excels at iterative development, complex codebase navigation, end-to-end project management with memory, polished document creation, and confident computer use for web QA and workflow automation.",
+      "context_length": 1000000,
+      "architecture": {
+        "modality": "text+image->text",
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Claude",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.000003",
+        "completion": "0.000015",
+        "web_search": "0.01",
+        "input_cache_read": "0.0000003",
+        "input_cache_write": "0.00000375"
+      },
+      "top_provider": {
+        "context_length": 1000000,
+        "max_completion_tokens": 128000,
+        "is_moderated": true
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "include_reasoning",
+        "max_tokens",
+        "reasoning",
+        "response_format",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_p",
+        "verbosity"
+      ],
+      "default_parameters": {
+        "temperature": null,
+        "top_p": null,
+        "frequency_penalty": null
+      },
+      "expiration_date": null
+    },
+    {
       "id": "qwen/qwen3.5-plus-02-15",
       "canonical_slug": "qwen/qwen3.5-plus-20260216",
       "hugging_face_id": "",
@@ -73,8 +127,9 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000006",
-        "completion": "0.0000036"
+        "prompt": "0.00000015",
+        "completion": "0.000001",
+        "input_cache_read": "0.00000015"
       },
       "top_provider": {
         "context_length": 262144,
@@ -83,15 +138,22 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "frequency_penalty",
         "include_reasoning",
+        "logit_bias",
         "max_tokens",
+        "min_p",
         "presence_penalty",
         "reasoning",
+        "repetition_penalty",
         "response_format",
         "seed",
+        "stop",
+        "structured_outputs",
         "temperature",
         "tool_choice",
         "tools",
+        "top_k",
         "top_p"
       ],
       "default_parameters": {
@@ -122,12 +184,12 @@
       },
       "pricing": {
         "prompt": "0.0000003",
-        "completion": "0.0000012",
-        "input_cache_read": "0.000000029"
+        "completion": "0.0000011",
+        "input_cache_read": "0.00000015"
       },
       "top_provider": {
         "context_length": 196608,
-        "max_completion_tokens": null,
+        "max_completion_tokens": 65536,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -137,8 +199,11 @@
         "logit_bias",
         "logprobs",
         "max_tokens",
+        "min_p",
+        "parallel_tool_calls",
         "presence_penalty",
         "reasoning",
+        "reasoning_effort",
         "repetition_penalty",
         "response_format",
         "seed",
@@ -389,9 +454,9 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000007",
-        "completion": "0.0000003",
-        "input_cache_read": "0.000000035"
+        "prompt": "0.00000012",
+        "completion": "0.00000075",
+        "input_cache_read": "0.00000006"
       },
       "top_provider": {
         "context_length": 262144,
@@ -1401,9 +1466,9 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000004",
-        "completion": "0.0000015",
-        "input_cache_read": "0.0000002"
+        "prompt": "0.00000038",
+        "completion": "0.0000017",
+        "input_cache_read": "0.00000019"
       },
       "top_provider": {
         "context_length": 202752,
@@ -1912,13 +1977,12 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000005",
-        "completion": "0.00000022",
-        "input_cache_read": "0.000000025"
+        "prompt": "0.0000004",
+        "completion": "0.000002"
       },
       "top_provider": {
         "context_length": 262144,
-        "max_completion_tokens": 65536,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -1926,7 +1990,6 @@
         "frequency_penalty",
         "max_tokens",
         "presence_penalty",
-        "repetition_penalty",
         "response_format",
         "seed",
         "stop",
@@ -1934,7 +1997,6 @@
         "temperature",
         "tool_choice",
         "tools",
-        "top_k",
         "top_p"
       ],
       "default_parameters": {
@@ -4787,9 +4849,9 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000035",
-        "completion": "0.0000015",
-        "input_cache_read": "0.000000175"
+        "prompt": "0.00000034",
+        "completion": "0.0000017",
+        "input_cache_read": "0.00000017"
       },
       "top_provider": {
         "context_length": 202752,
@@ -5074,64 +5136,6 @@
         "frequency_penalty": null
       },
       "expiration_date": null
-    },
-    {
-      "id": "google/gemini-2.5-flash-preview-09-2025",
-      "canonical_slug": "google/gemini-2.5-flash-preview-09-2025",
-      "hugging_face_id": "",
-      "name": "Google: Gemini 2.5 Flash Preview 09-2025",
-      "created": 1758820178,
-      "description": "Gemini 2.5 Flash Preview September 2025 Checkpoint is Google's state-of-the-art workhorse model, specifically designed for advanced reasoning, coding, mathematics, and scientific tasks. It includes built-in \"thinking\" capabilities, enabling it to provide responses with greater accuracy and nuanced context handling. \n\nAdditionally, Gemini 2.5 Flash is configurable through the \"max tokens for reasoning\" parameter, as described in the documentation (https://openrouter.ai/docs/use-cases/reasoning-tokens#max-tokens-for-reasoning).",
-      "context_length": 1048576,
-      "architecture": {
-        "modality": "text+image+file+audio+video->text",
-        "input_modalities": [
-          "image",
-          "file",
-          "text",
-          "audio",
-          "video"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Gemini",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0.0000003",
-        "completion": "0.0000025",
-        "image": "0.0000003",
-        "audio": "0.000001",
-        "internal_reasoning": "0.0000025",
-        "input_cache_read": "0.00000003",
-        "input_cache_write": "0.00000008333333333333334"
-      },
-      "top_provider": {
-        "context_length": 1048576,
-        "max_completion_tokens": 65536,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "include_reasoning",
-        "max_tokens",
-        "reasoning",
-        "response_format",
-        "seed",
-        "stop",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_p"
-      ],
-      "default_parameters": {
-        "temperature": null,
-        "top_p": null,
-        "frequency_penalty": null
-      },
-      "expiration_date": "2026-02-17"
     },
     {
       "id": "google/gemini-2.5-flash-lite-preview-09-2025",
@@ -14523,53 +14527,6 @@
       "expiration_date": null
     },
     {
-      "id": "openai/chatgpt-4o-latest",
-      "canonical_slug": "openai/chatgpt-4o-latest",
-      "hugging_face_id": null,
-      "name": "OpenAI: ChatGPT-4o",
-      "created": 1723593600,
-      "description": "OpenAI ChatGPT 4o is continually updated by OpenAI to point to the current version of GPT-4o used by ChatGPT. It therefore differs slightly from the API version of [GPT-4o](/models/openai/gpt-4o) in that it has additional RLHF. It is intended for research and evaluation.\n\nOpenAI notes that this model is not suited for production use-cases as it may be removed or redirected to another model in the future.",
-      "context_length": 128000,
-      "architecture": {
-        "modality": "text+image->text",
-        "input_modalities": [
-          "text",
-          "image"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "GPT",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0.000005",
-        "completion": "0.000015"
-      },
-      "top_provider": {
-        "context_length": 128000,
-        "max_completion_tokens": 16384,
-        "is_moderated": true
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "frequency_penalty",
-        "logit_bias",
-        "logprobs",
-        "max_tokens",
-        "presence_penalty",
-        "response_format",
-        "seed",
-        "stop",
-        "structured_outputs",
-        "temperature",
-        "top_logprobs",
-        "top_p"
-      ],
-      "default_parameters": {},
-      "expiration_date": "2026-02-17"
-    },
-    {
       "id": "sao10k/l3-lunaris-8b",
       "canonical_slug": "sao10k/l3-lunaris-8b",
       "hugging_face_id": "Sao10K/L3-8B-Lunaris-v1",
@@ -16627,7 +16584,7 @@
       "expiration_date": null
     }
   ],
-  "lastUpdate": "2026-02-17T02:44:55.258Z",
+  "lastUpdate": "2026-02-18T02:48:11.936Z",
   "generatedBy": "GitHub Actions",
-  "totalModels": 342
+  "totalModels": 341
 }
