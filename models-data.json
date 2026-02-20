@@ -1,6 +1,64 @@
 {
   "data": [
     {
+      "id": "google/gemini-3.1-pro-preview",
+      "canonical_slug": "google/gemini-3.1-pro-preview-20260219",
+      "hugging_face_id": "",
+      "name": "Google: Gemini 3.1 Pro Preview",
+      "created": 1771509627,
+      "description": "Gemini 3.1 Pro Preview is Google’s frontier reasoning model, delivering enhanced software engineering performance, improved agentic reliability, and more efficient token usage across complex workflows. Building on the multimodal foundation of the Gemini 3 series, it combines high-precision reasoning across text, image, video, audio, and code with a 1M-token context window. Reasoning Details must be preserved when using multi-turn tool calling, see our docs here: https://openrouter.ai/docs/use-cases/reasoning-tokens#preserving-reasoning. The 3.1 update introduces measurable gains in SWE benchmarks and real-world coding environments, along with stronger autonomous task execution in structured domains such as finance and spreadsheet-based workflows.\n\nDesigned for advanced development and agentic systems, Gemini 3.1 Pro Preview improves long-horizon stability and tool orchestration while increasing token efficiency. It introduces a new medium thinking level to better balance cost, speed, and performance. The model excels in agentic coding, structured planning, multimodal analysis, and workflow automation, making it well-suited for autonomous agents, financial modeling, spreadsheet automation, and high-context enterprise tasks.",
+      "context_length": 1048576,
+      "architecture": {
+        "modality": "text+image+file+audio+video->text",
+        "input_modalities": [
+          "audio",
+          "file",
+          "image",
+          "text",
+          "video"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Gemini",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.000002",
+        "completion": "0.000012",
+        "image": "0.000002",
+        "audio": "0.000002",
+        "internal_reasoning": "0.000012",
+        "input_cache_read": "0.0000002",
+        "input_cache_write": "0.000000375"
+      },
+      "top_provider": {
+        "context_length": 1048576,
+        "max_completion_tokens": 65536,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "include_reasoning",
+        "max_tokens",
+        "reasoning",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_p"
+      ],
+      "default_parameters": {
+        "temperature": null,
+        "top_p": null,
+        "frequency_penalty": null
+      },
+      "expiration_date": null
+    },
+    {
       "id": "anthropic/claude-sonnet-4.6",
       "canonical_slug": "anthropic/claude-4.6-sonnet-20260217",
       "hugging_face_id": "",
@@ -321,57 +379,6 @@
         "tool_choice",
         "tools",
         "top_p"
-      ],
-      "default_parameters": {
-        "temperature": null,
-        "top_p": null,
-        "frequency_penalty": null
-      },
-      "expiration_date": null
-    },
-    {
-      "id": "openrouter/aurora-alpha",
-      "canonical_slug": "openrouter/aurora-alpha",
-      "hugging_face_id": "",
-      "name": "Aurora Alpha",
-      "created": 1770611225,
-      "description": "This is a cloaked model provided to the community to gather feedback. A reasoning model designed for speed. It is built for coding assistants, real-time conversational applications, and agentic workflows.\n\nDefault reasoning effort is set to medium for fast responses. For agentic coding use cases, we recommend changing effort to high. \n\nNote: All prompts and completions for this model are logged by the provider and may be used to improve the model.",
-      "context_length": 128000,
-      "architecture": {
-        "modality": "text->text",
-        "input_modalities": [
-          "text"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Other",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0",
-        "completion": "0",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
-      },
-      "top_provider": {
-        "context_length": 128000,
-        "max_completion_tokens": 50000,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "include_reasoning",
-        "max_tokens",
-        "reasoning",
-        "reasoning_effort",
-        "response_format",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools"
       ],
       "default_parameters": {
         "temperature": null,
@@ -1678,7 +1685,7 @@
       },
       "top_provider": {
         "context_length": 262144,
-        "max_completion_tokens": null,
+        "max_completion_tokens": 65536,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -3783,8 +3790,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000002",
-        "completion": "0.0000006"
+        "prompt": "0.00000007",
+        "completion": "0.0000002"
       },
       "top_provider": {
         "context_length": 131072,
@@ -4153,7 +4160,7 @@
       "top_provider": {
         "context_length": 200000,
         "max_completion_tokens": 64000,
-        "is_moderated": false
+        "is_moderated": true
       },
       "per_request_limits": null,
       "supported_parameters": [
@@ -13454,7 +13461,9 @@
       },
       "pricing": {
         "prompt": "0.000006",
-        "completion": "0.00003"
+        "completion": "0.00003",
+        "input_cache_read": "0.0000006",
+        "input_cache_write": "0.0000075"
       },
       "top_provider": {
         "context_length": 200000,
@@ -16340,7 +16349,7 @@
       "expiration_date": null
     }
   ],
-  "lastUpdate": "2026-02-19T02:47:23.197Z",
+  "lastUpdate": "2026-02-20T02:41:49.409Z",
   "generatedBy": "GitHub Actions",
   "totalModels": 337
 }
