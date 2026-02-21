@@ -363,7 +363,7 @@
       },
       "top_provider": {
         "context_length": 262144,
-        "max_completion_tokens": 65536,
+        "max_completion_tokens": 32768,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -729,10 +729,8 @@
         "logprobs",
         "max_tokens",
         "min_p",
-        "parallel_tool_calls",
         "presence_penalty",
         "reasoning",
-        "reasoning_effort",
         "repetition_penalty",
         "response_format",
         "seed",
@@ -5273,7 +5271,7 @@
       },
       "top_provider": {
         "context_length": 262144,
-        "max_completion_tokens": 65536,
+        "max_completion_tokens": 32768,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -16349,7 +16347,7 @@
       "expiration_date": null
     }
   ],
-  "lastUpdate": "2026-02-20T02:41:49.409Z",
+  "lastUpdate": "2026-02-21T02:35:33.033Z",
   "generatedBy": "GitHub Actions",
   "totalModels": 337
 }
