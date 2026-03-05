@@ -1545,7 +1545,7 @@
       "hugging_face_id": "LiquidAI/LFM2.5-1.2B-Thinking",
       "name": "LiquidAI: LFM2.5-1.2B-Thinking (free)",
       "created": 1768927527,
-      "description": "LFM2.5-1.2B-Thinking is a lightweight reasoning-focused model optimized for agentic tasks, data extraction, and RAG—while still running comfortably on edge devices. It supports long context (up to 32K tokens) and is designed to provide higher-quality “thinking�� responses in a small 1.2B model.",
+      "description": "LFM2.5-1.2B-Thinking is a lightweight reasoning-focused model optimized for agentic tasks, data extraction, and RAG—while still running comfortably on edge devices. It supports long context (up to 32K tokens) and is designed to provide higher-quality “thinking” responses in a small 1.2B model.",
       "context_length": 32768,
       "architecture": {
         "modality": "text->text",
@@ -5447,7 +5447,7 @@
       "name": "Z.ai: GLM 4.6",
       "created": 1759235576,
       "description": "Compared with GLM-4.5, this generation brings several key improvements:\n\nLonger context window: The context window has been expanded from 128K to 200K tokens, enabling the model to handle more complex agentic tasks.\nSuperior coding performance: The model achieves higher scores on code benchmarks and demonstrates better real-world performance in applications such as Claude Code、Cline、Roo Code and Kilo Code, including improvements in generating visually polished front-end pages.\nAdvanced reasoning: GLM-4.6 shows a clear improvement in reasoning performance and supports tool use during inference, leading to stronger overall capability.\nMore capable agents: GLM-4.6 exhibits stronger performance in tool using and search-based agents, and integrates more effectively within agent frameworks.\nRefined writing: Better aligns with human preferences in style and readability, and performs more naturally in role-playing scenarios.",
-      "context_length": 202752,
+      "context_length": 204800,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -5460,12 +5460,12 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000035",
-        "completion": "0.00000171"
+        "prompt": "0.00000039",
+        "completion": "0.0000019"
       },
       "top_provider": {
-        "context_length": 202752,
-        "max_completion_tokens": 131072,
+        "context_length": 204800,
+        "max_completion_tokens": 204800,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -8009,7 +8009,7 @@
       "name": "Z.ai: GLM 4.5",
       "created": 1753471347,
       "description": "GLM-4.5 is our latest flagship foundation model, purpose-built for agent-based applications. It leverages a Mixture-of-Experts (MoE) architecture and supports a context length of up to 128k tokens. GLM-4.5 delivers significantly enhanced capabilities in reasoning, code generation, and agent alignment. It supports a hybrid inference mode with two options, a \"thinking mode\" designed for complex reasoning and tool use, and a \"non-thinking mode\" optimized for instant responses. Users can control the reasoning behaviour with the `reasoning` `enabled` boolean. [Learn more in our docs](https://openrouter.ai/docs/use-cases/reasoning-tokens#enable-reasoning-with-default-config)",
-      "context_length": 131000,
+      "context_length": 131072,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -8022,12 +8022,13 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000055",
-        "completion": "0.000002"
+        "prompt": "0.0000006",
+        "completion": "0.0000022",
+        "input_cache_read": "0.00000011"
       },
       "top_provider": {
-        "context_length": 131000,
-        "max_completion_tokens": 131000,
+        "context_length": 131072,
+        "max_completion_tokens": 98304,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -8053,7 +8054,7 @@
         "top_p": null,
         "frequency_penalty": null
       },
-      "expiration_date": "2026-02-12"
+      "expiration_date": null
     },
     {
       "id": "z-ai/glm-4.5-air:free",
@@ -16793,7 +16794,7 @@
       "expiration_date": null
     }
   ],
-  "lastUpdate": "2026-03-04T02:38:56.316Z",
+  "lastUpdate": "2026-03-05T02:41:30.049Z",
   "generatedBy": "GitHub Actions",
   "totalModels": 343
 }
