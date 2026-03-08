@@ -771,7 +771,10 @@
       "default_parameters": {
         "temperature": null,
         "top_p": null,
-        "frequency_penalty": null
+        "top_k": null,
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null
       },
       "expiration_date": null
     },
@@ -3323,7 +3326,7 @@
       "hugging_face_id": "",
       "name": "Mistral: Mistral Large 3 2512",
       "created": 1764624472,
-      "description": "Mistral Large 3 2512 is Mistral���s most capable model to date, featuring a sparse mixture-of-experts architecture with 41B active parameters (675B total), and released under the Apache 2.0 license.",
+      "description": "Mistral Large 3 2512 is Mistral’s most capable model to date, featuring a sparse mixture-of-experts architecture with 41B active parameters (675B total), and released under the Apache 2.0 license.",
       "context_length": 262144,
       "architecture": {
         "modality": "text+image->text",
@@ -16938,7 +16941,7 @@
       "expiration_date": null
     }
   ],
-  "lastUpdate": "2026-03-07T02:32:09.068Z",
+  "lastUpdate": "2026-03-08T02:45:29.128Z",
   "generatedBy": "GitHub Actions",
   "totalModels": 346
 }
