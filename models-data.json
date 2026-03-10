@@ -1510,7 +1510,10 @@
       "default_parameters": {
         "temperature": 0.8,
         "top_p": 0.8,
-        "frequency_penalty": null
+        "top_k": null,
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null
       },
       "expiration_date": null
     },
@@ -6601,7 +6604,7 @@
       "name": "Qwen: Qwen3 Next 80B A3B Instruct",
       "created": 1757612213,
       "description": "Qwen3-Next-80B-A3B-Instruct is an instruction-tuned chat model in the Qwen3-Next series optimized for fast, stable responses without “thinking” traces. It targets complex tasks across reasoning, code generation, knowledge QA, and multilingual use, while remaining robust on alignment and formatting. Compared with prior Qwen3 instruct variants, it focuses on higher throughput and stability on ultra-long inputs and multi-turn dialogues, making it well-suited for RAG, tool use, and agentic workflows that require consistent final answers rather than visible chain-of-thought.\n\nThe model employs scaling-efficient training and decoding to improve parameter efficiency and inference speed, and has been validated on a broad set of public benchmarks where it reaches or approaches larger Qwen3 systems in several categories while outperforming earlier mid-sized baselines. It is best used as a general assistant, code helper, and long-context task solver in production settings where deterministic, instruction-following outputs are preferred.",
-      "context_length": 262144,
+      "context_length": 131072,
       "architecture": {
         "modality": "text->text",
         "input_modalities": [
@@ -6618,7 +6621,7 @@
         "completion": "0.0000011"
       },
       "top_provider": {
-        "context_length": 262144,
+        "context_length": 131072,
         "max_completion_tokens": null,
         "is_moderated": false
       },
@@ -16941,7 +16944,7 @@
       "expiration_date": null
     }
   ],
-  "lastUpdate": "2026-03-09T02:47:15.919Z",
+  "lastUpdate": "2026-03-10T02:38:14.912Z",
   "generatedBy": "GitHub Actions",
   "totalModels": 346
 }
