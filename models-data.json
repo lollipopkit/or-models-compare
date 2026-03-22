@@ -8553,11 +8553,12 @@
       },
       "pricing": {
         "prompt": "0.00000003",
-        "completion": "0.00000014"
+        "completion": "0.00000011",
+        "input_cache_read": "0.000000015"
       },
       "top_provider": {
         "context_length": 131072,
-        "max_completion_tokens": null,
+        "max_completion_tokens": 131072,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -11784,6 +11785,57 @@
       "expiration_date": null
     },
     {
+      "id": "nvidia/llama-3.1-nemotron-ultra-253b-v1",
+      "canonical_slug": "nvidia/llama-3.1-nemotron-ultra-253b-v1",
+      "hugging_face_id": "nvidia/Llama-3_1-Nemotron-Ultra-253B-v1",
+      "name": "NVIDIA: Llama 3.1 Nemotron Ultra 253B v1",
+      "created": 1744115059,
+      "description": "Llama-3.1-Nemotron-Ultra-253B-v1 is a large language model (LLM) optimized for advanced reasoning, human-interactive chat, retrieval-augmented generation (RAG), and tool-calling tasks. Derived from Meta’s Llama-3.1-405B-Instruct, it has been significantly customized using Neural Architecture Search (NAS), resulting in enhanced efficiency, reduced memory usage, and improved inference latency. The model supports a context length of up to 128K tokens and can operate efficiently on an 8x NVIDIA H100 node.\n\nNote: you must include `detailed thinking on` in the system prompt to enable reasoning. Please see [Usage Recommendations](https://huggingface.co/nvidia/Llama-3_1-Nemotron-Ultra-253B-v1#quick-start-and-usage-recommendations) for more.",
+      "context_length": 131072,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Llama3",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.0000006",
+        "completion": "0.0000018"
+      },
+      "top_provider": {
+        "context_length": 131072,
+        "max_completion_tokens": null,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "max_tokens",
+        "presence_penalty",
+        "reasoning",
+        "repetition_penalty",
+        "structured_outputs",
+        "temperature",
+        "top_k",
+        "top_p"
+      ],
+      "default_parameters": {
+        "temperature": null,
+        "top_p": null,
+        "top_k": null,
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null
+      },
+      "expiration_date": null
+    },
+    {
       "id": "meta-llama/llama-4-maverick",
       "canonical_slug": "meta-llama/llama-4-maverick-17b-128e-instruct",
       "hugging_face_id": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
@@ -13769,7 +13821,9 @@
       "supported_parameters": [
         "frequency_penalty",
         "include_reasoning",
+        "logit_bias",
         "max_tokens",
+        "min_p",
         "presence_penalty",
         "reasoning",
         "repetition_penalty",
@@ -13781,7 +13835,14 @@
         "top_k",
         "top_p"
       ],
-      "default_parameters": {},
+      "default_parameters": {
+        "temperature": null,
+        "top_p": null,
+        "top_k": null,
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null
+      },
       "expiration_date": null
     },
     {
@@ -15199,6 +15260,54 @@
         "top_p"
       ],
       "default_parameters": {},
+      "expiration_date": null
+    },
+    {
+      "id": "mistralai/pixtral-12b",
+      "canonical_slug": "mistralai/pixtral-12b",
+      "hugging_face_id": "mistralai/Pixtral-12B-2409",
+      "name": "Mistral: Pixtral 12B",
+      "created": 1725926400,
+      "description": "The first multi-modal, text+image-to-text model from Mistral AI. Its weights were launched via torrent: https://x.com/mistralai/status/1833758285167722836.",
+      "context_length": 32768,
+      "architecture": {
+        "modality": "text+image->text",
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Mistral",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.00000010000000000000001",
+        "completion": "0.00000010000000000000001"
+      },
+      "top_provider": {
+        "context_length": 32768,
+        "max_completion_tokens": null,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "logit_bias",
+        "max_tokens",
+        "min_p",
+        "presence_penalty",
+        "repetition_penalty",
+        "seed",
+        "stop",
+        "temperature",
+        "top_k",
+        "top_p"
+      ],
+      "default_parameters": {
+        "temperature": 0.3
+      },
       "expiration_date": null
     },
     {
@@ -17303,7 +17412,7 @@
       "expiration_date": null
     }
   ],
-  "lastUpdate": "2026-03-21T02:35:25.582Z",
+  "lastUpdate": "2026-03-22T02:51:58.219Z",
   "generatedBy": "GitHub Actions",
-  "totalModels": 350
+  "totalModels": 352
 }
