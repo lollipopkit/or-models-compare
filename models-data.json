@@ -142,7 +142,9 @@
       "supported_parameters": [
         "frequency_penalty",
         "include_reasoning",
+        "logit_bias",
         "max_tokens",
+        "min_p",
         "presence_penalty",
         "reasoning",
         "repetition_penalty",
@@ -347,9 +349,9 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000096",
-        "completion": "0.0000032",
-        "input_cache_read": "0.000000192"
+        "prompt": "0.0000012",
+        "completion": "0.000004",
+        "input_cache_read": "0.00000024"
       },
       "top_provider": {
         "context_length": 202752,
@@ -560,7 +562,7 @@
       "pricing": {
         "prompt": "0.0000001",
         "completion": "0.0000005",
-        "input_cache_read": "0.00000004"
+        "input_cache_read": "0.0000001"
       },
       "top_provider": {
         "context_length": 262144,
@@ -676,7 +678,7 @@
       },
       "top_provider": {
         "context_length": 256000,
-        "max_completion_tokens": null,
+        "max_completion_tokens": 65536,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -11668,6 +11670,7 @@
         "presence_penalty",
         "reasoning",
         "repetition_penalty",
+        "response_format",
         "structured_outputs",
         "temperature",
         "top_k",
@@ -14690,7 +14693,7 @@
       },
       "top_provider": {
         "context_length": 32768,
-        "max_completion_tokens": null,
+        "max_completion_tokens": 32768,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -17260,7 +17263,7 @@
       "expiration_date": null
     }
   ],
-  "lastUpdate": "2026-03-23T02:52:14.470Z",
+  "lastUpdate": "2026-03-24T02:43:51.628Z",
   "generatedBy": "GitHub Actions",
   "totalModels": 349
 }
