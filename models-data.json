@@ -1,6 +1,60 @@
 {
   "data": [
     {
+      "id": "reka/reka-edge",
+      "canonical_slug": "rekaai/reka-edge-2603",
+      "hugging_face_id": "RekaAI/reka-edge-2603",
+      "name": "Reka Edge",
+      "created": 1774026965,
+      "description": "Reka Edge is an extremely efficient 7B multimodal vision-language model that accepts image/video+text inputs and generates text outputs. This model is optimized specifically to deliver industry-leading performance in image understanding, video analysis, object detection, and agentic tool-use.",
+      "context_length": 16384,
+      "architecture": {
+        "modality": "text+image+video->text",
+        "input_modalities": [
+          "image",
+          "text",
+          "video"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Other",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.0000002",
+        "completion": "0.0000002"
+      },
+      "top_provider": {
+        "context_length": 16384,
+        "max_completion_tokens": 16384,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "max_tokens",
+        "presence_penalty",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_p"
+      ],
+      "default_parameters": {
+        "temperature": null,
+        "top_p": null,
+        "top_k": null,
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null
+      },
+      "expiration_date": null
+    },
+    {
       "id": "xiaomi/mimo-v2-omni",
       "canonical_slug": "xiaomi/mimo-v2-omni-20260318",
       "hugging_face_id": "",
@@ -360,13 +414,21 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
+        "frequency_penalty",
         "include_reasoning",
+        "logit_bias",
         "max_tokens",
+        "min_p",
+        "presence_penalty",
         "reasoning",
+        "repetition_penalty",
         "response_format",
+        "seed",
+        "stop",
         "temperature",
         "tool_choice",
         "tools",
+        "top_k",
         "top_p"
       ],
       "default_parameters": {
@@ -2279,7 +2341,7 @@
         "presence_penalty": null,
         "repetition_penalty": null
       },
-      "expiration_date": null
+      "expiration_date": "2026-03-31"
     },
     {
       "id": "moonshotai/kimi-k2.5",
@@ -4585,64 +4647,6 @@
       "expiration_date": null
     },
     {
-      "id": "google/gemini-3-pro-preview",
-      "canonical_slug": "google/gemini-3-pro-preview-20251117",
-      "hugging_face_id": "",
-      "name": "Google: Gemini 3 Pro Preview",
-      "created": 1763474668,
-      "description": "Gemini 3 Pro is Google’s flagship frontier model for high-precision multimodal reasoning, combining strong performance across text, image, video, audio, and code with a 1M-token context window. Reasoning Details must be preserved when using multi-turn tool calling, see our docs here: https://openrouter.ai/docs/use-cases/reasoning-tokens#preserving-reasoning-blocks. It delivers state-of-the-art benchmark results in general reasoning, STEM problem solving, factual QA, and multimodal understanding, including leading scores on LMArena, GPQA Diamond, MathArena Apex, MMMU-Pro, and Video-MMMU. Interactions emphasize depth and interpretability: the model is designed to infer intent with minimal prompting and produce direct, insight-focused responses.\n\nBuilt for advanced development and agentic workflows, Gemini 3 Pro provides robust tool-calling, long-horizon planning stability, and strong zero-shot generation for complex UI, visualization, and coding tasks. It excels at agentic coding (SWE-Bench Verified, Terminal-Bench 2.0), multimodal analysis, and structured long-form tasks such as research synthesis, planning, and interactive learning experiences. Suitable applications include autonomous agents, coding assistants, multimodal analytics, scientific reasoning, and high-context information processing.",
-      "context_length": 1048576,
-      "architecture": {
-        "modality": "text+image+file+audio+video->text",
-        "input_modalities": [
-          "text",
-          "image",
-          "file",
-          "audio",
-          "video"
-        ],
-        "output_modalities": [
-          "text"
-        ],
-        "tokenizer": "Gemini",
-        "instruct_type": null
-      },
-      "pricing": {
-        "prompt": "0.000002",
-        "completion": "0.000012",
-        "image": "0.000002",
-        "audio": "0.000002",
-        "internal_reasoning": "0.000012",
-        "input_cache_read": "0.0000002",
-        "input_cache_write": "0.000000375"
-      },
-      "top_provider": {
-        "context_length": 1048576,
-        "max_completion_tokens": 65536,
-        "is_moderated": false
-      },
-      "per_request_limits": null,
-      "supported_parameters": [
-        "include_reasoning",
-        "max_tokens",
-        "reasoning",
-        "response_format",
-        "seed",
-        "stop",
-        "structured_outputs",
-        "temperature",
-        "tool_choice",
-        "tools",
-        "top_p"
-      ],
-      "default_parameters": {
-        "temperature": null,
-        "top_p": null,
-        "frequency_penalty": null
-      },
-      "expiration_date": "2026-03-26"
-    },
-    {
       "id": "deepcogito/cogito-v2.1-671b",
       "canonical_slug": "deepcogito/cogito-v2.1-671b-20251118",
       "hugging_face_id": "",
@@ -6663,7 +6667,6 @@
       "supported_parameters": [
         "frequency_penalty",
         "logit_bias",
-        "logprobs",
         "max_tokens",
         "min_p",
         "presence_penalty",
@@ -6676,7 +6679,6 @@
         "tool_choice",
         "tools",
         "top_k",
-        "top_logprobs",
         "top_p"
       ],
       "default_parameters": {
@@ -7073,7 +7075,9 @@
       "supported_parameters": [
         "frequency_penalty",
         "include_reasoning",
+        "logit_bias",
         "max_tokens",
+        "min_p",
         "presence_penalty",
         "reasoning",
         "repetition_penalty",
@@ -11055,6 +11059,7 @@
       "supported_parameters": [
         "frequency_penalty",
         "include_reasoning",
+        "logit_bias",
         "max_tokens",
         "min_p",
         "presence_penalty",
@@ -17116,7 +17121,7 @@
       "expiration_date": null
     }
   ],
-  "lastUpdate": "2026-03-25T02:48:44.278Z",
+  "lastUpdate": "2026-03-26T02:55:20.920Z",
   "generatedBy": "GitHub Actions",
   "totalModels": 346
 }
