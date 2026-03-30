@@ -255,21 +255,13 @@
       },
       "per_request_limits": null,
       "supported_parameters": [
-        "frequency_penalty",
         "include_reasoning",
-        "logit_bias",
         "max_tokens",
-        "min_p",
-        "presence_penalty",
         "reasoning",
-        "repetition_penalty",
         "response_format",
-        "seed",
-        "stop",
         "temperature",
         "tool_choice",
         "tools",
-        "top_k",
         "top_p"
       ],
       "default_parameters": {
@@ -2418,11 +2410,7 @@
       },
       "pricing": {
         "prompt": "0",
-        "completion": "0",
-        "request": "0",
-        "image": "0",
-        "web_search": "0",
-        "internal_reasoning": "0"
+        "completion": "0"
       },
       "top_provider": {
         "context_length": 131000,
@@ -17432,7 +17420,7 @@
       "expiration_date": null
     }
   ],
-  "lastUpdate": "2026-03-29T03:21:00.215Z",
+  "lastUpdate": "2026-03-30T03:24:12.783Z",
   "generatedBy": "GitHub Actions",
   "totalModels": 345
 }
