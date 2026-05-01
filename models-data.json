@@ -1,6 +1,186 @@
 {
   "data": [
     {
+      "id": "x-ai/grok-4.3",
+      "canonical_slug": "x-ai/grok-4.3-20260430",
+      "hugging_face_id": null,
+      "name": "xAI: Grok 4.3",
+      "created": 1777591821,
+      "description": "Grok 4.3 is a reasoning model from xAI. It accepts text and image inputs with text output, and is suited for agentic workflows, instruction-following tasks, and applications requiring high factual...",
+      "context_length": 1000000,
+      "architecture": {
+        "modality": "text+image->text",
+        "input_modalities": [
+          "text",
+          "image"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Grok",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.00000125",
+        "completion": "0.0000025",
+        "web_search": "0.005",
+        "input_cache_read": "0.0000002"
+      },
+      "top_provider": {
+        "context_length": 1000000,
+        "max_completion_tokens": null,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "include_reasoning",
+        "logprobs",
+        "max_tokens",
+        "presence_penalty",
+        "reasoning",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_logprobs",
+        "top_p"
+      ],
+      "default_parameters": {
+        "temperature": null,
+        "top_p": null,
+        "top_k": null,
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null
+      },
+      "knowledge_cutoff": null,
+      "expiration_date": null,
+      "links": {
+        "details": "/api/v1/models/x-ai/grok-4.3-20260430/endpoints"
+      }
+    },
+    {
+      "id": "ibm-granite/granite-4.1-8b",
+      "canonical_slug": "ibm-granite/granite-4.1-8b-20260429",
+      "hugging_face_id": "ibm-granite/granite-4.1-8b",
+      "name": "IBM: Granite 4.1 8B",
+      "created": 1777577071,
+      "description": "Granite 4.1 8B is a dense, decoder-only 8-billion-parameter language model from IBM, part of the Granite 4.1 family. It supports a 131K-token context window and is designed for enterprise tasks...",
+      "context_length": 131072,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Other",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0.00000005",
+        "completion": "0.0000001",
+        "input_cache_read": "0.00000005"
+      },
+      "top_provider": {
+        "context_length": 131072,
+        "max_completion_tokens": 131072,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "max_tokens",
+        "presence_penalty",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tool_choice",
+        "tools",
+        "top_k",
+        "top_p"
+      ],
+      "default_parameters": {
+        "temperature": null,
+        "top_p": null,
+        "top_k": null,
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null
+      },
+      "knowledge_cutoff": null,
+      "expiration_date": null,
+      "links": {
+        "details": "/api/v1/models/ibm-granite/granite-4.1-8b-20260429/endpoints"
+      }
+    },
+    {
+      "id": "openrouter/owl-alpha",
+      "canonical_slug": "openrouter/owl-alpha",
+      "hugging_face_id": null,
+      "name": "Owl Alpha",
+      "created": 1777398589,
+      "description": "Owl Alpha is a high-performance foundation model designed for agentic workloads. Natively supports tool use, and long-context tasks, with strong performance in code generation, automated workflows, and complex instruction execution....",
+      "context_length": 1048756,
+      "architecture": {
+        "modality": "text->text",
+        "input_modalities": [
+          "text"
+        ],
+        "output_modalities": [
+          "text"
+        ],
+        "tokenizer": "Other",
+        "instruct_type": null
+      },
+      "pricing": {
+        "prompt": "0",
+        "completion": "0"
+      },
+      "top_provider": {
+        "context_length": 1048756,
+        "max_completion_tokens": 262144,
+        "is_moderated": false
+      },
+      "per_request_limits": null,
+      "supported_parameters": [
+        "frequency_penalty",
+        "logit_bias",
+        "max_tokens",
+        "presence_penalty",
+        "repetition_penalty",
+        "response_format",
+        "seed",
+        "stop",
+        "structured_outputs",
+        "temperature",
+        "tools",
+        "top_k",
+        "top_p"
+      ],
+      "default_parameters": {
+        "temperature": null,
+        "top_p": null,
+        "top_k": null,
+        "frequency_penalty": null,
+        "presence_penalty": null,
+        "repetition_penalty": null
+      },
+      "knowledge_cutoff": null,
+      "expiration_date": null,
+      "links": {
+        "details": "/api/v1/models/openrouter/owl-alpha/endpoints"
+      }
+    },
+    {
       "id": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
       "canonical_slug": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning-20260428",
       "hugging_face_id": null,
@@ -349,7 +529,7 @@
       "name": "MoonshotAI Kimi Latest",
       "created": 1777318428,
       "description": "This model always redirects to the latest model in the MoonshotAI Kimi family.",
-      "context_length": 256000,
+      "context_length": 262142,
       "architecture": {
         "modality": "text+image->text",
         "input_modalities": [
@@ -363,13 +543,13 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000007448",
-        "completion": "0.000004655",
-        "input_cache_read": "0.0000001463"
+        "prompt": "0.00000074",
+        "completion": "0.00000349",
+        "input_cache_read": "0.00000014"
       },
       "top_provider": {
-        "context_length": 256000,
-        "max_completion_tokens": 65536,
+        "context_length": 262142,
+        "max_completion_tokens": 262142,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -1238,7 +1418,7 @@
     {
       "id": "xiaomi/mimo-v2.5-pro",
       "canonical_slug": "xiaomi/mimo-v2.5-pro-20260422",
-      "hugging_face_id": null,
+      "hugging_face_id": "XiaomiMiMo/MiMo-V2.5-Pro",
       "name": "Xiaomi: MiMo-V2.5-Pro",
       "created": 1776874273,
       "description": "MiMo-V2.5-Pro is Xiaomi’s flagship model, delivering strong performance in general agentic capabilities, complex software engineering, and long-horizon tasks, with top rankings on benchmarks such as ClawEval, GDPVal, and SWE-bench Pro....",
@@ -1295,7 +1475,7 @@
     {
       "id": "xiaomi/mimo-v2.5",
       "canonical_slug": "xiaomi/mimo-v2.5-20260422",
-      "hugging_face_id": null,
+      "hugging_face_id": "XiaomiMiMo/MiMo-V2.5",
       "name": "Xiaomi: MiMo-V2.5",
       "created": 1776874269,
       "description": "MiMo-V2.5 is a native omnimodal model by Xiaomi. It delivers Pro-level agentic performance at roughly half the inference cost, while surpassing MiMo-V2-Omni in multimodal perception across image and video understanding...",
@@ -1638,7 +1818,7 @@
       "name": "MoonshotAI: Kimi K2.6",
       "created": 1776699402,
       "description": "Kimi K2.6 is Moonshot AI's next-generation multimodal model, designed for long-horizon coding, coding-driven UI/UX generation, and multi-agent orchestration. It handles complex end-to-end coding tasks across Python, Rust, and Go, and...",
-      "context_length": 256000,
+      "context_length": 262142,
       "architecture": {
         "modality": "text+image->text",
         "input_modalities": [
@@ -1652,13 +1832,13 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000007448",
-        "completion": "0.000004655",
-        "input_cache_read": "0.0000001463"
+        "prompt": "0.00000074",
+        "completion": "0.00000349",
+        "input_cache_read": "0.00000014"
       },
       "top_provider": {
-        "context_length": 256000,
-        "max_completion_tokens": 65536,
+        "context_length": 262142,
+        "max_completion_tokens": 262142,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -2380,8 +2560,8 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.000002",
-        "completion": "0.000006",
+        "prompt": "0.00000125",
+        "completion": "0.0000025",
         "web_search": "0.005",
         "input_cache_read": "0.0000002"
       },
@@ -4751,9 +4931,9 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000014",
+        "prompt": "0.00000012",
         "completion": "0.0000008",
-        "input_cache_read": "0.00000009"
+        "input_cache_read": "0.00000007"
       },
       "top_provider": {
         "context_length": 262144,
@@ -5561,7 +5741,7 @@
         "frequency_penalty": null
       },
       "knowledge_cutoff": null,
-      "expiration_date": null,
+      "expiration_date": "2026-05-07",
       "links": {
         "details": "/api/v1/models/allenai/olmo-3.1-32b-instruct-20251215/endpoints"
       }
@@ -7962,7 +8142,7 @@
         "frequency_penalty": null
       },
       "knowledge_cutoff": null,
-      "expiration_date": null,
+      "expiration_date": "2026-05-07",
       "links": {
         "details": "/api/v1/models/nvidia/nemotron-nano-12b-v2-vl/endpoints"
       }
@@ -11046,11 +11226,11 @@
       },
       "pricing": {
         "prompt": "0.000000039",
-        "completion": "0.00000019"
+        "completion": "0.00000018"
       },
       "top_provider": {
         "context_length": 131072,
-        "max_completion_tokens": 131072,
+        "max_completion_tokens": null,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -11174,7 +11354,6 @@
         "min_p",
         "presence_penalty",
         "reasoning",
-        "reasoning_effort",
         "repetition_penalty",
         "response_format",
         "seed",
@@ -15698,7 +15877,7 @@
       "name": "Google: Gemini 2.0 Flash",
       "created": 1738769413,
       "description": "Gemini Flash 2.0 offers a significantly faster time to first token (TTFT) compared to [Gemini Flash 1.5](/google/gemini-flash-1.5), while maintaining quality on par with larger models like [Gemini Pro 1.5](/google/gemini-pro-1.5). It...",
-      "context_length": 1048576,
+      "context_length": 1000000,
       "architecture": {
         "modality": "text+image+file+audio+video->text",
         "input_modalities": [
@@ -15725,7 +15904,7 @@
         "input_cache_write": "0.00000008333333333333334"
       },
       "top_provider": {
-        "context_length": 1048576,
+        "context_length": 1000000,
         "max_completion_tokens": 8192,
         "is_moderated": false
       },
@@ -17600,7 +17779,7 @@
       ],
       "default_parameters": {},
       "knowledge_cutoff": "2023-12-31",
-      "expiration_date": null,
+      "expiration_date": "2026-05-08",
       "links": {
         "details": "/api/v1/models/nvidia/llama-3.1-nemotron-70b-instruct/endpoints"
       }
@@ -18976,7 +19155,7 @@
       ],
       "default_parameters": {},
       "knowledge_cutoff": "2023-12-31",
-      "expiration_date": null,
+      "expiration_date": "2026-05-07",
       "links": {
         "details": "/api/v1/models/meta-llama/llama-3-8b-instruct/endpoints"
       }
@@ -19434,7 +19613,7 @@
         "temperature": 0.3
       },
       "knowledge_cutoff": "2023-12-31",
-      "expiration_date": null,
+      "expiration_date": "2026-05-08",
       "links": {
         "details": "/api/v1/models/mistralai/mixtral-8x7b-instruct/endpoints"
       }
@@ -20085,7 +20264,7 @@
       }
     }
   ],
-  "lastUpdate": "2026-04-30T03:49:00.945Z",
+  "lastUpdate": "2026-05-01T03:59:57.241Z",
   "generatedBy": "GitHub Actions",
-  "totalModels": 368
+  "totalModels": 371
 }
