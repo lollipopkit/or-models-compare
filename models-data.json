@@ -998,7 +998,7 @@
       "name": "Qwen: Qwen3.6 27B",
       "created": 1777255064,
       "description": "Qwen3.6 27B is a dense 27-billion-parameter language model from the Qwen Team at Alibaba, released in April 2026. It features hybrid multimodal capabilities — accepting text, image, and video inputs...",
-      "context_length": 256000,
+      "context_length": 262144,
       "architecture": {
         "modality": "text+image+video->text",
         "input_modalities": [
@@ -1013,12 +1013,12 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.000000325",
-        "completion": "0.00000325"
+        "prompt": "0.00000032",
+        "completion": "0.0000032"
       },
       "top_provider": {
-        "context_length": 256000,
-        "max_completion_tokens": 65536,
+        "context_length": 262144,
+        "max_completion_tokens": 81920,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -15877,7 +15877,7 @@
       "name": "Google: Gemini 2.0 Flash",
       "created": 1738769413,
       "description": "Gemini Flash 2.0 offers a significantly faster time to first token (TTFT) compared to [Gemini Flash 1.5](/google/gemini-flash-1.5), while maintaining quality on par with larger models like [Gemini Pro 1.5](/google/gemini-pro-1.5). It...",
-      "context_length": 1000000,
+      "context_length": 1048576,
       "architecture": {
         "modality": "text+image+file+audio+video->text",
         "input_modalities": [
@@ -15904,7 +15904,7 @@
         "input_cache_write": "0.00000008333333333333334"
       },
       "top_provider": {
-        "context_length": 1000000,
+        "context_length": 1048576,
         "max_completion_tokens": 8192,
         "is_moderated": false
       },
@@ -20264,7 +20264,7 @@
       }
     }
   ],
-  "lastUpdate": "2026-05-01T03:59:57.241Z",
+  "lastUpdate": "2026-05-02T03:33:24.111Z",
   "generatedBy": "GitHub Actions",
   "totalModels": 371
 }
