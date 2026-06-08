@@ -4455,12 +4455,12 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000004",
+        "prompt": "0.0000001",
         "completion": "0.00000015"
       },
       "top_provider": {
         "context_length": 262144,
-        "max_completion_tokens": 81920,
+        "max_completion_tokens": 262144,
         "is_moderated": false
       },
       "per_request_limits": null,
@@ -9577,7 +9577,7 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.0000001",
+        "prompt": "0.0000004",
         "completion": "0.0000004"
       },
       "top_provider": {
@@ -12594,7 +12594,7 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.000000071",
+        "prompt": "0.00000009",
         "completion": "0.0000001"
       },
       "top_provider": {
@@ -13890,8 +13890,8 @@
         "instruct_type": "qwen3"
       },
       "pricing": {
-        "prompt": "0.00000009",
-        "completion": "0.00000045"
+        "prompt": "0.00000012",
+        "completion": "0.0000005"
       },
       "top_provider": {
         "context_length": 40960,
@@ -14548,7 +14548,7 @@
         "instruct_type": null
       },
       "pricing": {
-        "prompt": "0.00000008",
+        "prompt": "0.0000001",
         "completion": "0.0000003"
       },
       "top_provider": {
@@ -14759,8 +14759,8 @@
         "instruct_type": "gemma"
       },
       "pricing": {
-        "prompt": "0.00000004",
-        "completion": "0.00000008"
+        "prompt": "0.00000005",
+        "completion": "0.0000001"
       },
       "top_provider": {
         "context_length": 131072,
@@ -14812,8 +14812,8 @@
         "instruct_type": "gemma"
       },
       "pricing": {
-        "prompt": "0.00000004",
-        "completion": "0.00000013"
+        "prompt": "0.00000005",
+        "completion": "0.00000015"
       },
       "top_provider": {
         "context_length": 131072,
@@ -17301,8 +17301,8 @@
         "instruct_type": "llama3"
       },
       "pricing": {
-        "prompt": "0.000000245",
-        "completion": "0.000000245"
+        "prompt": "0.000000345",
+        "completion": "0.000000345"
       },
       "top_provider": {
         "context_length": 131072,
@@ -17562,8 +17562,8 @@
         "instruct_type": "chatml"
       },
       "pricing": {
-        "prompt": "0.0000003",
-        "completion": "0.0000003"
+        "prompt": "0.0000007",
+        "completion": "0.0000007"
       },
       "top_provider": {
         "context_length": 131072,
@@ -19157,7 +19157,7 @@
       }
     }
   ],
-  "lastUpdate": "2026-06-07T04:42:31.525Z",
+  "lastUpdate": "2026-06-08T04:47:36.559Z",
   "generatedBy": "GitHub Actions",
   "totalModels": 341
 }
